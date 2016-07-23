@@ -6,16 +6,14 @@
  ************************************************************************/
 
 #include<iostream>
+#include<vector>
 
 using namespace std;
 
-class Solution {
-public:
-    vector<int> twoSum(vector<int>& nums, int target) {
-           
-    }
-};
-
 int main(){
-
-}
+    
+    for(int i = 0; i < 20; i++ ){
+        cout << i << endl;
+    }
+    return 0;
+}    
