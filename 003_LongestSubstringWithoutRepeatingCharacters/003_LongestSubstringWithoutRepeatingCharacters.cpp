@@ -13,11 +13,12 @@ using namespace std;
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
-        return s.length;
+        return s.length();
     }
 };
 
 int main(){
+
     Solution newSolution;
     string s;
 

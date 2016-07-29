@@ -22,6 +22,7 @@ public:
                     result.push_back(j);
                     return result;
                 }
+        return result;
     }
 };
 
@@ -38,8 +39,8 @@ int main(){
 
     Solution newSolution;
     result = newSolution.twoSum(nums, target);
-    
+
     cout << result[0] << ' ' << result[1] << endl;
 
     return 0;
-}    
+}
