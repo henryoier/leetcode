@@ -40,8 +40,8 @@ private:
 };
 
 int main(){
-    int arr[1] = {4};
-    vector<int> nums(arr, arr + 1);
+    int arr[4] = {1,2,1,2};
+    vector<int> nums(arr, arr + 4);
 
     Solution newSolution;
     newSolution.nextPermutation(nums);
