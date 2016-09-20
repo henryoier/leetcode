@@ -382,3 +382,9 @@ Forgot to set the array to be all 0;
 
 111_MinimumDepthOfBinaryTree 2Y
 1WA a leaf node is a node whose left and right children are all nullptr
+
+112_PathSum 1Y
+Pay attention to leaf node.
+
+113_PathSumII 2Y
+If use vector to store the path, remember to erase the item whenever at the end of the function
