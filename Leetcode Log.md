@@ -379,3 +379,6 @@ Forgot to set the array to be all 0;
 109_ConvertSortedListToBinarySearchTree 1Y
 
 110_BalancedBinaryTree 1Y
+
+111_MinimumDepthOfBinaryTree 2Y
+1WA a leaf node is a node whose left and right children are all nullptr
