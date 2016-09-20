@@ -388,3 +388,6 @@ Pay attention to leaf node.
 
 113_PathSumII 2Y
 If use vector to store the path, remember to erase the item whenever at the end of the function
+
+114_FlattenBinaryTreeToLinkedList 2Y
+1WA forgot to delete the left child of root.
