@@ -429,3 +429,6 @@ if(i > 0 && i < prices.size() - 1 && prices[i+1] <= prices[i] && prices[i - 1] <
 
 125_ValidPalindrome 2Y
 1TLE used recursive function
+
+129_SumRootToLeafNumbers 1Y
+If use a char to initialize a string, use string(int, char);
