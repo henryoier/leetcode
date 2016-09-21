@@ -408,3 +408,5 @@ Pay attention to returning a new vector, we do not have to add new because once 
 119_PascalsTriangleII 2Y
 1WA At first I want to use the formula to calculate, but it would overload when I was calculating the factor.So i just sum up from the last row.
 
+120_Triangle 2Y
+When j is 0 or i, there is only one way.
