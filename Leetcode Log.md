@@ -399,4 +399,6 @@ DP
 1WA Didn't consider the left node or the only root
 2WA Didn't consider root has no next
 
+117_PopulatingNextRightPointerInEachNode Multi WA
+BFS use queue.
 
