@@ -410,3 +410,6 @@ Pay attention to returning a new vector, we do not have to add new because once 
 
 120_Triangle 2Y
 When j is 0 or i, there is only one way.
+
+121_BestTimeToBuyAndSellStock 2y
+The lowest point coult be equal to one of its neightbor so the condition should be >= and <+
