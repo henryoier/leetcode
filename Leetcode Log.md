@@ -412,4 +412,17 @@ Pay attention to returning a new vector, we do not have to add new because once 
 When j is 0 or i, there is only one way.
 
 121_BestTimeToBuyAndSellStock 2y
-The lowest point coult be equal to one of its neightbor so the condition should be >= and <+
+The lowest point coult be equal to one of its neightbor so the condition should be >= and<=
+
+122_BestTimeToBuyAndSellStockII 1Y
+if(i == 0 && prices[i + 1] > prices[i])
+    buyPoint = prices[i];                            
+
+if(i > 0 && i < prices.size() - 1 && prices[i+1] > prices[i] && prices[i - 1] >= prices[i])
+    buyPoint = prices[i];
+                                                                        
+if(i == prices.size() - 1 && prices[i] > prices[i - 1])
+    maxProfit += prices[i] - buyPoint;
+                                                                                                                        
+if(i > 0 && i < prices.size() - 1 && prices[i+1] <= prices[i] && prices[i - 1] < prices[i])
+    maxProfit += prices[i] - buyPoint;
