@@ -405,5 +405,6 @@ BFS use queue.
 118_PascalsTriangle 1Y
 Pay attention to returning a new vector, we do not have to add new because once we do that we will return a pointer
 
-
+119_PascalsTriangleII 2Y
+1WA At first I want to use the formula to calculate, but it would overload when I was calculating the factor.So i just sum up from the last row.
 
