@@ -395,4 +395,8 @@ If use vector to store the path, remember to erase the item whenever at the end 
 115_DistinctSubsequence 1Y
 DP
 
+116_PopulatingNextRightPointerInEachNode 3Y
+1WA Didn't consider the left node or the only root
+2WA Didn't consider root has no next
+
 
