@@ -439,3 +439,7 @@ If use a char to initialize a string, use string(int, char);
 
 106_ConstructBinaryTreeFromInorderAndPostorderTraversal 1Y
 Similar to the previous problem.
+
+136_SingleNumber
+Use unordeded_set
+A better way is to use XOR
