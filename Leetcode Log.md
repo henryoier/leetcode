@@ -432,3 +432,7 @@ if(i > 0 && i < prices.size() - 1 && prices[i+1] <= prices[i] && prices[i - 1] <
 
 129_SumRootToLeafNumbers 1Y
 If use a char to initialize a string, use string(int, char);
+
+105_ConstructBinaryTreeFromPreorderAndInorderTraversal 3Y
+1 MLE Since every time we passed two new vectors so the memory limits were exceeded
+2 WA If we use the head and end pointer, find function would be dificult because it return a iterator.
