@@ -453,3 +453,8 @@ Use unordered_map to record if it has appeared.
 
 131_PalindromePartitioning 2Y
 Typo, should insert s.substr(0, i) at the end of partition(s.substr(i));
+
+139_WordBreak 3Y
+1 Naive dfs TLE
+2 Sorted the length of words in decent order and then dfs TLE
+3 DP
