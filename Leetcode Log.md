@@ -436,3 +436,6 @@ If use a char to initialize a string, use string(int, char);
 105_ConstructBinaryTreeFromPreorderAndInorderTraversal 3Y
 1 MLE Since every time we passed two new vectors so the memory limits were exceeded
 2 WA If we use the head and end pointer, find function would be dificult because it return a iterator.
+
+106_ConstructBinaryTreeFromInorderAndPostorderTraversal 1Y
+Similar to the previous problem.
