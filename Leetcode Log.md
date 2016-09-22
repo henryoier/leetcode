@@ -447,3 +447,9 @@ A better way is to use XOR
 137_SingleNumberII 1Y
 Use unordered_map
 A better way is to count for every bit and mod 3
+
+128_LongestConsecutiveSequence 1Y
+Use unordered_map to record if it has appeared.
+
+131_PalindromePartitioning 2Y
+Typo, should insert s.substr(0, i) at the end of partition(s.substr(i));
