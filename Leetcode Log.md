@@ -440,6 +440,10 @@ If use a char to initialize a string, use string(int, char);
 106_ConstructBinaryTreeFromInorderAndPostorderTraversal 1Y
 Similar to the previous problem.
 
-136_SingleNumber
+136_SingleNumber 1Y
 Use unordeded_set
 A better way is to use XOR
+
+137_SingleNumberII 1Y
+Use unordered_map
+A better way is to count for every bit and mod 3
