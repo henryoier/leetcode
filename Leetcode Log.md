@@ -448,6 +448,7 @@ A better way is to use XOR
 Use unordered_map
 A better way is to count for every bit and mod 3
 
+##2016.9.22
 128_LongestConsecutiveSequence 1Y
 Use unordered_map to record if it has appeared.
 
@@ -472,3 +473,18 @@ The same as the previous problem, for the faster method, when the speed 2 meed s
 143_ReorderList 1Y
 If not in_place use a vector to do it.
 If in_place, find the middle of the linkedlist and reverse the later half, and finally merge.
+ListNode* reverse(ListNode *head) {
+    if (head == nullptr || head->next == nullptr) return head;
+              
+    ListNode *prev = head;
+    for (ListNode *curr = head->next, *next = curr->next; curr;
+        prev = curr, curr = next, next = next ? next->next : nullptr) {
+            curr->next = prev;
+    }
+     
+    head->next = nullptr;
+    return prev;    
+}
+
+144_BinaryTreePreorderTraversal 1Y
+Use stack to perform preorder traversal.
