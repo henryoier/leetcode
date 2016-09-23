@@ -461,3 +461,7 @@ Typo, should insert s.substr(0, i) at the end of partition(s.substr(i));
 
 140_WordBreakII 1Y
 The same DP as the previous one, pay attention that when you use for(auto i:vector) you cannot change the value of vectors buy changing i
+
+141_LinkedListCycle 1Y
+Slower and O(n) space by using unordered_set
+Faster and O(1) space by using two pointers in different speeds
