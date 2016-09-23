@@ -465,3 +465,6 @@ The same DP as the previous one, pay attention that when you use for(auto i:vect
 141_LinkedListCycle 1Y
 Slower and O(n) space by using unordered_set
 Faster and O(1) space by using two pointers in different speeds
+
+142_LinkedListCycle 1Y
+The same as the previous problem, for the faster method, when the speed 2 meed speed 1, make a new speed1 from head, they will meet at the begining of the cycle.
