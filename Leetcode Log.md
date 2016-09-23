@@ -495,3 +495,8 @@ Push the root, right, left in order, once the kids were pushed, the root could b
 151_ReverseWordsInAString 3Y
 1 WA when result is empty, used t = s.substr()
 2 WA at the end when last is zero, don't have to add anything.
+
+152_MaximumProductArray 3Y
+Greedy.
+1 WA the if else structure is not clear
+2 WA Since there will be negative product, need calculate twice for order and reversed.
