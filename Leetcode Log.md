@@ -505,5 +505,8 @@ Greedy.
 1 TLE
 2 Keep a min and refresh it to reduce time cost
 
-153_FindMinimumInRotatdSortedArray 1Y
+153_FindMinimumInRotatedSortedArray 1Y
+Binary search
 
+154_FindMinimumInRotatedSortedArray 2Y
+1WA The last could be the same as the first one.
