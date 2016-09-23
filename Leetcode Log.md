@@ -500,3 +500,7 @@ Push the root, right, left in order, once the kids were pushed, the root could b
 Greedy.
 1 WA the if else structure is not clear
 2 WA Since there will be negative product, need calculate twice for order and reversed.
+
+155_MinStack 2Y
+1 TLE
+2 Keep a min and refresh it to reduce time cost
