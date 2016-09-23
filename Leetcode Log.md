@@ -458,3 +458,6 @@ Typo, should insert s.substr(0, i) at the end of partition(s.substr(i));
 1 Naive dfs TLE
 2 Sorted the length of words in decent order and then dfs TLE
 3 DP
+
+140_WordBreakII 1Y
+The same DP as the previous one, pay attention that when you use for(auto i:vector) you cannot change the value of vectors buy changing i
