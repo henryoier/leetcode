@@ -504,3 +504,6 @@ Greedy.
 155_MinStack 2Y
 1 TLE
 2 Keep a min and refresh it to reduce time cost
+
+153_FindMinimumInRotatdSortedArray 1Y
+
