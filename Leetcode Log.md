@@ -488,3 +488,10 @@ ListNode* reverse(ListNode *head) {
 
 144_BinaryTreePreorderTraversal 1Y
 Use stack to perform preorder traversal.
+
+145_BinaryTreePostorderTraversal 1Y
+Push the root, right, left in order, once the kids were pushed, the root could be poped the next time.
+
+151_ReverseWordsInAString 3Y
+1 WA when result is empty, used t = s.substr()
+2 WA at the end when last is zero, don't have to add anything.
