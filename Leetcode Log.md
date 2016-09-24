@@ -512,4 +512,8 @@ Binary search
   
 160_IntersectionOfTwoLinkedLists 1Y  
 First time I used undered_set, O(n) time complexity and O(n) space \\  
-Then I used two pointer to find the length difference, then start at the same length begin point. O(n) Time complexity and O(1) space  
+Then I used two pointer to find the length difference, then start at the same length begin point. O(n) Time complexity and O(1) space
+
+162_FindPeakElement 2Y
+
+48_RotateImage 1Y
