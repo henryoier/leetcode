@@ -526,3 +526,7 @@ Redefined sort function
 
 074_SearchA2DMatrix 2Y
 A good template for binary search
+
+086_PartitionList 3Y
+1WA Insert head in front (all are greater or equal)
+2WA typo
