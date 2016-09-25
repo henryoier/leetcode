@@ -520,3 +520,6 @@ Then I used two pointer to find the length difference, then start at the same le
 
 049_GroupAnagram 1Y
 Redefined sort function
+
+## 2016.9.24
+061_RotateList 1Y
