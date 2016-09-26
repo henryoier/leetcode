@@ -530,3 +530,7 @@ A good template for binary search
 086_PartitionList 3Y
 1WA Insert head in front (all are greater or equal)
 2WA typo
+
+## 2016.9.25
+089_GrayCode 1Y
+pay attention that << >> has low priority 
