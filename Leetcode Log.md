@@ -533,4 +533,8 @@ A good template for binary search
 
 ## 2016.9.25
 089_GrayCode 1Y
-pay attention that << >> has low priority 
+pay attention that << >> has low priority   
+  
+090_SubsetsII 2Y  
+The array may contain duplicates, so we have to sort every condition  
+
