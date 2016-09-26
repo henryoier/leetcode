@@ -552,9 +552,14 @@ There are three types
 1WA Forgot 1.0 vs 1 this condition
 
 167_TwoSumII
-Using binary search.
+Using binary search.  
+  
+## 2016.9.26
+168_ExcelSheetColumnTitle 1Y  
+  
+169_MajorityElement 1Y  
+Used hash map  
+  
+171_ExcelSheetColumnNumber 1Y  
 
-168_ExcelSheetColumnTitle 1Y
 
-169_MajorityElement 1Y
-Used hash map
