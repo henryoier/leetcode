@@ -540,3 +540,11 @@ The array may contain duplicates, so we have to sort every condition
 
 092_ReverseLinkedListII 1Y
 Mistype n into m
+
+099_RecoverBinarySearchTree 2Y
+1WA Forget to consider leaf node
+There are three types  
+1, two nodes are from left and right subtree  
+2, both come from left subtree  
+3, both come from right subtree  
+
