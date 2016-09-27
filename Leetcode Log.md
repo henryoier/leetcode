@@ -591,6 +591,13 @@ Do not forget to insert into hash set
 
 205_IsomorphicStrings 1Y  
 
+## 2016.9.27  
 206_ReverseLinkedList 1Y  
-Solved recursively  
+Solved recursively 
+
+209_MinimunSizeSubarraySum 2Y  
+1 WA Mistunderstood subarray, used minheap, 
+2Y Used two pointers.  
+  
+
 
