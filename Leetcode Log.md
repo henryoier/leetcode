@@ -561,11 +561,15 @@ Using binary search.
 Used hash map  
   
 171_ExcelSheetColumnNumber 1Y  
+  
+174_DungeonGame 1Y  
+DP my favourite  
+  
+189_RotateArray 1Y  
+  
+190_ReverseBits 2Y  
+1WA n >> 1 is not the same as n = n / 2  
+  
+191_NumberOf1Bits 1Y  
+  
 
-174_DungeonGame 1Y
-DP my favourite
-
-189_RotateArray 1Y
-
-190_ReverseBits 2Y
-1WA n >> 1 is not the same as n = n / 2
