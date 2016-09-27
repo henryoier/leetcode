@@ -603,5 +603,9 @@ Solved recursively
 min_heap using priority queue  
   
 216_CombinationSumII 2Y
-DFS 1WA didn't request a good range.
+DFS 1WA didn't request a good range  
+
+179_LargestNumber Good one
+Use sort function, rewrite the compare part  
+
 
