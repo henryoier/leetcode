@@ -574,4 +574,10 @@ DP my favourite
   
 198_HouseRobber 1Y  
 DP  
+  
+199_BinaryTreeRightSideView 2Y
+1WA Forgot to consider that the left subtree might be higher than the right subtree  
+  
+200_NumberOfIslands 2Y  
+1 Use a bool vector to record would TLE  
 
