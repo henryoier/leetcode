@@ -585,4 +585,8 @@ DP
 
 202_HappyNumber 1Y
 Do not forget to insert into hash set  
+  
+203_RemoveLinkedListElements 2Y  
+1 WA Forgot to consider remove all elements, it will be dead-loop  
+
 
