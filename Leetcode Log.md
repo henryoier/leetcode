@@ -567,3 +567,5 @@ DP my favourite
 
 189_RotateArray 1Y
 
+190_ReverseBits 2Y
+1WA n >> 1 is not the same as n = n / 2
