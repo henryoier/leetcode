@@ -581,3 +581,8 @@ DP
 200_NumberOfIslands 2Y  
 1 Use a bool vector to record would TLE  
 
+201_BitwiseANDOfNumbersRange Good One  
+
+202_HappyNumber 1Y
+Do not forget to insert into hash set  
+
