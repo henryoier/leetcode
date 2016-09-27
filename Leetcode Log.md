@@ -591,3 +591,6 @@ Do not forget to insert into hash set
 
 205_IsomorphicStrings 1Y  
 
+206_ReverseLinkedList 1Y  
+Solved recursively  
+
