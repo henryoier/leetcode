@@ -624,6 +624,8 @@ Using a queue will be dumb
   
 226_InvertBinaryTree 1Y  
   
+405_ConvertANumberToHex 1Y  
+  
 
 
 
