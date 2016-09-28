@@ -611,5 +611,14 @@ Use sort function, rewrite the compare part
 217_ContainsDuplicate 1Y
 Use unordered_set  
   
+219_ContainsDuplicateII 2Y  
+1 WA instead of s.erase(s.begin()) it's better to erase the exact number  
+Use a maximized size set
+  
+##2016.9.28  
+221_MaximalSquare 2Y  
+f[i][j] = min(f[i - 1][j], f[i][j - 1], f[i - 1][j - 1]) + 1;  
+  
+
 
 
