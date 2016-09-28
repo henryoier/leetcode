@@ -629,6 +629,9 @@ Using a queue will be dumb
 404_SumOfLeftLeaves 2Y  
 Recursively solve the problem, could use stack?  
   
+402_RemoveKDigits 1Y  
+Find the first one that is larger than the one after it.  
+  
 
 
 
