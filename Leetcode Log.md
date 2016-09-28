@@ -626,6 +626,9 @@ Using a queue will be dumb
   
 405_ConvertANumberToHex 1Y  
   
+404_SumOfLeftLeaves 2Y  
+Recursively solve the problem, could use stack?  
+  
 
 
 
