@@ -608,4 +608,8 @@ DFS 1WA didn't request a good range
 179_LargestNumber Good one
 Use sort function, rewrite the compare part  
 
+217_ContainsDuplicate 1Y
+Use unordered_set  
+  
+
 
