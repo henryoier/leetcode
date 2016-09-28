@@ -632,6 +632,19 @@ Recursively solve the problem, could use stack?
 402_RemoveKDigits 1Y  
 Find the first one that is larger than the one after it.  
   
+401_BinaryWatch 2Y  
+Forgot to consider when hour or second overloaded.  
+  
+401_BinaryWatch 2Y  
+Forgot to consider when hour or second overloaded.  
+    
+401_BinaryWatch 2Y  
+Forgot to consider when hour or second overloaded.  
+  
+401_BinaryWatch 2Y  
+Forgot to consider when hour or second overloaded.  
+  
+
 
 
 
