@@ -644,6 +644,8 @@ Forgot to consider when hour or second overloaded.
 401_BinaryWatch 2Y  
 Forgot to consider when hour or second overloaded.  
   
+400_NthDigit 2Y  
+When calculating the pow, it might overload  
 
 
 
