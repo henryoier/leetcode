@@ -646,6 +646,9 @@ Forgot to consider when hour or second overloaded.
   
 400_NthDigit 2Y  
 When calculating the pow, it might overload  
+  
+228_SummaryRanges 2Y  
+Pay attention to the final element of the array, it has several oprations to do.  
 
 
 
