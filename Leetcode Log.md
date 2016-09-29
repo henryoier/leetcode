@@ -664,6 +664,9 @@ Used vector, took O(n) time and O(n) space.
   
 235_LowestCommonAncestorOfABinarySearchTree 1Y 
   
+236_LowestCommonAncestorOfABinarySearchTree 2Y  
+At first I used the same method as the previous problem that to find where the two nodes are. It's almost TLE. Then I just recursive used the function, to check the return value of left and right subtree.  
+  
 
 
 
