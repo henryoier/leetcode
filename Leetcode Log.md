@@ -679,6 +679,9 @@ Pay attention to the number of zeros
 239_SlidingWindowMaximum 3Y  
 I used map(set cannot hold same items), a better way is to use deque(Monotonic Queue)  
   
+241_DifferentWaysToAddParentheses 1Y * 
+DP  
+  
 
 
 
