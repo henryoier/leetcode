@@ -670,9 +670,13 @@ At first I used the same method as the previous problem that to find where the t
 237_DeleteNodeInALinkedList 2Y  
 You can not let the current node to be nullptr, instead, let the next pointed to a nulltpr  
   
-  237_DeleteNodeInALinkedList 2Y  
-  You can not let the current node to be nullptr, instead, let the next pointed to a nulltpr  
-    
+237_DeleteNodeInALinkedList 2Y  
+You can not let the current node to be nullptr, instead, let the next pointed to a nulltpr  
+  
+238_ProductOfArrayExceptSelf  1Y  
+Pay attention to the number of zeros  
+  
+
 
 
 
