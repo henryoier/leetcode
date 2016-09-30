@@ -706,6 +706,10 @@ A better way is to use bit operation
 273_IntegerToEnglishWords 3Y  
 Pay attention to empty string, and spaces(we could remove them at the end).  
   
+274_HIndex 1Y
+
+275_HIndexII 2Y  
+Use binary search to reduce the time complexity.  
 
 
 
