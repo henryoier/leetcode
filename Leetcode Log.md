@@ -713,6 +713,10 @@ Use binary search to reduce the time complexity.
 
 278_FirstBadVersion 1Y  
 Binary search  
+  
+279_PerfectSquare 1Y  
+DP  
+  
 
 
 
