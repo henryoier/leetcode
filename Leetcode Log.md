@@ -722,6 +722,93 @@ DP
 289_GameOfLife 2Y  
 Use one bit to store the new state.  
   
+290_WordPattern 2Y  
+Since it's bijection, check both side.  
+  
+290_WordPattern 2Y  
+Since it's bijection, check both side.  
+  
+290_WordPattern 2Y  
+Since it's bijection, check both side.  
+  
+290_WordPattern 2Y  
+Since it's bijection, check both side.  
+  
+290_WordPattern 2Y  
+Since it's bijection, check both side.  
+  
+290_WordPattern 2Y  
+Since it's bijection, check both side.  
+  
+290_WordPattern 2Y  
+Since it's bijection, check both side.  
+  
+290_WordPattern 2Y  
+Since it's bijection, check both side.  
+  
+290_WordPattern 2Y  
+Since it's bijection, check both side.  
+  
+290_WordPattern 2Y  
+Since it's bijection, check both side.  
+  
+290_WordPattern 2Y  
+Since it's bijection, check both side.  
+  
+290_WordPattern 2Y  
+Since it's bijection, check both side.  
+  
+290_WordPattern 2Y  
+Since it's bijection, check both side.  
+  
+290_WordPattern 2Y  
+Since it's bijection, check both side.  
+  
+290_WordPattern 2Y  
+Since it's bijection, check both side.  
+  
+290_WordPattern 2Y  
+Since it's bijection, check both side.  
+  
+290_WordPattern 2Y  
+Since it's bijection, check both side.  
+  
+290_WordPattern 2Y  
+Since it's bijection, check both side.  
+  
+290_WordPattern 2Y  
+Since it's bijection, check both side.  
+  
+290_WordPattern 2Y  
+Since it's bijection, check both side.  
+  
+290_WordPattern 2Y  
+Since it's bijection, check both side.  
+  
+290_WordPattern 2Y  
+Since it's bijection, check both side.  
+  
+290_WordPattern 2Y  
+Since it's bijection, check both side.  
+  
+290_WordPattern 2Y  
+Since it's bijection, check both side.  
+  
+290_WordPattern 2Y  
+Since it's bijection, check both side.  
+  
+290_WordPattern 2Y  
+Since it's bijection, check both side.  
+  
+290_WordPattern 2Y  
+Since it's bijection, check both side.  
+  
+290_WordPattern 2Y  
+Since it's bijection, check both side.  
+  
+290_WordPattern 2Y  
+Since it's bijection, check both side.  
+  
 
 
 
