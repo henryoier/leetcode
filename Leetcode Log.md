@@ -711,6 +711,9 @@ Pay attention to empty string, and spaces(we could remove them at the end).
 275_HIndexII 2Y  
 Use binary search to reduce the time complexity.  
 
+278_FirstBadVersion 1Y  
+Binary search  
+
 
 
 
