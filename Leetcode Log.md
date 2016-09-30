@@ -688,6 +688,9 @@ I used sort, but the fastest way is to count the frequencies of all letters, O(n
 257_BinaryTreePaths 1Y  
 Recursively find the paths.  
 
+258_AddDigits 2Y  
+Since f(n) % 9 = f(n - 1) % 9 + 1  
+
 
 
 
