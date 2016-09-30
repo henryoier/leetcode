@@ -699,6 +699,8 @@ The most common way is to use unordered_set, but using bit operation costs only 
 264_UglyNumberII 3Y  
 The ugly number was generated from 2,3,5, and for each number, the nth smallest is number * ugly[n - 1]; Then we can choose from the three candidates.  
   
+268_MissingNumber 2Y  
+Solved it with O(1) space.  
 
 
 
