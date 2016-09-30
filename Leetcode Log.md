@@ -701,6 +701,11 @@ The ugly number was generated from 2,3,5, and for each number, the nth smallest 
   
 268_MissingNumber 2Y  
 Solved it with O(1) space.  
+A better way is to use bit operation  
+  
+273_IntegerToEnglishWords 3Y  
+Pay attention to empty string, and spaces(we could remove them at the end).  
+  
 
 
 
