@@ -684,6 +684,9 @@ DP
   
 242_ValidAnagram 1Y  
 I used sort, but the fastest way is to count the frequencies of all letters, O(n).  
+  
+257_BinaryTreePaths 1Y  
+Recursively find the paths.  
 
 
 
