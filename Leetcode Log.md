@@ -696,6 +696,9 @@ The most common way is to use unordered_set, but using bit operation costs only 
   
 263_UglyNumber 1Y  
   
+264_UglyNumberII 3Y  
+The ugly number was generated from 2,3,5, and for each number, the nth smallest is number * ugly[n - 1]; Then we can choose from the three candidates.  
+  
 
 
 
