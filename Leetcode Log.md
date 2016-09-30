@@ -690,6 +690,12 @@ Recursively find the paths.
 
 258_AddDigits 2Y  
 Since f(n) % 9 = f(n - 1) % 9 + 1  
+  
+260_SingleNumberIII  
+The most common way is to use unordered_set, but using bit operation costs only O(1) space.  
+  
+263_UglyNumber 1Y  
+  
 
 
 
