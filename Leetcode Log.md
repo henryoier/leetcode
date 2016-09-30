@@ -809,6 +809,11 @@ Since it's bijection, check both side.
 290_WordPattern 2Y  
 Since it's bijection, check both side.  
   
+292_NimGame 2Y  
+At first I tried to use dp, but actually if you can let the other one face n*4 everytime you can always win.  
+So if at first you are not n*4, you will win.  
+  
+
 
 
 
