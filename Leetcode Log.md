@@ -682,6 +682,8 @@ I used map(set cannot hold same items), a better way is to use deque(Monotonic Q
 241_DifferentWaysToAddParentheses 1Y * 
 DP  
   
+242_ValidAnagram 1Y  
+I used sort, but the fastest way is to count the frequencies of all letters, O(n).  
 
 
 
