@@ -816,6 +816,9 @@ So if at first you are not n*4, you will win.
 295_FindMedianFromDataStream 1Y  
 Use multiset  
   
+299_BullsAndCows 1Y  
+Remember to remove the two element no matter it's bull or cow  
+  
 
 
 
