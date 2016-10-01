@@ -828,6 +828,9 @@ Use an array to store the sum.
 304_RangeSumQuery2D-Immutable 1Y  
 The same as the previous problem.  
   
+306_AdditiveNumber 3Y  
+Enum all possible num[0] and num[1], pay attention to overload and zero condition.  
+  
 
 
 
