@@ -822,6 +822,8 @@ Remember to remove the two element no matter it's bull or cow
 300_LongestIncreasingSubsequence 1Y   
 Simple DP, There will be O(nlongn) solution.  
   
+303_RangeSumQuery-Immutable 1Y  
+Use an array to store the sum.  
 
 
 
