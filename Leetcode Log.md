@@ -819,6 +819,9 @@ Use multiset
 299_BullsAndCows 1Y  
 Remember to remove the two element no matter it's bull or cow  
   
+300_LongestIncreasingSubsequence 1Y   
+Simple DP, There will be O(nlongn) solution.  
+  
 
 
 
