@@ -839,6 +839,10 @@ Enum all possible num[0] and num[1], pay attention to overload and zero conditio
 At first I tried to used DP, to reduce redundant computing, but a high cost of memory.  
 Then I changed it to recursive function, and mind the overload of n.  
   
+396_RotateFunction 2Y  
+1 TLE It's easy to think of a O(n^2) solution but will TLE.
+2 Actually everytime when we shift the array, the sum can be calculated directly.  
+  
 
 
 
