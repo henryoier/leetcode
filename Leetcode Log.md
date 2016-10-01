@@ -813,6 +813,9 @@ Since it's bijection, check both side.
 At first I tried to use dp, but actually if you can let the other one face n*4 everytime you can always win.  
 So if at first you are not n*4, you will win.  
   
+295_FindMedianFromDataStream 1Y  
+Use multiset  
+  
 
 
 
