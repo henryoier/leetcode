@@ -843,6 +843,9 @@ Then I changed it to recursive function, and mind the overload of n.
 1 TLE It's easy to think of a O(n^2) solution but will TLE.
 2 Actually everytime when we shift the array, the sum can be calculated directly.  
   
+395_LongestSubstringWithAtLeastKRepeatingCharacter 3Y  
+Recursively solve this problem, use a count array to reduce count the times of a character every time.  
+  
 
 
 
