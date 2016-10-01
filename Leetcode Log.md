@@ -824,6 +824,10 @@ Simple DP, There will be O(nlongn) solution.
   
 303_RangeSumQuery-Immutable 1Y  
 Use an array to store the sum.  
+  
+304_RangeSumQuery2D-Immutable 1Y  
+The same as the previous problem.  
+  
 
 
 
