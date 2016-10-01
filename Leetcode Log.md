@@ -835,6 +835,11 @@ Enum all possible num[0] and num[1], pay attention to overload and zero conditio
 1 MLE  
 2 Copied from the forum. O(n) pick time, but the same space as num.  
 
+397_IntegerReplacement 2Y  
+At first I tried to used DP, to reduce redundant computing, but a high cost of memory.  
+Then I changed it to recursive function, and mind the overload of n.  
+  
+
 
 
 
