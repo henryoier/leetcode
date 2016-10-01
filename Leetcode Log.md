@@ -831,6 +831,9 @@ The same as the previous problem.
 306_AdditiveNumber 3Y  
 Enum all possible num[0] and num[1], pay attention to overload and zero condition.  
   
+398_RandomPickIndex 2Y  
+1 MLE  
+2 Copied from the forum. O(n) pick time, but the same space as num.  
 
 
 
