@@ -846,6 +846,12 @@ Then I changed it to recursive function, and mind the overload of n.
 395_LongestSubstringWithAtLeastKRepeatingCharacter 3Y  
 Recursively solve this problem, use a count array to reduce count the times of a character every time.  
   
+394_DecodeString 1Y  
+Recursively solve it.  
+  
+392_IsSubsequence 2Y  
+1 MLE and TLE DP
+2 Search every char of s in t.  
 
 
 
