@@ -874,6 +874,9 @@ Random number mod n
 307_RangeSumQuery-Mutable 3Y  
 Used BIT  
   
+287_FindTheDuplicateNumber 3Y  
+If duplicates exist, there would be a circle.  
+  
 
 
 
