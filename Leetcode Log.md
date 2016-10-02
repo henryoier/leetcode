@@ -859,6 +859,9 @@ Record the start, end, interval and direction, used recursive functions
 389_FindTheDifference 1Y  
 Sort the two strings and then compare.  
   
+387_FirstUniqueCharacterInAString 1Y  
+For every string, find if exists after it, if found continue.  
+  
 
 
 
