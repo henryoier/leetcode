@@ -868,6 +868,9 @@ Used dfs and bfs, then I realized only 10 new can be generated.
 383_RansomNote 1Y 
 Count all numbers in note and magazines.  
   
+382_LinkedListRandomNode 1Y  
+Random number mod n  
+  
 
 
 
