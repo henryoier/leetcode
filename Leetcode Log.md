@@ -862,6 +862,9 @@ Sort the two strings and then compare.
 387_FirstUniqueCharacterInAString 1Y  
 For every string, find if exists after it, if found continue.  
   
+386_LexicographicalNumbers 3Y  
+Used dfs and bfs, then I realized only 10 new can be generated.  
+  
 
 
 
