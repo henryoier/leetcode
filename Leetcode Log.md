@@ -853,6 +853,10 @@ Recursively solve it.
 1 MLE and TLE DP
 2 Search every char of s in t.  
 
+390_EliminationGame 2Y  
+Record the start, end, interval and direction, used recursive functions  
+  
+
 
 
 
