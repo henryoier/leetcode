@@ -871,6 +871,9 @@ Count all numbers in note and magazines.
 382_LinkedListRandomNode 1Y  
 Random number mod n  
   
+307_RangeSumQuery-Mutable 3Y  
+Used BIT  
+  
 
 
 
