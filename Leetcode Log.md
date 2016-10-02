@@ -883,6 +883,9 @@ At first I used recursive function, then I change to dp
 376_WiggleSubsequence 3Y  
 At first I used DP which past but with high time cost. Then I used greedy algorithm, that when incresing, we only consider the bigger, and it's the same in decresing conditions. We only need to know how many peak or valley it has.  
   
+374_GuessNumberHigherOrLower 1Y  
+Binary search.  
+  
 
 
 
