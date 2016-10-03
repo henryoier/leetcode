@@ -889,6 +889,9 @@ Binary search.
 220_ContainsDuplicateIII 3Y  
 Using multiset  
   
+380 & 381 InsertDeleteGetRandomO(1) 
+Using set and multiset.  
+  
 
 
 
