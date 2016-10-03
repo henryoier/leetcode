@@ -886,6 +886,9 @@ At first I used DP which past but with high time cost. Then I used greedy algori
 374_GuessNumberHigherOrLower 1Y  
 Binary search.  
   
+220_ContainsDuplicateIII 3Y  
+Using multiset  
+  
 
 
 
