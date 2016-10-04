@@ -902,6 +902,9 @@ Two ways, find the pattern or prove that only with odd number of factors will be
 BFS Slower  
 DP Faster  
   
+326_PowerOfThree 2Y  
+If n is power of three then log10(n) / log10(3) is an integer.  
+  
 
 
 
