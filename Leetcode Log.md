@@ -905,6 +905,9 @@ DP Faster
 326_PowerOfThree 2Y  
 If n is power of three then log10(n) / log10(3) is an integer.  
   
+371_SumOfTwoIntegers 2Y  
+Using bit operation.  
+  
 
 
 
