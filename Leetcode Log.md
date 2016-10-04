@@ -908,6 +908,11 @@ If n is power of three then log10(n) / log10(3) is an integer.
 371_SumOfTwoIntegers 2Y  
 Using bit operation.  
   
+328_OddEvenLinkedList 2Y 
+  
+367_ValidPerfectSquare 2Y  
+Using binary search, mind overload.  
+  
 
 
 
