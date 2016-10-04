@@ -892,6 +892,9 @@ Using multiset
 380 & 381 InsertDeleteGetRandomO(1) 
 Using set and multiset.  
   
+318_MaximumProductOfWordLengths 2Y  
+Use binary to encode.  
+  
 
 
 
