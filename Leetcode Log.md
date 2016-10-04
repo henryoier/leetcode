@@ -895,6 +895,9 @@ Using set and multiset.
 318_MaximumProductOfWordLengths 2Y  
 Use binary to encode.  
   
+319_BulbSwitcher 2Y  
+Two ways, find the pattern or prove that only with odd number of factors will be on finally.  
+  
 
 
 
