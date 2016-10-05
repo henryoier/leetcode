@@ -948,6 +948,9 @@ When doing recursion, record the order.
 033_SearchInRotatedSortedArray 3Y  
 BinarySearch, divide the problem into several conditions  
   
+016_3SumClosest 2Y  
+Use three pointers.  
+  
 
 
 
