@@ -930,6 +930,8 @@ Fixed a bug, that I didn't set board[i][j] to be '.'
   
 344_ReverseString 1Y  
   
+345_ReverseVowelsOfAString 1Y  
+  
 
 
 
