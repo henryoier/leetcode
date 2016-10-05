@@ -934,6 +934,8 @@ Fixed a bug, that I didn't set board[i][j] to be '.'
   
 349_IntersectionOfTwoArrays 1Y  
   
+350_IntersectionOfTwoArraysII 1Y  
+  
 
 
 
