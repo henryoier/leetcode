@@ -919,6 +919,9 @@ For each prime, the ith smalllest it can generate is f[i - 1] * itself.
 409_LongestPalindrome 2Y  
 The longest consisit of even * evenN + (odd - 1) * oddN + 1(middle)  
   
+373_FindKPairsWithSmallestSums 2Y  
+Similar to SuperUglyNumber  
+  
 
 
 
