@@ -959,7 +959,10 @@ Similar to previous problem, the difference is that once head == tail, tail-- un
 030_SubstringWithConcatenationOfAllWords 3Y  
 Missed an important condition that all words are the same length.  
   
-
+065_ValidNumber 3Y  
+Can contain only 1 e, right should be pure number.
+For fraction, right should not contain '-' or '+'  
+  
 
 
 
