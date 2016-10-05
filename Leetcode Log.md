@@ -925,7 +925,9 @@ Similar to SuperUglyNumber
 342_PowerOfFour 1Y  
 Continue using log10(num) / log10(a)  
   
-
+037_SudokuSolver 2Y  
+Fixed a bug, that I didn't set board[i][j] to be '.'  
+  
 
 
 
