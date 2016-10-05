@@ -922,6 +922,9 @@ The longest consisit of even * evenN + (odd - 1) * oddN + 1(middle)
 373_FindKPairsWithSmallestSums 2Y  
 Similar to SuperUglyNumber  
   
+342_PowerOfFour 1Y  
+Continue using log10(num) / log10(a)  
+  
 
 
 
