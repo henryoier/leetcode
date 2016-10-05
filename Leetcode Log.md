@@ -936,6 +936,9 @@ Fixed a bug, that I didn't set board[i][j] to be '.'
   
 350_IntersectionOfTwoArraysII 1Y  
   
+204_CountPrimes 2Y  
+Use small prime to delete non-prime, need high space  
+  
 
 
 
