@@ -913,6 +913,9 @@ Using bit operation.
 367_ValidPerfectSquare 2Y  
 Using binary search, mind overload.  
   
+313_SuperUglyNumber 2Y  
+For each prime, the ith smalllest it can generate is f[i - 1] * itself.  
+  
 
 
 
