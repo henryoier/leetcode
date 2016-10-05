@@ -953,6 +953,9 @@ Use three pointers.
   
 018_4Sum 3Y  
   
+081_SearchInRotatedSortedArrayII 2Y  
+Similar to previous problem, the difference is that once head == tail, tail-- until different.
+  
 
 
 
