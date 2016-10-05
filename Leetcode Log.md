@@ -939,6 +939,9 @@ Fixed a bug, that I didn't set board[i][j] to be '.'
 204_CountPrimes 2Y  
 Use small prime to delete non-prime, need high space  
   
+156_BinaryTreeUpsideDown 1Y  
+Return the root of the left subtree, and then find until right end and then insert root.  
+  
 
 
 
