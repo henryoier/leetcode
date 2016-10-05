@@ -956,6 +956,9 @@ Use three pointers.
 081_SearchInRotatedSortedArrayII 2Y  
 Similar to previous problem, the difference is that once head == tail, tail-- until different.
   
+030_SubstringWithConcatenationOfAllWords 3Y  
+Missed an important condition that all words are the same length.  
+  
 
 
 
