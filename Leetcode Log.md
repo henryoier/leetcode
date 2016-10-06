@@ -980,6 +980,9 @@ DP, f[n] = max(max(k, f[k]) * max(n - k, f[n - k]), f[n]) (for k = 1 to n - 1)
   
 147_InsertionSortList 1Y  
   
+148_SortList 2Y  
+Mergesort, an optimization is to count the number of nodes at first.  
+  
 
 
 
