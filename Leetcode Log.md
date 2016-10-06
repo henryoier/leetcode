@@ -989,6 +989,8 @@ My solution enumerates all pairs and check others which is a O(n^3). A better wa
 150_EvaluateReversePolishNotation 1Y  
 Use a stack to store the number, when then token is a opt, implement the calculation.  
   
+157_ReadNCharactersGivenRead4 2Y  
+  
 
 
 
