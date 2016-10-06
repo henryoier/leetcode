@@ -972,6 +972,9 @@ Find the beginnings of non-negative serires, and check if it can cover the whole
 338_CountingBits 1Y  
 f[n] = f[n - lower_bound(2^n)] + 1  
   
+347_TopKFrequentElements 2Y  
+Used unordered_map to count and priority queue to store and ranking.  
+  
 
 
 
