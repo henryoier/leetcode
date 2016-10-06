@@ -978,6 +978,8 @@ Used unordered_map to count and priority queue to store and ranking.
 343_IntegerBreak 1Y  
 DP, f[n] = max(max(k, f[k]) * max(n - k, f[n - k]), f[n]) (for k = 1 to n - 1)  
   
+147_InsertionSortList 1Y  
+  
 
 
 
