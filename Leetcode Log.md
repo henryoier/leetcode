@@ -983,6 +983,9 @@ DP, f[n] = max(max(k, f[k]) * max(n - k, f[n - k]), f[n]) (for k = 1 to n - 1)
 148_SortList 2Y  
 Mergesort, an optimization is to count the number of nodes at first.  
   
-
+149_MaxPointsOnALine 3Y  
+My solution enumerates all pairs and check others which is a O(n^3). A better way is to enumerate all points and check all others with different slopes. Then add the same points as the original one.  
+  
+   
 
 
