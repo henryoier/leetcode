@@ -969,6 +969,9 @@ DFS, find all illegal regions rather than legal
 134_GasStation 2Y  
 Find the beginnings of non-negative serires, and check if it can cover the whole circle.  
   
+338_CountingBits 1Y  
+f[n] = f[n - lower_bound(2^n)] + 1  
+  
 
 
 
