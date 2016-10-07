@@ -991,6 +991,9 @@ Use a stack to store the number, when then token is a opt, implement the calcula
   
 157_ReadNCharactersGivenRead4 2Y  
   
+068_TextJustification 3Y  
+Mind the details.  
+  
 
 
 
