@@ -1023,8 +1023,11 @@ The fastest way is to record last pos of word1 and word2, when looping calculate
 243_ShortestWordDistance 2Y  
 The fastest way is to record last pos of word1 and word2, when looping calculate the minDist. O(n)  
   
-244_ShortestWordDistance 1Y  
+244_ShortestWordDistanceII 1Y  
 Used a map to store each indexes, an optimization is to use two pointers to find the min distance.  
+  
+245_ShortestWordDistanceIII 2Y  
+Similart to 243  
   
 
 
