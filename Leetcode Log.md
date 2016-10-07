@@ -1029,6 +1029,11 @@ Used a map to store each indexes, an optimization is to use two pointers to find
 245_ShortestWordDistanceIII 2Y  
 Similart to 243  
   
+246_StrobogrammaticNumber 1Y  
+  
+247_StrobogrammaticNumber 1Y  
+Take care that the first number could not be 0.  
+  
 
 
 
