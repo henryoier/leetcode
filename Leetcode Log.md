@@ -997,6 +997,9 @@ Mind the details.
 159_LongestSubstringWithAtMostTwoDistinctCharacters 2Y  
 Keep two pointers, when legal, tail++, otherwise head ++.  
   
+173_BinarySearchTreeIterator 2Y  
+When initializing, push all the left node into stack, before poping, push the right sun and all its left nodes.  
+  
 
 
 
