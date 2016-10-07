@@ -1000,6 +1000,9 @@ Keep two pointers, when legal, tail++, otherwise head ++.
 173_BinarySearchTreeIterator 2Y  
 When initializing, push all the left node into stack, before poping, push the right sun and all its left nodes.  
   
+161_OneEditDistance 2Y  
+If there is a difference in the string, and used four ways to change , still different, return false, if no difference in the string, the length has 1 difference, return true, else return false.  
+  
 
 
 
