@@ -1034,6 +1034,9 @@ Similart to 243
 247_StrobogrammaticNumber 1Y  
 Take care that the first number could not be 0.  
   
+249_GroupShiftedStrings 2Y  
+Be more careful.  
+  
 
 
 
