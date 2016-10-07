@@ -1017,6 +1017,13 @@ An in place way is to reverse the whole string and then reverse individual words
   
 293_FlipGame 1Y  
   
+243_ShortestWordDistance 2Y  
+The fastest way is to record last pos of word1 and word2, when looping calculate the minDist.  
+  
+243_ShortestWordDistance 2Y  
+The fastest way is to record last pos of word1 and word2, when looping calculate the minDist. O(n)  
+  
+
 
 
 
