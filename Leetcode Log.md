@@ -1012,6 +1012,9 @@ Recursively solve it, whether include root or do not include root.
 170_TwoSumII-DataStructureDesign 2Y  
 Used an unordered_map to implement it  
   
+186_ReverseWordsInAStringII 1Y  
+An in place way is to reverse the whole string and then reverse individual words.  
+  
 
 
 
