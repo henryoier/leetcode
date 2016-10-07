@@ -994,6 +994,9 @@ Use a stack to store the number, when then token is a opt, implement the calcula
 068_TextJustification 3Y  
 Mind the details.  
   
+159_LongestSubstringWithAtMostTwoDistinctCharacters 2Y  
+Keep two pointers, when legal, tail++, otherwise head ++.  
+  
 
 
 
