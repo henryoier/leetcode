@@ -1003,6 +1003,9 @@ When initializing, push all the left node into stack, before poping, push the ri
 161_OneEditDistance 2Y  
 If there is a difference in the string, and used four ways to change , still different, return false, if no difference in the string, the length has 1 difference, return true, else return false.  
   
+163_MissingRanges 3Y  
+Should consider empty condition and need to consider overload conditions.  
+  
 
 
 
