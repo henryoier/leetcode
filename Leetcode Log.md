@@ -1046,6 +1046,9 @@ Two pointers to record row and column, pay attention to empty rows.
 252_MeetingRooms 1Y  
 Sort with start time, compare the neighbors whether there is any overlap.  
   
+253_MeetingRoomsII 1Y  
+The same as the previous one, sort with the start time, when multiple rooms available, choose the one with closest time.  
+  
 
 
 
