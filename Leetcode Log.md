@@ -1037,6 +1037,9 @@ Take care that the first number could not be 0.
 249_GroupShiftedStrings 2Y  
 Be more careful.  
   
+250_CountUnivalSubtrees 1Y  
+Return if it is a unival substree, and if the root is , total++  
+  
 
 
 
