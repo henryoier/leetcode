@@ -1049,6 +1049,9 @@ Sort with start time, compare the neighbors whether there is any overlap.
 253_MeetingRoomsII 1Y  
 The same as the previous one, sort with the start time, when multiple rooms available, choose the one with closest time.  
   
+254_FactorCombinations 1Y  
+In order to reduce duplicates, we add an arg to record the last nubmer we used and starts from it.  
+  
 
 
 
