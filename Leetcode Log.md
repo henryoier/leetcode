@@ -1052,6 +1052,9 @@ The same as the previous one, sort with the start time, when multiple rooms avai
 254_FactorCombinations 1Y  
 In order to reduce duplicates, we add an arg to record the last nubmer we used and starts from it.  
   
+256_PaintHouse 1Y  
+Simple DP  
+  
 
 
 
