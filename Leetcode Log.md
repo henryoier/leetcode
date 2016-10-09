@@ -1085,7 +1085,11 @@ dfs, take care that control no loop
 415_AddStrings 1Y  
 High accuracy add operation.  
   
-
+416_PartitionEqualSubsetSum 1Y  
+Calculate the sum first, and then used a unordered_set to record then possible sums of subsets.  
+  
+416_PartitionEqualSubsetSum 1Y  
+Calculate the sum first, and then used a unordered_set to record then possible sums of subsets.  
 
 
 
