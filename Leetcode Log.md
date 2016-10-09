@@ -1101,6 +1101,9 @@ For Manhattan Distance, the row and column could be considered separately.
 298_BinaryTreeLongestConsecutiveSequence 1Y  
 Design a new function return the consecutive length until this root, and refresh a global maxLength.  
   
+311_SparseMatrixMultiplication 2Y  
+Use map to store each row and each column that has non-zero element.  
+  
 
 
 
