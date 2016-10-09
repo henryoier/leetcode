@@ -1058,6 +1058,9 @@ Simple DP
 270_ClosestBinarySearchTreeValue 1Y  
 Return the value of left or right (decided by the root val), and compare with root;  
   
+266_PalindromePermutation 1Y  
+Permutation means a reorder of existing words.  
+  
 
 
 
