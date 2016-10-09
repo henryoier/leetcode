@@ -1054,7 +1054,10 @@ In order to reduce duplicates, we add an arg to record the last nubmer we used a
   
 256_PaintHouse 1Y  
 Simple DP  
-  
+
+265_PaintHouseII 1Y  
+DP, but only record the two minimun costs.  
+
 270_ClosestBinarySearchTreeValue 1Y  
 Return the value of left or right (decided by the root val), and compare with root;  
   
