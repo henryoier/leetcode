@@ -1064,6 +1064,9 @@ Permutation means a reorder of existing words.
 271_EncodeAndDecodeStrings 2Y  
 I added "sq39" to separate the strings, payattention that there could be a empty string.  
   
+276_PaintFence 1Y  
+DP, f[0] = k, f[1] = k * k, f[n] = (k - 1) * (f[n - 1] + f[n - 2]);  
+  
 
 
 
