@@ -1061,6 +1061,9 @@ Return the value of left or right (decided by the root val), and compare with ro
 266_PalindromePermutation 1Y  
 Permutation means a reorder of existing words.  
   
+271_EncodeAndDecodeStrings 2Y  
+I added "sq39" to separate the strings, payattention that there could be a empty string.  
+  
 
 
 
