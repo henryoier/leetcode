@@ -1104,6 +1104,9 @@ Use map to store each row and each column that has non-zero element.
 320_GeneralizedAbbreviation 1Y  
 Recursive function.  
   
+323_NumberOfConnectedComponentsInAnUndirectedGraph 2Y  
+Union find.  
+  
 
 
 
