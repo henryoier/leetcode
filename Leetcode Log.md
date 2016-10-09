@@ -1091,5 +1091,9 @@ Calculate the sum first, and then used a unordered_set to record then possible s
 416_PartitionEqualSubsetSum 1Y  
 Calculate the sum first, and then used a unordered_set to record then possible sums of subsets.  
 
+288_UniqueWordAbbreviation 2Y  
+Use a unordered_set to store the words that has the same abbreviation. Unique means no existing abbr || only one has the abbr and it's the same as this word.  
+  
+
 
 
