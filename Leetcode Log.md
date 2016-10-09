@@ -1067,6 +1067,9 @@ I added "sq39" to separate the strings, payattention that there could be a empty
 276_PaintFence 1Y  
 DP, f[0] = k, f[1] = k * k, f[n] = (k - 1) * (f[n - 1] + f[n - 2]);  
   
+277_FindTheCelebrity 2Y  
+Find the people who know nobody, and check if everyone else know him.  
+  
 
 
 
