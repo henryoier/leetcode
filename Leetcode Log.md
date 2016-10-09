@@ -1098,6 +1098,9 @@ Use a unordered_set to store the words that has the same abbreviation. Unique me
 Naive search O(m * n) will TLE.  
 For Manhattan Distance, the row and column could be considered separately.  
   
+298_BinaryTreeLongestConsecutiveSequence 1Y  
+Design a new function return the consecutive length until this root, and refresh a global maxLength.  
+  
 
 
 
