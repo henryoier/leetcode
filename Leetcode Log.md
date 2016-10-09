@@ -1076,6 +1076,9 @@ Find the people who know nobody, and check if everyone else know him.
 280_WiggleSort 1Y  
 Sort, then insert the end to the front.  
   
+285_InOrderSuccessorInBST 2Y  
+If the val is smaller than BST, and with no right nodes in left substree, the successor will be the root.  
+  
 
 
 
