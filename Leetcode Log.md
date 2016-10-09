@@ -1079,6 +1079,9 @@ Sort, then insert the end to the front.
 285_InOrderSuccessorInBST 2Y  
 If the val is smaller than BST, and with no right nodes in left substree, the successor will be the root.  
   
+286_WallsAndGates 1Y  
+dfs, take care that control no loop  
+  
 
 
 
