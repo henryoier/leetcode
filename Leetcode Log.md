@@ -1073,6 +1073,9 @@ DP, f[0] = k, f[1] = k * k, f[n] = (k - 1) * (f[n - 1] + f[n - 2]);
 277_FindTheCelebrity 2Y  
 Find the people who know nobody, and check if everyone else know him.  
   
+280_WiggleSort 1Y  
+Sort, then insert the end to the front.  
+  
 
 
 
