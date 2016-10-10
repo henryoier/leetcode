@@ -1121,6 +1121,9 @@ Use a unordered_map to store the earliest index that has the sum.
   
 369_PlusOneLinkedList 1Y  
   
+356_LineReflection 3Y  
+Remove duplicates first, sort by x, start from the median. Pay attention that the y could be different for the same x.  
+  
 
 
 
