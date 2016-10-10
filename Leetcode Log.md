@@ -1124,6 +1124,9 @@ Use a unordered_map to store the earliest index that has the sum.
 356_LineReflection 3Y  
 Remove duplicates first, sort by x, start from the median. Pay attention that the y could be different for the same x.  
   
+360_SortTransformedArray 2Y  
+Pay attention to a == 0, b == 0 conditions.  
+  
 
 
 
