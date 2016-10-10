@@ -1127,6 +1127,9 @@ Remove duplicates first, sort by x, start from the median. Pay attention that th
 360_SortTransformedArray 2Y  
 Pay attention to a == 0, b == 0 conditions.  
   
+361_BombEnemy 3Y  
+Naive search O(mnmax(m, n)) would TLE, keep four arrays count the number of enemies that can be kill at that point, O(mn).  
+  
 
 
 
