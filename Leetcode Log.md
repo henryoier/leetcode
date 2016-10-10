@@ -1107,6 +1107,8 @@ Recursive function.
 323_NumberOfConnectedComponentsInAnUndirectedGraph 2Y  
 Union find.  
   
+346_MovingAverageFromDataStream 1Y  
+  
 
 
 
