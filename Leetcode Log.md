@@ -1114,6 +1114,9 @@ Use map to store the count of row, col, diag.
   
 408_ValidWordAbbreviation 2Y  
   
+325_MaximumSizeSubarraySumEqualsK 1Y  
+Use a unordered_map to store the earliest index that has the sum.  
+  
 
 
 
