@@ -1146,6 +1146,9 @@ Used trie tree.
   
 339_NestedListWeightSum 1Y  
   
+360_NestedListWeightSumII 2Y  
+Use a pair th record depth and number, and then find the maximum depth to calculate the sum.  
+  
 
 
 
