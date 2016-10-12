@@ -1136,6 +1136,9 @@ Toplogic sort, decide whether there is a loop or not by the final number of cour
 210_CourseScheduleII 1Y  
 Similar to the previous problem.  
   
+269_AlienDictionary 3Y Good one.  
+Top logic sort, but pay attention to duplicate orders. and pay attention to the final output.  
+  
 
 
 
