@@ -1130,6 +1130,9 @@ Pay attention to a == 0, b == 0 conditions.
 361_BombEnemy 3Y  
 Naive search O(mnmax(m, n)) would TLE, keep four arrays count the number of enemies that can be kill at that point, O(mn).  
   
+207_CourseSchedule 2Y  
+Toplogic sort, decide whether there is a loop or not by the final number of courses that was selected.  
+  
 
 
 
