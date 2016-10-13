@@ -1161,6 +1161,9 @@ Since we have to check all the valid pre-logs, so we used a vector rather than q
 233_RectangleArea 1Y  
 Mind the overload and overlap.  
   
+406_QueueReconstructionByHeight 1Y  
+I used toplogic sort, a better way is to sort by height first and sort by number of higher ones second. Insert them after the number of higher ones.  
+  
 
 
 
