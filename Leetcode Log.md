@@ -1164,6 +1164,9 @@ Mind the overload and overlap.
 406_QueueReconstructionByHeight 1Y  
 I used toplogic sort, a better way is to sort by height first and sort by number of higher ones second. Insert them after the number of higher ones.  
   
+164_MaximumGap 3Y  
+Using bucket sort. PigeonHole Theory.  
+  
 
 
 
