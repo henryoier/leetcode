@@ -1167,6 +1167,9 @@ I used toplogic sort, a better way is to sort by height first and sort by number
 164_MaximumGap 3Y  
 Using bucket sort. PigeonHole Theory.  
   
+213_HouseRobberII 3Y  
+DP, same as HouseRobber, pay attention that (i - 1) % n could be negative.  
+  
 
 
 
