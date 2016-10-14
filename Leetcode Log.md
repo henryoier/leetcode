@@ -1176,6 +1176,9 @@ BFS to find all paths.
 334_IncreasingTripletSubsequence 1Y  
 Use two interger to record the first two increasing, and substitute them if a new one is smalller than any of it.  
   
+132_PalindromePartitioningII 3Y  
+O(n^2) DP  
+  
 
 
 
