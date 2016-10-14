@@ -1173,6 +1173,9 @@ DP, same as HouseRobber, pay attention that (i - 1) % n could be negative.
 399_EvaluateDivision 1Y  
 BFS to find all paths.  
   
+334_IncreasingTripletSubsequence 1Y  
+Use two interger to record the first two increasing, and substitute them if a new one is smalller than any of it.  
+  
 
 
 
