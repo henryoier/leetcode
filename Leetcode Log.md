@@ -1182,6 +1182,9 @@ O(n^2) DP
 417_PacificAtlanticWaterFlow 2Y  
 Floodfill, pay attention that if not using reference might MLE.  
   
+187_RepeaatedDNASequences 2Y  
+Using unordered_map to count the time.  
+  
 
 
 
