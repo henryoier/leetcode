@@ -1185,6 +1185,9 @@ Floodfill, pay attention that if not using reference might MLE.
 187_RepeaatedDNASequences 2Y  
 Using unordered_map to count the time.  
   
+337_HouseRobberIII 2Y  
+DP in tree, use unordered_set to record the result we have calculated.  
+  
 
 
 
