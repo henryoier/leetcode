@@ -1188,6 +1188,9 @@ Using unordered_map to count the time.
 337_HouseRobberIII 2Y  
 DP in tree, use unordered_set to record the result we have calculated.  
   
+297_SerializeAndDeserializeBinaryTree 3Y  
+Used pre-order traversal.  
+  
 
 
 
