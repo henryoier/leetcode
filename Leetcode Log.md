@@ -1196,6 +1196,9 @@ Use 3 pointers.
   
 412_FizzBuzz 1Y  
   
+422_ValidWordSquare 2Y  
+Take care that if might not be symmetric.  
+  
 
 
 
