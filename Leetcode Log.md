@@ -1199,6 +1199,15 @@ Use 3 pointers.
 422_ValidWordSquare 2Y  
 Take care that if might not be symmetric.  
   
+135_Candy 3Y  
+At first I used toplogic sort buy actually it can be solved by simplely scan the array twice in two direction.
+if(ratings[i] > ratings[i-1])
+    candy[i] = max(candy[i], candy[i - 1] + 1);
+if(ratings[i] > ratings[i + 1]) the same.  
+  
+391_PerfectRectangle 3Y  
+The perfectRectangle Should obey two rules. 1. Area sum is equal to max rectangle. 2. except the four outer points. other points must appear twice.  
+  
 
 
 
