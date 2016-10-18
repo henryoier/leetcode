@@ -1214,6 +1214,12 @@ The problem could be solved in two ways. 1. find the longest path 2. delete all 
 365_WaterAndJugProblem 2Y  
 We could get 0 to x + y, gcd(x, y) to be the step.  
   
+370_RangeAddition 3Y  
+num[i[0]] += i[2]  
+num[i[1] + 1] -= i[2]  
+
+then num[i] += num[i - 1]  
+  
 
 
 
