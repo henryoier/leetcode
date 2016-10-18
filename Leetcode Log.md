@@ -1211,6 +1211,9 @@ The perfectRectangle Should obey two rules. 1. Area sum is equal to max rectangl
 310_MinimumHeightTrees 3Y  
 The problem could be solved in two ways. 1. find the longest path 2. delete all leaf nodes until there are only one or two.  
   
+365_WaterAndJugProblem 2Y  
+We could get 0 to x + y, gcd(x, y) to be the step.  
+  
 
 
 
