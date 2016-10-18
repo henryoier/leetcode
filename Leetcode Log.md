@@ -1208,6 +1208,9 @@ if(ratings[i] > ratings[i + 1]) the same.
 391_PerfectRectangle 3Y  
 The perfectRectangle Should obey two rules. 1. Area sum is equal to max rectangle. 2. except the four outer points. other points must appear twice.  
   
+310_MinimumHeightTrees 3Y  
+The problem could be solved in two ways. 1. find the longest path 2. delete all leaf nodes until there are only one or two.  
+  
 
 
 
