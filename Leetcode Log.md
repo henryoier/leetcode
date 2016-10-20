@@ -1220,6 +1220,9 @@ num[i[1] + 1] -= i[2]
 
 then num[i] += num[i - 1]  
   
+358_RearrangeStringKDistanceApart 1Y  
+Greedy, choose the char with most remaining.  
+  
 
 
 
