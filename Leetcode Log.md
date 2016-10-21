@@ -1223,6 +1223,9 @@ then num[i] += num[i - 1]
 358_RearrangeStringKDistanceApart 1Y  
 Greedy, choose the char with most remaining.  
   
+291_WordPatternII 3Y  
+DFS, pruning by sum(count[char] * len of pattern char) <= str.length()
+  
 
 
 
