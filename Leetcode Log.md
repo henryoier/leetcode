@@ -1229,6 +1229,9 @@ DFS, pruning by sum(count[char] * len of pattern char) <= str.length()
 351_AndroidUnlockPatterns 3Y  
 DFS, since the keyboard is symetric, we only need 1,2,5 to be calculated.  
   
+419_BattleshipsInABoard 2Y  
+DFS, floodfill, check if it is legal at the end.  
+  
 
 
 
