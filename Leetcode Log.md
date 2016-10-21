@@ -1232,6 +1232,9 @@ DFS, since the keyboard is symetric, we only need 1,2,5 to be calculated.
 419_BattleshipsInABoard 2Y  
 DFS, floodfill, check if it is legal at the end.  
   
+393_UTF8-Validation 2Y  
+Pay attention to the length of 1's in header is 1(Invalid).  
+  
 
 
 
