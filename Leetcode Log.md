@@ -1235,6 +1235,9 @@ DFS, floodfill, check if it is legal at the end.
 393_UTF8-Validation 2Y  
 Pay attention to the length of 1's in header is 1(Invalid).  
   
+403_FrogJump 3Y  
+DP, record all last steps that can reach stone[i].  
+  
 
 
 
