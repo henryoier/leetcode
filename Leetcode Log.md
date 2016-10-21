@@ -1226,6 +1226,9 @@ Greedy, choose the char with most remaining.
 291_WordPatternII 3Y  
 DFS, pruning by sum(count[char] * len of pattern char) <= str.length()
   
+351_AndroidUnlockPatterns 3Y  
+DFS, since the keyboard is symetric, we only need 1,2,5 to be calculated.  
+  
 
 
 
