@@ -1252,6 +1252,10 @@ Using Fisher_Yates shuffle.
   
 439_TernaryExpressionParser  1Y  
   
+379_DesignPhoneDirectory 3Y  
+Used a int vector and a bool vector.
+When releasing, numbers[--cur] = number;  
+  
 
 
 
