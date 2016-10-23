@@ -1241,6 +1241,9 @@ DP, record all last steps that can reach stone[i].
 227_BasicCalculatorII 2Y  
 Used istringstream and stack.  
   
+414_ThirdMaximumNumber 1Y  
+Used priority_queue to implement. It can also be solved by using a set.  
+  
 
 
 
