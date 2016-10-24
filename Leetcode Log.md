@@ -1256,6 +1256,9 @@ Using Fisher_Yates shuffle.
 Used a int vector and a bool vector.
 When releasing, numbers[--cur] = number;  
   
+438_FindAllAnagramsInAString  2Y  
+Use the most naive to compare would exceed the time. When changing the index, only 1 char would change.  
+  
 
 
 
