@@ -1262,6 +1262,15 @@ Use the most naive to compare would exceed the time. When changing the index, on
 388_LongestAbsoluteFilePath 2Y  
 Used the istringstream and getline function to split \n.  
   
+133_CloneGraph 3Y  
+Using a map to store those cloned nodes.  
+  
+138_CopyListWithRandomPointer 1Y  
+Similar to clone graph.  
+  
+421_MaximumXOROfTwoNumbersInAnArray 1Y  
+Using trie tree. Pay attention, (1 << i) & n > 0 means get the ith binary number.  
+  
 
 
 
