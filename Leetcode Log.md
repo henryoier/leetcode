@@ -1274,6 +1274,9 @@ Using trie tree. Pay attention, (1 << i) & n > 0 means get the ith binary number
 308_RangeSumQuery2D-Mutable 2Y  
 2D Bit.  
   
+340_LongestSubstringWithAtMostKDistinctCharacters 1Y  
+Used two pointers.  
+  
 
   
 
