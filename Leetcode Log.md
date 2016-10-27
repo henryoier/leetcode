@@ -1277,6 +1277,8 @@ Using trie tree. Pay attention, (1 << i) & n > 0 means get the ith binary number
 340_LongestSubstringWithAtMostKDistinctCharacters 1Y  
 Used two pointers.  
   
+353_DesignSnakeGame 2Y  
+  
 
   
 
