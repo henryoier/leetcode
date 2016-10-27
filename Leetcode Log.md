@@ -1269,7 +1269,12 @@ Using a map to store those cloned nodes.
 Similar to clone graph.  
   
 421_MaximumXOROfTwoNumbersInAnArray 1Y  
-Using trie tree. Pay attention, (1 << i) & n > 0 means get the ith binary number.  
+Using trie tree. Pay attention, (1 << i) & n > 0 means get the ith binary number.
+
+308_RangeSumQuery2D-Mutable 2Y  
+2D Bit.  
+  
+
   
 
 
