@@ -1315,6 +1315,16 @@ class Solution {
         return ans;    
     }
 };
+
+222_CountCompleteTreeNodes 1Y  
+By calculating the depth of right subtree and the whole tree, we could find if the left tree is complete.  
+Thus, 
+if(height(root->right) == h - 1)
+    return (1 << (h - 1)) + countNodes(root->right);
+else
+    return (1 << (h - 2)) + countNodes(root->left);  
+  
+
   
 
 
