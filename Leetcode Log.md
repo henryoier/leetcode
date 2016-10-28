@@ -1324,6 +1324,9 @@ if(height(root->right) == h - 1)
 else
     return (1 << (h - 2)) + countNodes(root->left);  
   
+330_PatchingArray 2Y  
+It's important to see that when [1, n] is can be got, if there is an i <= n + 1, [1, n + i] is achievable.  
+  
 
   
 
