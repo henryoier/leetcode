@@ -1284,6 +1284,9 @@ Used two pointers.
 354_RussianDollEnvelopes 3Y  
 Similar to LIS. Using lower_bound(logN).  
   
+302_SmallestRectangleEnclosingBlackPixels 3Y  
+Using binary search.  
+  
 
   
 
