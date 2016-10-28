@@ -1279,6 +1279,11 @@ Used two pointers.
   
 353_DesignSnakeGame 2Y  
   
+331_VerifyPreorderSerializationOfABinaryTree 1Y  
+  
+354_RussianDollEnvelopes 3Y  
+Similar to LIS. Using lower_bound(logN).  
+  
 
   
 
