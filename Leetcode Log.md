@@ -1330,6 +1330,9 @@ It's important to see that when [1, n] is can be got, if there is an i <= n + 1,
 440_KthSmallestInLexicographicalOrder 3Y  
 Good problem.  
   
+301_RemoveInvalidParentheses 1Y  
+BFS, use unordered_set to remove dup.  
+  
 
   
 
