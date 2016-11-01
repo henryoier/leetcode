@@ -1339,6 +1339,9 @@ At first I used binary search. Another O(m + n) way is search the right-up most 
 435_Non-OverlappingIntervals 2Y  
 Sort the intervals with start first. When a new intervals have no overlap with the last one, add it . else, refresh the end point by comparing the current end with the new one.  
   
+317_ShortestDistanceFromAllBuildings 3Y  
+BFS from all buildings, find the place with minimum sum of distances.  
+  
 
 
 
