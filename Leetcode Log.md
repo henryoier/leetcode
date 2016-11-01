@@ -1336,6 +1336,9 @@ BFS, use unordered_set to remove dup.
 240_SearchA2DMatrixII 2Y  
 At first I used binary search. Another O(m + n) way is search the right-up most element, if smaller, target could not be at that col, if larger. target could not be at that row.
    
+435_Non-OverlappingIntervals 2Y  
+Sort the intervals with start first. When a new intervals have no overlap with the last one, add it . else, refresh the end point by comparing the current end with the new one.  
+  
 
 
 
