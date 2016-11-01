@@ -1333,8 +1333,10 @@ Good problem.
 301_RemoveInvalidParentheses 1Y  
 BFS, use unordered_set to remove dup.  
   
+240_SearchA2DMatrixII 2Y  
+At first I used binary search. Another O(m + n) way is search the right-up most element, if smaller, target could not be at that col, if larger. target could not be at that row.
+   
 
-  
 
 
 
