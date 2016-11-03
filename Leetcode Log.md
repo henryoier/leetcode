@@ -1362,6 +1362,9 @@ struct compare{
     }
 }comp; 
   
+357_CountNumberWithUniqueDigits 2Y  
+Simply sum 9 * 9 * 8 * ... * (9 - i + 2) and add 1 for the zero.
+  
 
 
 
