@@ -1342,6 +1342,9 @@ Sort the intervals with start first. When a new intervals have no overlap with t
 317_ShortestDistanceFromAllBuildings 3Y  
 BFS from all buildings, find the place with minimum sum of distances.  
   
+044_WildcardMatching 2Y  
+DP with round array.  
+  
 
 
 
