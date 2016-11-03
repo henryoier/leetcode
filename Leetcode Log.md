@@ -1365,6 +1365,9 @@ struct compare{
 357_CountNumberWithUniqueDigits 2Y  
 Simply sum 9 * 9 * 8 * ... * (9 - i + 2) and add 1 for the zero.
   
+312_BurstBalloons 3Y  
+DP, find the maximum in the interval of [start, end], enum the last one to blow, f[start][end] = max(f[start][k - 1]+ f[k + 1][end] + nums[k] * nums[start - 1]*nums[end + 1]);  
+  
 
 
 
