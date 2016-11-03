@@ -1344,6 +1344,23 @@ BFS from all buildings, find the place with minimum sum of distances.
   
 044_WildcardMatching 2Y  
 DP with round array.  
+
+436_FindRightInterval 2Y  
+Using upper bound.  
+
+struct compare{
+    int compValue(const Interval& a){
+        return a.start;
+    }
+    int compValue(const int a){
+        return a;
+    }
+        
+    template<typename T1, typename T2>
+    bool operator()(T1 const t1, T2 const t2){
+        return compValue(t1) <= compValue(t2);
+    }
+}comp; 
   
 
 
