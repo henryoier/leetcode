@@ -1372,10 +1372,9 @@ DP, find the maximum in the interval of [start, end], enum the last one to blow,
 Using a stack to do the same operation as preorder traversal, the false condition happen when the right subtree has a number that is bigger than the root. So we have to record the root.  
   
 332_ReconstructItinerary 3Y  
-DFS, could not use multiset.  
+DFS. When using multiset, pay attention to erase() which erase all items with the key. And we need to record all cities out to do the for loop.  
   
-
-
-
-
+261_GraphValidTree 2Y  
+Actually is to find if there is a curcuit in the graph. Using Union-Find, BFS, DFS, which fasest to slowest.  
+  
 
