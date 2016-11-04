@@ -1371,6 +1371,9 @@ DP, find the maximum in the interval of [start, end], enum the last one to blow,
 255_VerifyPreorderSequenceInBinarySearchTree 1Y  
 Using a stack to do the same operation as preorder traversal, the false condition happen when the right subtree has a number that is bigger than the root. So we have to record the root.  
   
+332_ReconstructItinerary 3Y  
+DFS, could not use multiset.  
+  
 
 
 
