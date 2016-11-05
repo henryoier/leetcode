@@ -97,9 +97,10 @@ for(auto last = nums.end() - 1; last != first; last--){
             	}  
 }  
   
-032_LongestValidParentheses 1TLE 2Y  
+
+32_LongestValidParentheses 1TLE 2Y  
 for(int pos = 0; pos < s.length(); pos++ ){  
-            if(s[pos] == '(')  
+    if(s[pos] == '(')  
                unpair++;  
             else  
                 if(unpair == 0)  
@@ -1376,5 +1377,8 @@ DFS. When using multiset, pay attention to erase() which erase all items with th
   
 261_GraphValidTree 2Y  
 Actually is to find if there is a curcuit in the graph. Using Union-Find, BFS, DFS, which fasest to slowest.  
+  
+352_DataStreamAsDisjointIntervals 2Y  
+Using lower_bound.  
   
 
