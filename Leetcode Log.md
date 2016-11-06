@@ -1386,5 +1386,12 @@ BFS, delete the word after every layer.
   
 127_WordLadder 1Y  
 Erase a word once we push it into the queue.  
+
+341_FlattenNestedListIterator 3Y  
+Using deque. Stack.(*)
+  
+437_PathSumIII 1Y  
+DP on a tree. Record all possible sums with this root.  
+  
   
 
