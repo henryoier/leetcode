@@ -1384,4 +1384,7 @@ Using lower_bound.
 126_WordLadderII 3Y  
 BFS, delete the word after every layer.  
   
+127_WordLadder 1Y  
+Erase a word once we push it into the queue.  
+  
 
