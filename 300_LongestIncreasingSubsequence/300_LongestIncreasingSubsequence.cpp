@@ -28,3 +28,30 @@ public:
         return max;
     }
 };
+
+class Solution {
+public:
+    int lengthOfLIS(vector<int>& nums) {
+        vector<int> lis;
+        
+        for(auto n:nums){
+            if(lis.empty()){
+                lis.push_back(n);
+                continue;
+            }
+            
+            auto pos = upper_bound(lis.begin(), lis.end(), n);
+            
+            if(pos == lis.end())
+                if(*prev(pos) < n)
+                    lis.push_back(n);
+                else{}
+            else {
+                if(*prev(pos) < n)
+                    *pos = n;
+            }
+        }
+        
+        return lis.size();
+    }
+};
