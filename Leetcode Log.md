@@ -1393,5 +1393,8 @@ Using deque. Stack.(*)
 437_PathSumIII 1Y  
 DP on a tree. Record all possible sums with this root.  
   
+305_NumberOfIslandsII 2Y  
+Using union-find. But pay attention that find all differnt sets at first and then union them.  
+  
   
 
