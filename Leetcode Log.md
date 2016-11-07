@@ -1399,5 +1399,8 @@ Using union-find. But pay attention that find all differnt sets at first and the
 447_NumberOfBoomerangs 2Y  
 Search all possible head point, with different dists, for each dists, add dist * (dist - 1)  
   
+441_ArrangingCoins 1Y  
+Mathemetical problem. Solve a inequality.  
+  
   
 
