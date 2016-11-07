@@ -1396,5 +1396,8 @@ DP on a tree. Record all possible sums with this root.
 305_NumberOfIslandsII 2Y  
 Using union-find. But pay attention that find all differnt sets at first and then union them.  
   
+447_NumberOfBoomerangs 2Y  
+Search all possible head point, with different dists, for each dists, add dist * (dist - 1)  
+  
   
 
