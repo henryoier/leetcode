@@ -4,7 +4,7 @@
 **Main Idea:** using unordered_map  
 **Corner Case:** target = 2 * nums[i]  
 **Core codes:**  
-```
+```c++
 for(int i = 0; i < nums.size() - 1; i++){
     int gap = target - nums[i];
     pos = hash_map.find(gap);
