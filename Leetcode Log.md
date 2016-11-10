@@ -1,13 +1,21 @@
 #Leetcode Log  
-   
-##2016.7.23   
-001_TwoSum 2Y  
-     Given a series of numbers and a target. The problems requires to get the index of the two numbers whose sum is the target.  
-     Not much to say, two-layer-loop to enumerate all conditions and terminate when ever there is a solution. The time complexity is O(n^2)。  
-     At the first time when I submitted my solution, I didn’t write “return XXX” at the end of the function. Though I passed the test on my computer, but got an compilation error on leetcode because under some circumstances there will be no return value even if the problem told us there must be exactly one solution. The same error may happen if we don't write a return line after “else”.  
-  
-     By using unordered map we could reduce the time complexity of find the position to O(1), thus the total complexity can be reduced to O(n).(Detailed in code)  
-  
+      
+###001_TwoSum 2Y  
+**Main Idea:** using unordered_map  
+**Corner Case:** target = 2 * nums[i]  
+**Core codes:**  
+```
+for(int i = 0; i < nums.size() - 1; i++){
+    int gap = target - nums[i];
+    pos = hash_map.find(gap);
+    if(pos != hash_map.end() && hash_map[gap] > i){
+        result.push_back(i);
+        result.push_back(hash_map[gap]);
+        return result;
+    }
+}
+```
+
 ##2016.8.2  
 002_AddTwoNumbers 1Y  
 Review the basic operation of list and pointer.  
