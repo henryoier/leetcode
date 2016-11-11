@@ -1,14 +1,14 @@
-##Leetcode Review
-###001_TwoSum   
+###Leetcode Review
+####001_TwoSum   
 **Main Algo:** using unordered_map  
 **Corner Case:** target = 2 * nums[i]  
 **Core Codes:**  
 
-###002_AddTwoNumbers 
+####002_AddTwoNumbers 
 **Main Algo:** LinkedList  
 **Corner Case:** 9->9 + 1  
 
-###003_LongestSubstringWithoutRepeatingCharacters  
+####003_LongestSubstringWithoutRepeatingCharacters  
 **Main Algo:** Greedy, similar to two pointers.  
 **Cornere Case:** "", "pppp"  
 **Core Codes:**  
@@ -67,190 +67,668 @@ for(int i = 0; i < s.size(); i++){
 * overload of MAX_INT and MIN_INT.  
 
 ####009_PalindromeNumber
-**Corner Case:** All negative numbers are not palindromes.
+**Corner Case:**
 
-011_ContainerWithMostWater   
-1 and 2 TLE Search all conditions, O(n^2).  
-Greedy algorithm. The area was related to the lower one. So just start from the beginning and the end. It’s of no use that we change the higher one’s index closer to the lower one because the area will only decrease. Thus each time we just need to change the index of the lower one. And we can assure that once the two indexes become the same we have already find the maximum area.  
+* All negative numbers are not palindromes.
+* Ignore white spaces.
 
-##2016.8.4  
-010_RegularExpressionMatching  
-Recursively solve the problem  
-First, consider p[p_index + 1] is ‘*’;  
-Then consider where there is a ‘.’ or s and p has the same character at their indexes.  
+####010_RegularExpressionMatching  
+**Main Algo:**
 
-##2016.8.5  
-012_IntegerToRoman 1Y  
+* Recursion,
+* DP, compress the space complexity   
 
-013_RomanToInteger 1Y  
-There are only two types of digits, IX (X minus I) or else(Add all together).  
+**Corner Case:**  
 
-014_LongestCommonPrefix 1Y  
+* P's end contians redundant *s.
 
-015_3Sum 3Y  
-1 TLE Search O(n^3)  
-2 TLE Hashmap O(n^2)  
-3Y Passed the same numbers. Then accepted.  
+**Core Codes:**
 
-017_LetterCombinationOfAPhoneNumber 1Y  
-Typical DFS  
+```c++
+if(s_pos == s.length()) {
+	 // Remove redundant *s
+	 while((p_pos + 1 < p.length() && p[p_pos + 1] == '*'))
+        p_pos += 2;
+    return p_pos == p.length();
+} 
+if(p_pos == p.length())
+    return s_pos == s.length();
+    
+if(p[p_pos] == '.' || s[s_pos] == p[p_pos]) // currently matched
+    if(p_pos + 1 < p.length() && p[p_pos + 1] == '*')
+        return match(s, p, s_pos + 1, p_pos) || match(s, p, s_pos, p_pos + 2);
+    else 
+        return match(s, p, s_pos + 1, p_pos + 1);
+else 
+    if(p_pos + 1 < p.length() && p[p_pos + 1] == '*')
+        return match(s, p, s_pos, p_pos + 2);
+    else 
+        return false;
+```
 
-019_RemoveNthNodeFromEndOfList 1Y  
-The best way to solve this problem is to set two pointer at the begining. The first one go n steps first and then they go together while the first on goes to the end.  
+```c++
+//DP with space compression
+for(int i = 1; i <= n; i++){
+    f[i % 2][0] = false; // Must write this
+    for(int j = 1; j <= m; j++)
+        if(p[j - 1] == '*')
+            f[i % 2][j] = f[i % 2][j - 2] || (f[(i + 1) % 2][j] && (s[i - 1] == p[j - 2] || p[j - 2] == '.'));
+        else
+            if(p[j - 1] == '.' || (s[i - 1] == p[j - 1]))
+                f[i % 2][j] = f[(i + 1)%2][j - 1];
+            else
+                f[i % 2][j] = false;
+}
+```
+####011_ContainerWithMostWater   
+**Main Algo:** Greedy, from the outside to inside, the height was determined by the lower buck. So we always choose the higher one to be remained. Since the distance is decreasing.  
+**Core codes**
 
-020_ValidParentheses 1Y  
-Use a stack to pair the brackets.  
+```C++
+while (start < end) {
+    int area = min(height[end], height[start]) * (end - start);
+    result = max(result, area);
+    if (height[start] <= height[end]) {
+        start++;
+    } else {
+        end--; 
+    }
+}
+```
+ 
+####012_IntegerToRoman 
 
-021_MergeTwoSortedLists 1Y  
+####013_RomanToInteger
+**Main Algo:** There are only two types of digits, IX (X minus I) or else(Add all letters together).  
 
-##2016.8.6  
-023_MergeKSortedLists 1Y  
-Use MergeTwoSortedLists n times.  
+####014_LongestCommonPrefix  
 
-##2016.8.9  
-022_GenerateParentheses nWA  
-The parentheses follow the rule that if the unpaired left ones are zero, you couldn’t put a right one. Besides, if n * 2 - pos == leftn, then you can only put right ones.  
+####015_3Sum  
+**Main Algo:** 
 
-##2016.8.10  
-026_RemoveDuplicatesFromSortedArray 1Y  
-027_RemoveElement 1Y  
+* Hashmap O(n^2), we have to sort first. And it will TLE if do not pass the same numbers. **Here why hashmap works with dups existing?**
+* Use three pointers. O(n^(k - 1))
 
-##2016.8.11  
-028_ImplementStrStr() 1Y  
+**Core Codes:**
 
-024_SwapNodesInPairs 1Y  
+```c++
+// Three pointers.
+sort(nums.begin(), nums.end());
+for(int i = 0; i < nums.size() - 2; i++){
+    if(i > 0 && nums[i] == nums[i - 1])
+        continue;
+    int j = i + 1, k = nums.size() - 1;
+    while(j < k){
+        if(nums[i] + nums[j] + nums[k] < 0){
+            j++;
+            while(j < k && nums[j] == nums[j - 1])
+                j++;
+        } else if (nums[i] + nums[j] + nums[k] > 0){
+            k--;
+            while(j < k && nums[k] == nums[k + 1])
+                k--;
+        } else {
+            result.push_back(vector<int>({nums[i], nums[j], nums[k]}));
+            k--;
+            while(j < k && nums[k] == nums[k + 1])
+                k--;
+        }
+    }
+}
+```
 
-##2016.8.27  
-031_NextPermutation 2Y  
-for(auto first = nums.end() - 2; first >= nums.begin(); first--){  
-for(auto last = nums.end() - 1; last != first; last--){  
-                	if(*last > *first){  
-                    		swap(*last, *first);  
-                    		sort(first + 1, nums.end());  
-                    		return;  
-    		}  
-            	}  
+####016_3SumClosest 
+**Main Algo:** Three pointers.  
+**Core Codes:** 
+
+```c++
+sort(nums.begin(), nums.end());        
+for(auto i = nums.begin(); i != prev(nums.end(), 2); i++){
+    auto j = next(i);
+    auto k = prev(nums.end());
+    
+    while(j < k){
+        int sum = *i + *j + *k;
+        int gap = abs(target - sum);
+        if(gap < min_gap){
+            min_gap = gap;
+            min_sum = sum;
+        }
+        if(sum < target) j++;
+        else k--;
+    }
+}
+```
+
+####017_LetterCombinationOfAPhoneNumber  
+**Main Algo:** Typical DFS  
+
+####018_4Sum
+**Main Algo:** Four pointers  
+
+####019_RemoveNthNodeFromEndOfList 1Y  
+**Main Algo:** The best way to solve this problem is to set two pointer at the begining. The first one go n steps first and then they go together until the first on goes to the end.  
+**Corner Cases:** empty list, or remove the head node.
+**Core Codes:**  
+
+```c++
+ListNode* now = head;
+
+if(now == NULL)
+    return now;
+
+int tempN = n;
+while(tempN > 1){
+    now = now->next;
+    tempN--;
+}
+
+if(now->next == nullptr)
+    return head->next;
+    
+ListNode* newHead = head;
+ListNode* last;
+while(now->next != nullptr){
+    last = newHead;
+    newHead = newHead->next;
+    now = now->next;
+}
+last->next = newHead->next;
+return head;
+``` 
+
+####020_ValidParentheses
+**Main Algo:** Use a stack to pair the brackets and pop, once the current right bracket can not be paired to the top of the stack it goes wrong.    
+  
+####021_MergeTwoSortedLists  
+####023_MergeKSortedLists 1Y  
+**Main Algo:** Using a priority_queue, O(nlogk).  
+**Core Codes:**  
+
+```c++
+auto cmp = [](ListNode* l1, ListNode* l2){
+    return l1->val > l2->val;
+};
+priority_queue<ListNode*, vector<ListNode*>, decltype(cmp) > heap(cmp);
+
+for(auto i:lists)
+    if(i != nullptr)
+        heap.push(i);
+if(heap.empty())
+    return nullptr;
+
+ListNode *head = heap.top();
+ListNode *now = head;
+if(heap.top()->next != nullptr)
+    heap.push(heap.top()->next);
+heap.pop();
+
+while(!heap.empty()){
+    now->next = heap.top();
+    now = now->next;
+    if(heap.top()->next != nullptr)
+        heap.push(heap.top()->next);
+    heap.pop();
+}
+now->next = nullptr;
+return head;
+```
+####022_GenerateParentheses  
+**Main Algo:** The parentheses follow the rule that if the unpaired left ones are zero, you couldn’t put a right one. Besides, if n * 2 - pos == leftn, then you can only put right ones.  
+**Core codes:** 
+
+```c++
+if(leftn == 0){
+    resultChar[pos] = '(';
+    getParenthesis(n, pos + 1, leftn + 1, resultChar, result);
+} else {
+    if(n * 2 - pos > leftn){
+        resultChar[pos] = '(';
+        getParenthesis(n, pos + 1, leftn + 1, resultChar, result);
+
+        resultChar[pos] = ')';
+        getParenthesis(n, pos + 1, leftn - 1, resultChar, result);
+    } else {
+        resultChar[pos] = ')';
+        getParenthesis(n, pos + 1, leftn - 1, resultChar, result);
+    }
 }  
+```
 
+####024_SwapNodesInPairs  
+####025_ReverseNodesInKGroup
+**Main Algo:** Record the current position, when it is larger than n/k * k, it shouldn't be reversed.  
+**Core Codes:** 
 
-32_LongestValidParentheses 1TLE 2Y  
+```c++
+ListNode *newNode;
+newNode = reverse(head->next, k, order + 1, n);
+    
+if(order % k == 0 || order > n/k * k){
+    head->next = newNode;
+    return head;
+} else {
+    ListNode* now = newNode;
+    int t = order;
+    while((t + 1) % k != 0){
+        now = now->next;
+        t++;
+    }
+    head->next = now->next;
+    now->next = head;
+    return newNode;
+}
+```
+ 
+####026_RemoveDuplicatesFromSortedArray
+**Core Codes:**  
+
+```c++
+return distance(nums.begin(), unique(nums.begin(), nums.end()));
+``` 
+
+####027_RemoveElement
+**Mail Algo:** Move all non-val value to the begining of the array.  
+**Core Codes:**  
+
+```c++
+int index = 0;
+for(int i = 0; i < nums.size(); i++){
+    if(nums[i] != val){
+        nums[index++] = nums[i];
+    }
+}
+return index;
+```
+
+####028_ImplementStrStr()
+
+####029_DivideTwoIntegers  
+**Mail Algo:** The divisor can be doubled every time to accelerate.   **Corner Cases:** overload situation  
+**Core Codes:**
+
+```c++
+if (!divisor || (dividend == INT_MIN && divisor == -1))
+    return INT_MAX;
+int sign = ((dividend < 0) ^ (divisor < 0)) ? -1 : 1;
+long dvd = labs(dividend);
+long dvs = labs(divisor);
+int res = 0;
+while (dvd >= dvs) { 
+    long temp = dvs, multiple = 1;
+    while (dvd >= (temp << 1)) {
+        temp <<= 1;
+        multiple <<= 1;
+    }
+    dvd -= temp;
+    res += multiple;
+}
+return sign == 1 ? res : -res; 
+```
+####030_SubstringWithConcatenationOfAllWords 3Y  
+**Main Algo:** An important condition--all words are the same length. 
+**Core Codes:**
+
+```c++
+for(auto word:words)
+    expected[word]++;
+
+for(int i = 0; i + n * len <= s.length(); i++){
+    unordered_map<string, int> seen;
+    int j = i;
+    int count = 0;
+    while(true){
+        string now = s.substr(j, len);
+        if(expected.find(now) == expected.end() || seen[now] == expected[now])
+            break;
+        else{
+            count++;
+            seen[now]++;
+            j += len;
+        }
+    }
+    if(count == n)
+        result.push_back(i);
+}
+```
+ 
+####031_NextPermutation 2Y  
+**Core Codes:**
+
+```c++
+for(auto first = nums.end() - 2; first >= nums.begin(); first--){  
+	for(auto last = nums.end() - 1; last != first; last--){  
+    	if(*last > *first){  
+			swap(*last, *first);  
+    		sort(first + 1, nums.end());  
+    		return;  
+		}  
+	}  
+}  
+```
+
+####032_LongestValidParentheses
+**Corner Cases:** "(()" we have to apply this algorithm twice.  
+**Core Codes:**
+
+```c++
 for(int pos = 0; pos < s.length(); pos++ ){  
-    if(s[pos] == '(')  
-               unpair++;  
-            else  
-                if(unpair == 0)  
-                    lastPos = pos;  
-               else{  
-                   unpair--;  
-                   if(unpair == 0)  
-                        if(pos - lastPos > max)  
-                            max = pos - lastPos;  
-               }  
+	if(s[pos] == '(')  
+		unpair++;  
+	else  
+		if(unpair == 0)  
+			lastPos = pos;  
+		else{  
+			unpair--;  
+			if(unpair == 0)  
+				if(pos - lastPos > max)  
+					max = pos - lastPos;  
+		}  
+}  
+```
+
+####033_SearchInRotatedSortedArray
+**Main Algo:** Binary Search with different conditions  
+**Core Codes:**  
+
+```c++
+while(head < tail){
+	int mid = head + (tail - head) / 2;
+	if(nums[head] < nums[tail]){
+	    if(nums[mid] >= target)
+	        tail = mid;
+	    else
+	        head = mid + 1;
+	} else {
+	    if(nums[mid] >= nums[head]){
+	        if(nums[head] > target || nums[mid] < target)
+	            head = mid + 1;
+	        else
+	            tail = mid;
+	    } else {
+	        if(nums[mid] < target && nums[tail] >= target)
+	            head = mid + 1;
+	        else
+	            tail = mid;
+	    }
+	}
+}
+```
+
+####034_SearchForARange
+**Main Algo:** Binary search to find the lower and upper bounds.
+**Core Codes:**
+
+```c++
+// lower_bound & upper_bound
+std::vector<int>::iterator low=std::lower_bound (nums.begin(), nums.end(), target);
+    if(*low != target) return result;
+    std::vector<int>::iterator up= std::upper_bound (low, nums.end(), target) -1;
+    result[0] = low - nums.begin();
+    result[1] = up - nums.begin();
+
+// Binary search twice
+int head = 0, tail = nums.size();
+while(head < tail){
+    int mid = (head + tail) / 2;
+    if(nums[mid] >= target)
+        tail = mid;
+    else
+        head = mid + 1;
+}
+if(nums[head] != target) // check if there is a range
+    return result;
+result[0] = head;
+
+head = 0, tail = nums.size();
+while(head < tail){
+    int mid = (head + tail) / 2;
+    if(nums[mid] <= target)
+        head = mid + 1;
+    else
+        tail = mid;
+}
+result[1] = tail - 1;
+```
+
+####035_SearchInsertPosition  
+**Main Algo:** Binary Search  
+  
+####036_ValidSudoku
+####037_SudokuSolver
+**Main Algo:** DFS  
+
+####038_CountAndSay  
+
+####039_CombinationSum
+####040_CombinationSum II
+**Main Algo:** Recursion, sort the candidates first.   
+For combinationII, we can not choose the same candidates more than once. And finally we have to remove duplicate answers.  
+**Core Codes:**
+
+```c++
+if(target == 0)
+    return vector<vector<int>>(1, vector<int>());
+    
+if(start == candidates.size() || candidates[start] > target)
+    return result;
+
+result = findComb(candidates, start, target - candidates[start]);
+for(int i = 0; i < result.size(); i++)
+    result[i].insert(result[i].begin(), candidates[start]);
+vector<vector<int>> temp = findComb(candidates, start + 1, target);
+result.insert(result.end(), temp.begin(), temp.end());
+        
+``` 
+
+####041_FirstMissingPositive
+```c++
+//Interval solution
+for(auto i = nums.begin(); i != nums.end(); i++){  
+    if(*i <= 0)  
+        continue;  
+
+    for(int j = 0; j < result.size(); j++){  
+        if(*i >= result[j].first && *i <= result[j].second){  
+            pair<int, int> left, right;  
+            left = make_pair(result[j].first, *i - 1);  
+            right = make_pair(*i + 1, result[j].second);  
+            result.erase(result.begin() + j);  
+            if(left.first <= left.second)  
+                result.insert(result.begin() + j++, left);  
+            if(right.first <= right.second)  
+                result.insert(result.begin() + j, right);  
+            break;  
         }  
-use this method twice.  
-
-##2016.8.28  
-029_DivideTwoIntegers  
-The divisor can be doubled every time to accelerate. Besides, mind the overload situation  
-Example Code:  
-
-
-
-034_SearchForARange  
-Binary search, if(nums[head] == num[tail]) return [head, tail] or [-1, -1] for pruning.  
-
-035_SearchInsertPosition  
-Binary search  
-int binarySearch(const vector<int> nums, int target, int head, int tail){  
-        int mid = (head + tail) / 2 + 1;  
-
-        if(head == tail)  
-            if(nums[head] >= target)  
-                return head;  
-            else  
-                return head + 1;  
-
-        if(target >= nums[mid])  
-            return binarySearch(nums, target, mid, tail);  
-        else  
-            return binarySearch(nums, target, head, mid - 1);  
     }  
+}  
+    
+// O(1) space.
+int i, n = nums.size();
+for(i=0; i<n; i++){
+    while(nums[i]>=1 && nums[i]<=n && nums[i]!=nums[nums[i]-1])
+        swap(nums[i], nums[nums[i]-1]);
+}
+    
+int j=1;
+for(j=1; j<=n; j++)
+    if(nums[j-1]!=j)
+        break;
+        
+return j;
+```
 
-036_ValidSudoku 1Y  
+####042_TrappingRainWater 2Y  
+**Main Algo:**  
 
-##2016.8.30  
-038_CountAndSay 1Y  
+* Find the left most height and right most height at each point, the result will be sum (min(left[i], right[i]) - height[i])
+* From the outest two bars go inside to the 
 
-039_CombinationSum 2Y  
-1 WA didn't sort the result and remove the duplicates  
+**Core Codes:**
 
-sort(result.begin(), result.end());  
-vector<vector<int>>::iterator end_unique = unique(result.begin(), result.end());  
-result.erase(end_unique, result.end());  
+```c++
+// Find left and right most.
+for(int i = 0; i < n; i++){
+    if(i == 0){
+        left[i] = height[i];
+        right[n - i - 1] = height[n - i - 1];
+    } else {
+        if(height[i] <= left[i - 1])
+            left[i] = left[i - 1];
+        else
+            left[i] = height[i];
+        if(height[n - i - 1] <= right[n - i])
+            right[n - i - 1] = right[n - i];
+        else
+            right[n - i - 1] = height[n - i - 1];
+    }
+}
 
-040_CombinationSumII 2Y  
-1 TLE use the method in previous problem, erase the item you selected everytime in candidates.  
-2Y DFS  
+// From outside to inside
+int trap(vector<int>& height) {
+    auto l = height.begin(), r = height.end() - 1;
+    int level = 0, water = 0;
+    while (l != r + 1) {
+        int lower = *l < *r ? *l++ : *r--;
+        level = max(level, lower);
+        water += level - lower;
+    }
+    return water;
+}
+```
 
-041_FirstMissingPositive 1Y  
-int firstMissingPositive(vector<int>& nums) {  
-        vector<pair<int, int>> result;  
-        pair<int, int> init = make_pair(1, INT_MAX);  
-        result.push_back(init);  
+####218_TheSkylineProblem  
+**Main Algo:** 
+Use a max_heap to store the maximum height, we when meet the left wall, we insert and check if the max_height changed; for the right wall, we delete it and check if the max_height changed.  
+**Corner Cases:**
+The corner cases all about how to sort the points.
 
-        for(auto i = nums.begin(); i != nums.end(); i++){  
-            if(*i <= 0)  
-                continue;  
+* For left wall with same x, we made higher y first;
+* For right wall with same x, we made lower y first;
+* For left and right walls with same x, we made left first.  
 
-            for(int j = 0; j < result.size(); j++){  
-                if(*i >= result[j].first && *i <= result[j].second){  
-                    pair<int, int> left, right;  
-                    left = make_pair(result[j].first, *i - 1);  
-                    right = make_pair(*i + 1, result[j].second);  
-                    result.erase(result.begin() + j);  
-                    if(left.first <= left.second)  
-                        result.insert(result.begin() + j++, left);  
-                    if(right.first <= right.second)  
-                        result.insert(result.begin() + j, right);  
-                    break;  
-                }  
-            }  
-        }  
-        return result[0].first;      
-    }  
+**Core Codes:** 
 
-042_TrappingRainWater 2Y  
-1 WA Forgot when size is 0, couldn’t initialize.  
-while(last < height.size() - 1){  
-            int i;  
-            for(i = last + 1; i < height.size(); i++){  
-                if(height[i] >= lastHeight)  
-                    if(lastHeight == 0){  
-                        lastHeight = height[i];  
-                        last = i;  
-                    } else {  
-                        for(int j = last + 1; j < i; j++){  
-                            result += lastHeight - height[j];  
-                        }  
-                        last = i;  
-                        lastHeight = height[last];  
-                        break;  
-                    }  
-                else  
-                    continue;  
-            }  
+```c++
+for(p : buildings){
+    points.push_back(make_pair(p[0], -p[2])); 
+    //We made the left wall's height to be negative, thus we could solve the sorting problem mentioned above.
+    points.push_back(make_pair(p[1], p[2]));
+}
+sort(points.begin(), points.end());
 
-            if(i == height.size()){  
-                lastHeight--;  
-            }  
-        }  
+multiset<int> max_heap = {0};
+int top = 0;
+for(p : points){
+    if(p.second < 0){
+        max_heap.insert(-p.second);
+    } else {
+        max_heap.erase(max_heap.find(p.second));
+    }
+    
+    if(*max_heap.rbegin() != top){
+        result.push_back(make_pair(p.first, top = *max_heap.rbegin()));
+    }
+}
+``` 
+
+
 
 ##2016.8.31  
 
-043_MultiplyStrings 2Y  
-Similar to high accuracy multiplication. Cannot directly use char array or string because their ranges are from [-127, 128]  
+####043_MultiplyStrings 2Y  
+**Corner Cases:** One of the factor is 0.  
+**Core Codes:**
 
-045_JumpGameII 3Y  
+```c++
+for(int i = 0; i < num1.size(); i++){
+    for(int j = 0; j < num2.size(); j++){
+        mulResult[i + j] += n1[i] * n2[j] % 10;
+        mulResult[i + j + 1] += n1[i] * n2[j] / 10;
+    }
+}
+
+for(int i  = 0; i < length - 1; i++){
+    if(mulResult[i] > 9) {
+        mulResult[i + 1] += mulResult[i] / 10;
+        mulResult[i] = mulResult[i] % 10 ; 
+    }
+}
+```
+####044_WildcardMatching
+**Core Codes:**
+
+```c++
+//DP similar to regex expression matching
+for(int i = 1; i <= n; i++){
+    f[i % 2][0] = false;
+    for(int j = 1; j <= m; j++)
+        if(p[j - 1] == '*'){
+            f[i % 2][j] = f[i % 2][j - 1] || f[(i + 1) % 2][j];
+        } else if(p[j - 1] == '?' || s[i - 1] == p[j - 1])
+            f[i % 2][j] = f[(i + 1) % 2][j - 1];
+        else
+            f[i % 2][j] = false;
+}
+```  
+
+####048_RotateImage
+**Main Algo:** Rotate in place, since it's a square matrix.    
+**Core Codes:**
+
+```c++
+while(start < end){
+    for(int i = 0; i < end - start; i++){
+        int mid = matrix[start][start + i];
+        matrix[start][start + i] = matrix[end - i][start];
+        matrix[end - i][start] = matrix[end][end - i];
+        matrix[end][end - i] = matrix[start + i][end];
+        matrix[start + i][end] = mid;
+    }
+    start++;
+    end--;
+}
+```
+
+####049_GroupAnagrams
+**Main Algo:** Use a unordered_map to map the sorted version to the orginal string.  
+**Core Codes:**
+
+```c++
+for(auto k : strs){
+    string a = k;
+    sort(a.begin(), a.end());
+    s[a].push_back(k);
+}
+```
+
+####050_Pow(x, n)
+**Main Algo:** Split n to n / 2.  
+**Corner Cases:** n = 0, n < 0  
+**Core Codes:**  
+
+```c++
+double myPow(double x, int n) {
+    if(n < 0)
+        return 1.0 / power(x, -n); // deal with n < 0
+    else
+        return power(x, n);
+}
+
+double power(double x, long n){
+    if(n == 0)
+        return 1.0;
+        
+    double half = power(x, n / 2);
+
+    if(n % 2 == 0)
+        return half * half;
+    else
+        return half * half * x;
+}
+```
+
+ 045_JumpGameII 3Y  
 1 TLE DP   
 2 TLE Refined DP  
 3 Greedy Algorithm  
@@ -551,8 +1029,6 @@ First time I used undered_set, O(n) time complexity and O(n) space \\
 Then I used two pointer to find the length difference, then start at the same length begin point. O(n) Time complexity and O(1) space
 
 162_FindPeakElement 2Y
-
-048_RotateImage 1Y
 
 049_GroupAnagram 1Y
 Redefined sort function
@@ -978,22 +1454,8 @@ Use small prime to delete non-prime, need high space
 156_BinaryTreeUpsideDown 1Y  
 Return the root of the left subtree, and then find until right end and then insert root.  
 
-025_ReverseNodesInK-Group  3Y  
-When doing recursion, record the order.  
-
-033_SearchInRotatedSortedArray 3Y  
-BinarySearch, divide the problem into several conditions  
-
-016_3SumClosest 2Y  
-Use three pointers.  
-
-018_4Sum 3Y  
-
 081_SearchInRotatedSortedArrayII 2Y  
-Similar to previous problem, the difference is that once head == tail, tail-- until different.
-
-030_SubstringWithConcatenationOfAllWords 3Y  
-Missed an important condition that all words are the same length.  
+Similar to previous problem, the difference is that once head == tail, tail-- until different. 
 
 065_ValidNumber 3Y  
 Can contain only 1 e, right should be pure number.
