@@ -136,9 +136,7 @@ while (start < end) {
 }
 ```
  
-####012_IntegerToRoman 
-
-####013_RomanToInteger
+####012\_IntegerToRoman && 013_RomanToInteger
 **Main Algo:** There are only two types of digits, IX (X minus I) or else(Add all letters together).  
 
 ####014_LongestCommonPrefix  
@@ -240,8 +238,7 @@ return head;
 ####020_ValidParentheses
 **Main Algo:** Use a stack to pair the brackets and pop, once the current right bracket can not be paired to the top of the stack it goes wrong.    
   
-####021_MergeTwoSortedLists  
-####023_MergeKSortedLists 1Y  
+####021\_MergeTwoSortedLists && 023_MergeKSortedLists 
 **Main Algo:** Using a priority_queue, O(nlogk).  
 **Core Codes:**  
 
@@ -295,8 +292,7 @@ if(leftn == 0){
 }  
 ```
 
-####024_SwapNodesInPairs  
-####025_ReverseNodesInKGroup
+####024\_SwapNodesInPairs && 025_ReverseNodesInKGroup
 **Main Algo:** Record the current position, when it is larger than n/k * k, it shouldn't be reversed.  
 **Core Codes:** 
 
@@ -365,7 +361,7 @@ while (dvd >= dvs) {
 }
 return sign == 1 ? res : -res; 
 ```
-####030_SubstringWithConcatenationOfAllWords 3Y  
+####030_SubstringWithConcatenationOfAllWords
 **Main Algo:** An important condition--all words are the same length. 
 **Core Codes:**
 
@@ -392,7 +388,7 @@ for(int i = 0; i + n * len <= s.length(); i++){
 }
 ```
  
-####031_NextPermutation 2Y  
+####031_NextPermutation
 **Core Codes:**
 
 ```c++
@@ -427,33 +423,27 @@ for(int pos = 0; pos < s.length(); pos++ ){
 }  
 ```
 
-####033_SearchInRotatedSortedArray
-**Main Algo:** Binary Search with different conditions  
-**Core Codes:**  
+####033\_SearchInRotatedSortedArrayI && 081_SearchInRotatedSortedArrayII
+**Main Algo:** Binary Search with different conditions. In the later problem, the difference is that once mid == tail, tail--.  
+**Core Codes:**
 
 ```c++
 while(head < tail){
-	int mid = head + (tail - head) / 2;
-	if(nums[head] < nums[tail]){
-	    if(nums[mid] >= target)
-	        tail = mid;
-	    else
-	        head = mid + 1;
-	} else {
-	    if(nums[mid] >= nums[head]){
-	        if(nums[head] > target || nums[mid] < target)
-	            head = mid + 1;
-	        else
-	            tail = mid;
-	    } else {
-	        if(nums[mid] < target && nums[tail] >= target)
-	            head = mid + 1;
-	        else
-	            tail = mid;
-	    }
-	}
+    int mid = (head + tail) / 2;
+    if(nums[mid] > nums[tail])f
+        if(target >= nums[head] && target <= nums[mid])
+            tail = mid;
+        else
+            head = mid + 1;
+    else if(nums[mid] < nums[tail])
+        if(target > nums[mid] && target <= nums[tail])
+            head = mid + 1;
+        else
+            tail = mid;
+    else
+        tail--;
 }
-```
+``` 
 
 ####034_SearchForARange
 **Main Algo:** Binary search to find the lower and upper bounds.
@@ -494,14 +484,12 @@ result[1] = tail - 1;
 ####035_SearchInsertPosition  
 **Main Algo:** Binary Search  
   
-####036_ValidSudoku
-####037_SudokuSolver
+####036\_ValidSudoku && 037_SudokuSolver
 **Main Algo:** DFS  
 
 ####038_CountAndSay  
 
-####039_CombinationSum
-####040_CombinationSum II
+####039\_CombinationSum && 040_CombinationSum II
 **Main Algo:** Recursion, sort the candidates first.   
 For combinationII, we can not choose the same candidates more than once. And finally we have to remove duplicate answers.  
 **Core Codes:**
@@ -597,45 +585,6 @@ int trap(vector<int>& height) {
 }
 ```
 
-####218_TheSkylineProblem  
-**Main Algo:** 
-Use a max_heap to store the maximum height, we when meet the left wall, we insert and check if the max_height changed; for the right wall, we delete it and check if the max_height changed.  
-**Corner Cases:**
-The corner cases all about how to sort the points.
-
-* For left wall with same x, we made higher y first;
-* For right wall with same x, we made lower y first;
-* For left and right walls with same x, we made left first.  
-
-**Core Codes:** 
-
-```c++
-for(p : buildings){
-    points.push_back(make_pair(p[0], -p[2])); 
-    //We made the left wall's height to be negative, thus we could solve the sorting problem mentioned above.
-    points.push_back(make_pair(p[1], p[2]));
-}
-sort(points.begin(), points.end());
-
-multiset<int> max_heap = {0};
-int top = 0;
-for(p : points){
-    if(p.second < 0){
-        max_heap.insert(-p.second);
-    } else {
-        max_heap.erase(max_heap.find(p.second));
-    }
-    
-    if(*max_heap.rbegin() != top){
-        result.push_back(make_pair(p.first, top = *max_heap.rbegin()));
-    }
-}
-``` 
-
-
-
-##2016.8.31  
-
 ####043_MultiplyStrings 2Y  
 **Corner Cases:** One of the factor is 0.  
 **Core Codes:**
@@ -672,6 +621,22 @@ for(int i = 1; i <= n; i++){
 }
 ```  
 
+####046\_Permutations and 047_PermutationsII
+**Main Algo:** 
+
+* Dfs could solve, for permutation II, we have to cut edges. 
+* Next permutation function.  
+
+**Core Codes:**
+
+```c++
+sort(nums.begin(), nums.end());
+
+do{
+    result.push_back(nums);
+} while(next_permutation(nums.begin(), nums.end()));
+```
+
 ####048_RotateImage
 **Main Algo:** Rotate in place, since it's a square matrix.    
 **Core Codes:**
@@ -691,7 +656,7 @@ while(start < end){
 ```
 
 ####049_GroupAnagrams
-**Main Algo:** Use a unordered_map to map the sorted version to the orginal string.  
+**Main Algo:** Use a unordered_map to map the sorted version to the orginal string. Other wise it would TLE. 
 **Core Codes:**
 
 ```c++
@@ -728,162 +693,558 @@ double power(double x, long n){
 }
 ```
 
- 045_JumpGameII 3Y  
-1 TLE DP   
-2 TLE Refined DP  
-3 Greedy Algorithm  
-int step = 0, last = 0, curr = 0, max = 0;  
-        if(nums.size() == 1)  
-            return 0;  
+####051\_N-Queens && 052_N-QueensII  
+**Main Algo:** Typical DFS  
+**Core Codes:** 
 
-        for(int i = 0; i < nums.size(); i++){  
-            if(i > last){  
-                step++;  
-                last = max;  
-            }  
-            curr = i + nums[i];  
-            if(curr >= nums.size() - 1)   
-                return step + 1;  
-            else  
-                if(curr > max)  
-                    max = curr;  
-                else {}  
-        }  
-        return step;  
+```c++
+// Bit operation.
+void solve(int row, int ld, int rd) {
+    if (row == lim) { // have placed row queens
+        ans ++;  // we have a solution
+        return;
+    }
+    int pos = lim & (~(row | ld | rd)); // valid positions
+    while (pos != 0) {
+        int p = pos & (-pos); // rightmost position
+        pos -= p; // have tried this
+        solve(row + p, (ld + p) << 1, (rd + p) >> 1);
+    }
+}
+ 
+int totalNQueens(int n) {
+    ans = 0;
+    lim = (1 << n) - 1;
+    solve(0, 0, 0);
+    return ans;
+}  
+```
+ 
+####053_MaximumSubarray
+**Main Algo:** Greedy, when current sum is less than 0, let it be 0.   
 
-046_Permutations 1Y  
-dfs could solve  
+####054\_SpiralMatrix && 059_SpiralMatrixII
+**Main Algo:** Move towards four directions. Each time when the next step is illegal, change the direction.  
+**Core Codes:**
 
-047_PermutationsII 2Y  
-dfs TLE, but it can be passed by pruning.  
-Otherwise we can use next_permutation function.  
+```c++ 
+vector<vector<int>> result(n, vector<int>(n, 0));
+int direc[5] = {0, 1, 0, -1, 0};
+
+int x = 0, y = 0, d = 0;
+for(int i = 1; i <= n * n; i++){
+    result[x][y] = i;
+    if(x + direc[d] == n || x + direc[d] < 0 || y + direc[d + 1] == n || y + direc[d + 1] < 0 || result[x + direc[d]][y + direc[d + 1]] != 0)
+        d = (d + 1) % 4;
+    x += direc[d];
+    y += direc[d + 1];
+}
+    return result;  
+```
+
+####055\_JumpGame && 045_JumpGameII
+**Main Algo:** For jump game II, it's similar to BFS, but we could use a greedy algorithm.  
+**Core Codes:**
+
+```c++
+for(int i = 0; i < nums.size(); i++){
+    if(i > last){ // out of the range of step
+        step++;
+        last = max;
+    }
+    
+    if(i == nums.size() - 1) // arrive the end
+        return step;
+        
+    if(i + nums[i] > max) // find the range of the next step
+        max = i + nums[i];
+}
+```
+
+####056\_MergeIntervals && 057_InsertIntervals
+**Main Algo:** All can be solved by sort by the starts, and insert them to the answer one by one.  
+**Core Codes:**
+
+```c++
+sort(intervals.begin(), intervals.end(), [=](const Interval a, const Interval b){
+    return a.start < b.start;
+});
+
+vector<Interval> result;
+
+for(auto i : intervals)
+    if(result.empty() || i.start > result.back().end)
+        result.push_back(i);
+    else
+        result.back().end = max(result.back().end, i.end);
+
+return result;
+``` 
+
+####058_LengthOfLastWord
+**Main Algo:** The best way is to use stringstream. 
+**Corner Cases:** If do not use stringstream, we need to consiter multiple spaces and a space at the end of the input string.   
+**Core Codes:**
+
+```c++
+istringstream in(s);
+string last = "";
+while(in >> last);
+return last.length();
+```
+####060_PermutationSquence
+**Main Algo:** If we simply calculate the next permutation it would TLE. This problem is a math problem, where k determines which of the candidate we could choose.  
+**Core Codes:**
+
+```c++
+string cand = "123456789"; 
+string result(n, '0');
+for(int i = 0; i < n; i++){
+    int cur = (k - 1) / fac(n - i - 1); // Choose the current digit.
+    k = (k - 1) % fac(n - i - 1) + 1; // Calculate the remaining.
+    cout << i << cur << k << cand[cur] << endl;
+    result[i] = cand[cur];
+    cand.erase(cur, 1);
+}
+```
+####061_RotateList
+**Main Algo:** We circle the list first, and find the newHead to split.  
+**Core Codes:**
+
+```c++
+int len=1; // number of nodes
+ListNode *newH, *tail;
+newH=tail=head;
+    
+// get the number of nodes in the list
+while(tail->next){
+    tail = tail->next;
+    len++;
+}
+tail->next = head; // circle the link
+
+if(k %= len){
+    for(auto i=0; i<len-k; i++) tail = tail->next; // the tail node is the (len-k)-th node (1st node is head)
+}
+newH = tail->next; 
+tail->next = NULL;
+return newH;
+```
+ 
+####062\_UniquePaths && 063_UniquePathsII && 064_MinimumPathSum
+**Main Algo:** DP  
+**Core Codes:**
+
+```c++
+f[1][1] = !obstacleGrid[0][0];
+    
+for(int i = 1; i <= m; i++)
+    for(int j = 1; j <= n; j++)
+        if(i == 1 && j == 1)
+            continue;
+        else if(obstacleGrid[i - 1][j - 1] == 1)
+            f[i][j] = 0;
+        else
+            f[i][j] = f[i - 1][j] + f[i][j - 1];
+
+```
+
+####065_ValidNumber
+Can contain only 1 e, right should be pure number.
+For fraction, right should not contain '-' or '+'  
 
 
-##2016.9.1  
-050_pow(x, n) 2Y  
-divide and conquer, mind overload condition.  
+####066_PlusOne 
+####067_AddBinary  
 
-051_N-Queens 1Y  
-052_N-QueensII 1Y  
-dfs  
+####068_TextJustification 
+Mind the details. 
 
-##2016.9.2  
-053_MaximumSubarray 2Y  
-Greedy, when current sum is lower than 0, let it be 0.   
+####069_Sqrt(x)
+**Main Algo:** Binary Search  
+**Corner Cases:**Overflow when compare mid * mid <= x, so we have to compare mid and x / mid.  
+**Core Codes:** 
 
-054_SpiralMatrix 1Y  
-Mind all possible conditions.  
+```c++
+long head = 0, tail = x;
+while(head < tail){
+    int mid = (head + tail + 1) / 2;
+    if(mid  > (double)x / mid)
+        tail = mid - 1;
+    else
+        head = mid;
+}
+```   
 
-058_LengthOfLastWord 3Y  
-Forgot to consider the space could be at the end and there could be multiple spaces.  
+####070_ClimbingStaris
+**Main Algo:** DP
+ 
+####071_SimplifyPath
+**Main Algo:** Using istringstream to split the path, use a stack to record the whole path.  
+**Corner Cases:** "///", "/../"
+**Core Codes:**
 
-059_SpiralMatrixII 1Y  
-If the parameter should be 2-D array, better use like f[x*m + y], where f is a m x n matrix;   
+```c++
+stack<string> dir;
+istringstream in(path);
 
-##2016.9.3  
-062_UniquePaths 1Y  
-063_UniquePathsII 1Y  
-dp  
+string cur;
+while(getline(in, cur, '/')){
+    if(cur.empty() || cur == "." || (cur == ".." && dir.empty()))
+        continue;
+    if(cur == "..")
+        dir.pop();
+    else
+        dir.push('/' + cur);
+}
+```
 
-##2016.9.4  
-064_MinimumPathSum 1Y  
-dp  
+####072_EditDistance 
+**Main Algo:** DP  
+**Core Codes:**
 
-060_PermutationSquence 2Y  
-1 TLE One by one  
-2 recursion  
+```c++
+f[0][0] = 0;
+for(int i = 1; i <= m; i++)
+    f[i][0] = i;
+for(int j = 1; j <= n; j++)
+    f[0][j] = j;
 
-066_PlusOne 1Y  
+for(int i = 0; i <= m; i++)
+    for(int j = 0; j <= n; j++)
+        if(word1[i - 1] == word2[j - 1])
+            f[i][j] = f[i - 1][j - 1];
+        else
+            f[i][j] = min(f[i - 1][j], min(f[i][j - 1], f[i - 1][j - 1])) + 1;
+```
+####073_SetMatrixZeroes
+**Main Algo:** To do it in-place, we use the first row and first column to help us to record whether to delete this column or this row. At first we have to find out whether to delete the first row or first column.  
+**Core Codes:**
 
-067_AddBinary 1Y  
+```c++
+if(matrix.empty()) return ;
+int rowSize = matrix.size(), colSize = matrix[0].size();
+bool firstRow = false, firstCol = false;
+for(int c = 0; c < colSize; ++c) if(matrix[0][c] == 0) firstRow = true;
+for(int r = 0; r < rowSize; ++r) if(matrix[r][0] == 0) firstCol = true;
+for(int r = 1; r < rowSize; ++r)
+    for(int c = 1; c < colSize; ++c)
+        if(matrix[r][c] == 0) matrix[0][c] = matrix[r][0] = 0;
+for(int c = 1; c < colSize; ++c) 
+    if(matrix[0][c] == 0)
+        for(int r = 1; r < rowSize; ++r)
+            matrix[r][c] = 0;
+for(int r = 1; r < rowSize; ++r) 
+    if(matrix[r][0] == 0)
+        for(int c = 1; c < colSize; ++c)
+            matrix[r][c] = 0;
+if(firstRow) for(int c = 0; c < colSize; ++c) matrix[0][c] = 0;
+if(firstCol) for(int r = 0; r < rowSize; ++r) matrix[r][0] = 0;
+```
 
-069_Sqrt(x) 2Y  
-1 WA Overflow when compare i * i <= x;   
+####074_SearchA2DMatrix
+**Main Algo:** We start from the top-right most position. Every time if the element is smaller than target, we move down to the next row; if it is larger than target, we move to the left column.  
+**Core Codes:**
 
-070_ClimbingStaris 1Y  
-DP  
+```c++
+int x = 0, y = matrix[0].size() - 1;
+while(x < matrix.size() && y >= 0){
+    if(matrix[x][y] < target)
+        x++;
+    else if(matrix[x][y] > target)
+        y--;
+    else
+        return true;
+}
+```
 
-##2016.9.6  
-056_MergeIntervals  
-for(int i = 0; i < intervals.size() - 1; i++)  
-      for(int j = i + 1; j < intervals.size(); j++)  
-             if(!(intervals[i].start > intervals[j].end) && !(intervals[i].end < intervals[j].start)){   
-//Overlapped  
-                        Interval a = intervals[i], b = intervals[j];  
-                        Interval newInterval(min(a.start, b.start), max(a.end, b.end));  
+####075_SortColors
+**Main Algo:** Count the numbers each color. Or do it in the way below.  
+**Core Codes:**
 
-                        intervals.erase(intervals.begin() + j);  
-                        intervals.erase(intervals.begin() + i);  
-                        intervals.insert(intervals.begin() + i, newInterval);  
-                        j = i;   //Until convergent  
-                    }  
- return intervals;       
+```c++
+vector<int> colors(k);
+for (int i = 0; i < nums.size; i++) {
+    int current = k, num = nums[i];
+    while (--current >= num)
+        nums[colors[current]++] = current;
+}
+```  
+ 
+####077_Combinations
+**Main Algo:** DFS  
+**Core Codes:**
 
-057_InsertInterval 2Y  
-1 WA didn't do it recursively  
-for(auto i = intervals.begin(); i != intervals.end(); i++){  
-            if(newInterval.end < i->start){  
-                intervals.insert(i, newInterval);  
-                return intervals;  
-            } else if(newInterval.start > i->end){  
-                continue;  
-            } else {  
-                newInterval.start = min(newInterval.start, i->start);  
-                newInterval.end = max(newInterval.end, i->end);  
-                intervals.erase(i);  
-                return insert(intervals, newInterval);  
-            }  
-        }  
-        intervals.insert(intervals.end(), newInterval);  
-        return intervals;   
-    }  
+```c++
+if(depth == k) {
+    result.push_back(path);
+    return;
+}
 
-071_SimplifyPath 3Y  
+for(int i = last + 1; i <= n; i++){ // keep it in asendant order
+    path.push_back(i);
+    dfs(depth + 1, i, n, k, path, result);
+    path.pop_back();
+}
+```  
 
-072_EditDistance 2Y  
-1 WA wrong border conditions.  
+####078\_Subsets && 090_SubsetsII
+**Main Algo:** For each number we have two distinct choice, choose or not. In subsetsII, we have to sort the nums first to ensure the answers are in asendant order and have to remove the duplicate results at the end.  
+**Core Codes:**
 
-073_SetMatrixZeroes 1Y  
+```c++
+vector<vector<int>> result(1, vector<int>());
+for(int i = 0; i < nums.size(); i++){
+    vector<vector<int>> temp = result;
+    for(auto& k:temp)
+        k.push_back(nums[i]);
+    result.insert(result.end(), temp.begin(), temp.end());
+}
+```
 
-075_SortColors 1Y  
-
-##2016.9.7  
-077_Combinations 1Y  
-dfs  
-
-078_Subsets 1Y  
-dfs  
-
-##2016.9.8 – 9.18  
 079_WordSearch dfs  
+
+####080_RemoveDuplicatesfromSortedArrayII
+
+**Core Codes:**
+```c++
+int i = 0;
+for (int n : nums)
+    if (i < 2 || n > nums[i-2])
+        nums[i++] = n;
+return i;
+```
+
+####082_RemoveDuplicatesfromSortedListII && 083_RemoveDuplicatesfromSortedListI
+**Core Codes:** A dummy node will sometimes help.
+**Core Codes:**
+
+```c++
+ListNode *dummy = new ListNode(-1);
+dummy->next = head;
+ListNode *last = dummy;
+
+while(last->next != nullptr && last->next->next != nullptr)
+    if(last->next->val == last->next->next->val){
+        int same = last->next->val;
+        while(last->next != nullptr && last->next->val == same)
+            last->next = last->next->next;
+    } else{
+        last = last->next;
+    }
+return dummy->next;
+```
 
 084_LargestRectangleInHistogram  
 
-091_DecodeWays dp  
+####086_PartitionList
+**Main Algo:** Recursively we got the PartitionedList of the next node, and decide where to insert the current node.
+**Core Codes:**
 
-095_UniqueBinarySearchTreeII 2Y  
-Forgot the empty result.  
+```c++
+if(head->val < x){
+    head->next = partition(head->next, x);
+    return head;
+} else{
+    ListNode* dummy = new ListNode(-1);
+    dummy->next = partition(head->next, x);
+    ListNode* last = dummy, *now = dummy->next;
+    while(head->val >= x && now != nullptr && now->val < x){
+        last = now;
+        now = now->next;
+    }
+    last->next = head;
+    head->next = now;
+    return dummy->next;
+}
+```
 
-096_UniqueBinarySearchTrees 2Y  
-Forgot to set the array to be all 0;  
+####088_MergeSortedArray
+**Core Codes:**
 
-097_InterleavingString 2Y  
-1 TLE use recursive function would TLE  
-2Y mind the boundary conditions  
+```c++
+int ia = m - 1, ib = n - 1, icur = m + n - 1;while(ia >= 0 && ib >= 0) {
+    A[icur--] = A[ia] >= B[ib] ? A[ia--] : B[ib--];}while(ib >= 0) {    A[icur--] = B[ib--];  }
+```
 
-098_ValidateBinarySearchTree 2y  
-1WA A valid binary search tree is that the maximum of the left subtree is smaller than the val of root and the minimum of the right is bigger than the val of root.  
+####089_GrayCode
+**Main Algo:** For a n bit gray code, the first 2^(n - 1) and last 2^(n - 1) are symmetric except the highest digit, for the former one is zero, and for the later one is 1.
+**Core Codes:**
 
-100_SameTree 1Y  
+```c++
+if(n == 0)
+    return vector<int>(1, 0);
 
-101_SymmetricTree 1Y  
+vector<int> result1;
+result1 = grayCode(n - 1);
+vector<int> result = result1;
+for(int i = result1.size() - 1; i >=0; i--)
+    result.push_back((1 << (n - 1)) + result1[i]);
+```
 
-102_BinaryTreeLevelOrderTraversal 1Y  
+####091_DecodeWays
+**Main Algo:** DP
+**Corner Cases:** s[i - 1] == '0'  
+**Core Codes:**  
 
-103_BinaryTreeZigzagLevelOrderTraversal 1Y  
+```c++
+for(int i = 0; i < s.length(); i++){
+    if(i == 0){
+        if(s[0] != '0')
+            f[i] = 1;
+        else
+            f[i] = 0;
+    } else if (i == 1){
+        if(s[i] != '0')
+            f[i] = f[i - 1];
+        if(stoi(s.substr(i - 1, 2)) <= 26 && s[i - 1] != '0')
+            f[i] += 1;
+    } else {
+        if(s[i] != '0')
+            f[i] = f[i - 1];
+        if(stoi(s.substr(i - 1, 2)) <= 26 && s[i - 1] != '0')
+            f[i] += f[i - 2];
+    }
+}
+```
 
-##2016.9.20  
-104_MaximumDepthOfBinaryTree 1Y  
+####092_ReverseLinkedListII
+**Main Algo:** Recursion, return the result of the next node.
+**Core Codes:**
+
+```c++
+if(count < m){
+    head->next = reverse(head->next, count + 1, m ,n);
+    return head;
+} else if(count == n){
+    return head;
+} else {
+    ListNode* newHead = reverse(head->next, count + 1, m, n);
+    int nowCount = count + 1; 
+    ListNode* now = newHead;
+    while(nowCount != n){
+        now = now->next;
+        nowCount++;
+    }
+    head->next = now->next;
+    now->next = head;
+    
+    return newHead;
+}
+```
+
+####093_ValidIPAddress
+**Core Codes:**
+
+```c++
+if(s.empty())
+    return;
+
+for(int i = 1; i <= min((int)s.length(), 3); i++){
+    string now = s.substr(0, i);
+    // Illegal conditions, multiple 0's or larger than 255
+    if(i == 3 && now > "255" || (i != 1 && s[0] == '0')) 
+        break;
+    num[pos] = now;
+    dfs(pos + 1, num, s.substr(i), result);
+}
+```
+
+####095\_UniqueBinarySearchTreeII && 096_UniqueBinarySearchTrees
+**Main Algo:** Divide and conquer, recursion or DP all work.  
+**Core Codes:**
+
+```c++
+//UniqueBinarySearchTreeI
+f[0] = 1;
+f[1] = 1;
+for(int i = 2; i<= n; i++)
+    for(int root = 1; root <= i; root++){
+        f[i] += f[root - 1] * f[i - root];
+    }
+    
+//UniqueBinarySearchTreeII
+if(begin > end){
+    result.push_back(nullptr);
+    return result;
+}
+if(begin == end){
+    TreeNode *newRoot = new TreeNode(begin);
+    result.push_back(newRoot);
+    return result;
+}
+
+for(int root = begin; root <= end; root++){
+    vector<TreeNode*> left_nodes = genTree(begin, root - 1);
+    vector<TreeNode*> right_nodes = genTree(root + 1, end);
+    for(auto i = left_nodes.begin(); i != left_nodes.end(); ++i)
+        for(auto j = right_nodes.begin(); j != right_nodes.end(); ++j){
+            TreeNode *newRoot = new TreeNode(root);
+            newRoot->left = *i;
+            newRoot->right = *j;
+            result.push_back(newRoot);
+        }
+}
+```
+
+####097_InterleavingString
+**Main Algo:** DP, if use recursion, it would TLE.  
+**Core Codes:**
+
+```c++
+for(int i = 1; i <= n; i++)
+    f[i][0] = s1[i - 1] == s3[i - 1]?f[i - 1][0]:false;
+for(int j = 1; j <=m; j++)
+    f[0][j] = s2[j - 1] == s3[j - 1]?f[0][j - 1]:false;
+    
+for(int i = 1; i <= n; i++)
+    for(int j = 1; j <= m; j++)
+        if(s1[i - 1] == s3[i + j - 1] && s2[j - 1] == s3[i + j - 1])
+            f[i][j] = f[i - 1][j] || f[i][j - 1];
+        else if (s1[i - 1] == s3[i + j - 1])
+                f[i][j] = f[i - 1][j];
+        else if (s2[j - 1] == s3[i + j - 1])
+                f[i][j] = f[i][j - 1];
+        else f[i][j] = false;
+```
+ 
+
+####098_ValidateBinarySearchTree  
+**Main Algo:** Check if the right-most node of the left subtree is smaller than the root and the left-most node of the right subtree is larger than the root.  
+**Core Codes:**
+
+```c++
+if(root->left == nullptr)
+    leftResult = true;
+else{
+    TreeNode *now = root->left;
+    while(now->right != nullptr)
+        now = now->right;
+    leftResult = now->val < root->val;
+}
+
+if(root->right == nullptr)
+    rightResult = true;
+else{
+    TreeNode *now = root->right;
+    while(now->left != nullptr)
+        now = now->left;
+    rightResult = now->val > root->val;
+}
+
+return leftResult && rightResult && isValidBST(root->left) && isValidBST(root->right);
+``` 
+
+####099_RecoverBinarySearchTree
+
+####100\_SameTree && 101_SymmetricTree
+**Main Algo:** Recursion  
+
+####102\_BinaryTreeLevelOrderTraversal && 103_BinaryTreeZigzagLevelOrderTraversal 1Y  
+**Main Algo:** DFS or BFS, for Zigzag Order, when the level is odd, insert the node to the begining other wise push_back the node.  
+
+####104_MaximumDepthOfBinaryTree
+**Main Algo:** Recursion   
 
 107_BinaryTreeLevelOrderTraversalII 1Y  
 
@@ -1030,29 +1391,6 @@ Then I used two pointer to find the length difference, then start at the same le
 
 162_FindPeakElement 2Y
 
-049_GroupAnagram 1Y
-Redefined sort function
-
-## 2016.9.24
-061_RotateList 1Y
-
-074_SearchA2DMatrix 2Y
-A good template for binary search
-
-086_PartitionList 3Y
-1WA Insert head in front (all are greater or equal)
-2WA typo
-
-## 2016.9.25
-089_GrayCode 1Y
-pay attention that << >> has low priority   
-
-090_SubsetsII 2Y  
-The array may contain duplicates, so we have to sort every condition  
-
-092_ReverseLinkedListII 1Y
-Mistype n into m
-
 099_RecoverBinarySearchTree 2Y
 1WA Forget to consider leaf node
 There are three types  
@@ -1122,6 +1460,41 @@ Use sort function, rewrite the compare part
 
 217_ContainsDuplicate 1Y
 Use unordered_set  
+
+####218_TheSkylineProblem  
+**Main Algo:** 
+Use a max_heap to store the maximum height, we when meet the left wall, we insert and check if the max_height changed; for the right wall, we delete it and check if the max_height changed.  
+**Corner Cases:**
+The corner cases all about how to sort the points.
+
+* For left wall with same x, we made higher y first;
+* For right wall with same x, we made lower y first;
+* For left and right walls with same x, we made left first.  
+
+**Core Codes:** 
+
+```c++
+for(p : buildings){
+    points.push_back(make_pair(p[0], -p[2])); 
+    //We made the left wall's height to be negative, thus we could solve the sorting problem mentioned above.
+    points.push_back(make_pair(p[1], p[2]));
+}
+sort(points.begin(), points.end());
+
+multiset<int> max_heap = {0};
+int top = 0;
+for(p : points){
+    if(p.second < 0){
+        max_heap.insert(-p.second);
+    } else {
+        max_heap.erase(max_heap.find(p.second));
+    }
+    
+    if(*max_heap.rbegin() != top){
+        result.push_back(make_pair(p.first, top = *max_heap.rbegin()));
+    }
+}
+``` 
 
 219_ContainsDuplicateII 2Y  
 1 WA instead of s.erase(s.begin()) it's better to erase the exact number  
@@ -1454,13 +1827,6 @@ Use small prime to delete non-prime, need high space
 156_BinaryTreeUpsideDown 1Y  
 Return the root of the left subtree, and then find until right end and then insert root.  
 
-081_SearchInRotatedSortedArrayII 2Y  
-Similar to previous problem, the difference is that once head == tail, tail-- until different. 
-
-065_ValidNumber 3Y  
-Can contain only 1 e, right should be pure number.
-For fraction, right should not contain '-' or '+'  
-
 130_SurroundedRegions  2Y  
 DFS, find all illegal regions rather than legal  
 
@@ -1487,10 +1853,7 @@ My solution enumerates all pairs and check others which is a O(n^3). A better wa
 150_EvaluateReversePolishNotation 1Y  
 Use a stack to store the number, when then token is a opt, implement the calculation.  
 
-157_ReadNCharactersGivenRead4 2Y  
-
-068_TextJustification 3Y  
-Mind the details.  
+157_ReadNCharactersGivenRead4 2Y   
 
 159_LongestSubstringWithAtMostTwoDistinctCharacters 2Y  
 Keep two pointers, when legal, tail++, otherwise head ++.  
