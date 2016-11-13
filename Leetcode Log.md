@@ -31,12 +31,43 @@ if(s.size() - start > maxLen)
 return maxLen;
 ```
 
-####004_MedianOfTwoSortedArrays 1Y  
+####004_MedianOfTwoSortedArrays
+**Main Algo:** Check the k/2 th element in both array(remaining). If nums1[k/2] < nums2[k/2], the first k/2 element must be in the first half part.  
+**Core Codes:**
+
+```c++
+double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
+    int m = nums1.size(), n = nums2.size();
+    int total = m + n;
+    
+    if(total % 2 == 1)
+        return findMedian(nums1, 0, nums2, 0, total / 2 + 1);
+    else
+        return (findMedian(nums1, 0, nums2, 0, total/2) + findMedian(nums1, 0, nums2, 0, total/2+1)) / 2.0;
+}
+
+int findMedian(vector<int>& nums1, int start1, vector<int>& nums2, int start2, int k){
+    if(start1 >= nums1.size())
+        return nums2[start2 + k - 1];
+    if(start2 >= nums2.size())
+        return nums1[start1 + k - 1];
+    if(k == 1)
+        return min(nums1[start1], nums2[start2]);
+        
+    int mid1 = start1 + k/2 <= nums1.size()?nums1[start1 + k/2 - 1]:INT_MAX; // If one of the array's size is less than k/2
+    int mid2 = start2 + k/2 <= nums2.size()?nums2[start2 + k/2 - 1]:INT_MAX;
+    
+    if(mid1 < mid2)
+        return findMedian(nums1, start1 + k/2, nums2, start2, k - k/2);
+    else
+        return findMedian(nums1, start1, nums2, start2 + k/2, k - k/2);
+}
+```
 
 ####005_LongestPalindromicSubstring
 **Main Algo:** 
 
-* Enum all mids(odd and even are differnt), find the length, DP, O(n^2).  
+* Enum all mids(odd and even are differnt), find the length, or DP, O(n^2).  
 * **Manacher’s Algorithm O(n)**
 
 ####006_ZigZagCoversion
@@ -65,6 +96,27 @@ for(int i = 0; i < s.size(); i++){
 * ‘+’ and ‘-’
 * conversion breaks when there is a character which is not a number. 
 * overload of MAX_INT and MIN_INT.  
+
+```c++
+int myAtoi(string str) {
+    // sign is to record +/- if any in str; num is the number value; pos is the progress position in str
+    long sign = 1, num = 0, pos = 0;
+    
+    // skip initial spaces
+    while (pos < str.length() && str[pos] == ' ') pos++;                        
+    
+    // extract sign if any
+    if (pos < str.length() && (str[pos] == '+' || str[pos] == '-'))
+        sign = str[pos++] == '-' ? -1 : 1;    
+    
+    // extract number if any, stop if num exceeds INT_MAX boundary
+    while (pos < str.length() && isdigit(str[pos]) && num <= INT_MAX)
+        num = num * 10 + (str[pos++] - '0');
+    
+    // make sure answer does not exceed int boundary
+    return sign == 1 ? min(num, (long)INT_MAX) : max(-num, (long)INT_MIN);
+}
+```
 
 ####009_PalindromeNumber
 **Corner Case:**
@@ -104,9 +156,7 @@ else
         return match(s, p, s_pos, p_pos + 2);
     else 
         return false;
-```
 
-```c++
 //DP with space compression
 for(int i = 1; i <= n; i++){
     f[i % 2][0] = false; // Must write this
@@ -124,7 +174,7 @@ for(int i = 1; i <= n; i++){
 **Main Algo:** Greedy, from the outside to inside, the height was determined by the lower buck. So we always choose the higher one to be remained. Since the distance is decreasing.  
 **Core codes**
 
-```C++
+```c++
 while (start < end) {
     int area = min(height[end], height[start]) * (end - start);
     result = max(result, area);
@@ -204,9 +254,9 @@ for(auto i = nums.begin(); i != prev(nums.end(), 2); i++){
 ####018_4Sum
 **Main Algo:** Four pointers  
 
-####019_RemoveNthNodeFromEndOfList 1Y  
+####019_RemoveNthNodeFromEndOfList
 **Main Algo:** The best way to solve this problem is to set two pointer at the begining. The first one go n steps first and then they go together until the first on goes to the end.  
-**Corner Cases:** empty list, or remove the head node.
+**Corner Cases:** empty list, or remove the head node.  
 **Core Codes:**  
 
 ```c++
@@ -270,6 +320,7 @@ while(!heap.empty()){
 now->next = nullptr;
 return head;
 ```
+
 ####022_GenerateParentheses  
 **Main Algo:** The parentheses follow the rule that if the unpaired left ones are zero, you couldn’t put a right one. Besides, if n * 2 - pos == leftn, then you can only put right ones.  
 **Core codes:** 
@@ -362,7 +413,7 @@ while (dvd >= dvs) {
 return sign == 1 ? res : -res; 
 ```
 ####030_SubstringWithConcatenationOfAllWords
-**Main Algo:** An important condition--all words are the same length. 
+**Main Algo:** An important condition--all words are the same length.  
 **Core Codes:**
 
 ```c++
@@ -970,6 +1021,32 @@ for (int i = 0; i < nums.size; i++) {
         nums[colors[current]++] = current;
 }
 ```  
+####076_MinimumWindowSubstring
+**Main Algo:** Sliding window with two pointers, once we expand the tail and find it cover the t string, we shrink the head.  
+**Core Codes:**
+
+```c++
+string minWindow(string s, string t) {
+    int minLength = INT_MAX, start = 0, min_start;
+    int cur = 0;
+    unordered_map<char, int> t_count;
+    for(auto i:t) t_count[i]++;
+    
+    for(int i = 0; i < s.length(); i++){
+        if(t_count[s[i]]-- > 0) cur++;
+        
+        while(cur == t.size()){
+            if(i - start + 1 < minLength){
+                minLength = i - start + 1;
+                min_start = start;
+            } 
+            if(t_count[s[start++]]++ == 0) cur--;
+        }
+    }
+    
+    return minLength == INT_MAX?"":s.substr(min_start, minLength);
+}
+``` 
  
 ####077_Combinations
 **Main Algo:** DFS  
@@ -1002,11 +1079,78 @@ for(int i = 0; i < nums.size(); i++){
 }
 ```
 
-079_WordSearch dfs  
+####079\_WordSearch && 212_WordSearchII
+**Main Algo:** For WordSearchII, we build a trie tree using the words for search. DFS the board and push_back the index once we find one.  
+**Corner Cases:** Since we can not go out of the board, so we check the next nodes's idx. For example board is [[a]], word is a.  
+**Core Codes:**
+
+```c++
+class Solution {
+public:
+    vector<string> findWords(vector<vector<char>>& board, vector<string>& words) {
+        TrieNode *root = new TrieNode();
+        for(int i = 0; i < words.size(); i++)
+            constructTrieTree(root, words[i], i);
+        
+        for(int i = 0; i < board.size(); i++)
+            for(int j = 0; j < board[0].size(); j++)
+                dfs(i, j, root, board);
+                
+        vector<string> result;
+        for(auto i:result_idx)
+            result.push_back(words[i]);
+            
+        return result;
+    }
+private:
+    struct TrieNode{
+        TrieNode* next[26];
+        int idx = -1;
+        TrieNode(){
+            fill(next, next + 26, nullptr);
+        }
+    };
+    vector<int> result_idx;
+    
+    void dfs(int i, int j, TrieNode* root, vector<vector<char>>& board){
+        if(board[i][j] == 0 || root->next[board[i][j] - 'a'] == nullptr)
+            return;
+            
+        char cur = board[i][j];
+        TrieNode *p = root->next[cur - 'a'];
+        // we check if we can find a word by the end of this node.
+        if(p->idx != -1){
+            result_idx.push_back(p->idx);
+            p->idx = -1;
+        }
+        
+        board[i][j] = 0;
+        if(i > 0) 
+            dfs(i - 1, j, root->next[cur - 'a'], board);
+        if(i < board.size() - 1) 
+            dfs(i + 1, j, root->next[cur - 'a'], board);
+        if(j > 0) 
+            dfs(i, j - 1, root->next[cur - 'a'], board);
+        if(j < board[0].size() - 1) 
+            dfs(i, j + 1, root->next[cur - 'a'], board);
+        board[i][j] = cur;
+    }
+    
+    void constructTrieTree(TrieNode* root, string s, int i_idx){
+        for(auto c:s){
+            if(root->next[c - 'a'] == nullptr){
+                root->next[c - 'a'] = new TrieNode();
+                root = root->next[c - 'a'];
+            } else root = root->next[c - 'a'];
+        }
+        root->idx = i_idx;
+    }
+};
+```
 
 ####080_RemoveDuplicatesfromSortedArrayII
-
 **Core Codes:**
+
 ```c++
 int i = 0;
 for (int n : nums)
@@ -1015,8 +1159,8 @@ for (int n : nums)
 return i;
 ```
 
-####082_RemoveDuplicatesfromSortedListII && 083_RemoveDuplicatesfromSortedListI
-**Core Codes:** A dummy node will sometimes help.
+####082\_RemoveDuplicatesfromSortedListII && 083_RemoveDuplicatesfromSortedListI
+**Core Codes:** A dummy node will sometimes help.  
 **Core Codes:**
 
 ```c++
@@ -1035,7 +1179,30 @@ while(last->next != nullptr && last->next->next != nullptr)
 return dummy->next;
 ```
 
-084_LargestRectangleInHistogram  
+####084_LargestRectangleInHistogram
+**Main Algo:** Keep an asendant stack, we push the current idx if the height is larger then the top one, and we pop one by one once the current index's height is smaller than the top. Each pop we could calculate the area of the top element by **height * (currentIdx - nextTop(if not then it's 0))** And at then end we push a height 0 to the end of the heights.  
+**Core Codes:**
+
+```c++
+stack<int> s;
+heights.push_back(0);
+
+int maxArea = 0;
+for(int i = 0; i < heights.size(); i++){
+    if(s.empty() || heights[i] > heights[s.top()])
+        s.push(i);
+    else{
+        while(!s.empty() && heights[s.top()] > heights[i]){
+            int curIdx = s.top();
+            s.pop();
+            int curArea = heights[curIdx] * (s.empty()?i:(i - s.top() - 1));
+            if(curArea > maxArea)
+                maxArea = curArea;
+        }
+        s.push(i);
+    }
+}
+```
 
 ####086_PartitionList
 **Main Algo:** Recursively we got the PartitionedList of the next node, and decide where to insert the current node.
@@ -1056,6 +1223,49 @@ if(head->val < x){
     last->next = head;
     head->next = now;
     return dummy->next;
+}
+```
+
+####087_ScrambleString
+**Main Algo:** We just enum all possible breaks(roots) and check if rotate(or not) can form the two string to be the same.  For recursion algorithm. In order to reduce redundant calculation, we use an unordered_map to store the results that we have calculated.  
+**Core Codes:**
+
+```c++
+//DP version, faster
+for(int i = 0; i < n; i++)
+    for(int j = 0; j < n; j++)
+        f[1][i][j] = (s1[i] == s2[j]);
+
+for(int len = 2; len <= n; len++)
+    for(int i = 0; i + len <= n; i++)
+        for(int j = 0; j + len <= n; j++)
+            for(int breakLen = 1; breakLen < len; breakLen++)
+                if((f[breakLen][i][j] && f[len - breakLen][i + breakLen][j + breakLen]) || 
+                    (f[breakLen][i][j + len - breakLen] && f[len - breakLen][i + breakLen][j])){
+                        f[len][i][j] = true;
+                        break;
+                    }
+                            
+// Recursion with memory, slow.
+unordered_map<string, bool> hash;
+    
+bool scramble(string& s1, int b1, int e1, string& s2, int b2, int e2){
+    if(hash.count(to_string(b1) + '+' + to_string(e1) + '+' + to_string(b2) + '+' + to_string(e2)))
+        return hash[to_string(b1) + '+' + to_string(e1) + '+' + to_string(b2) + '+' + to_string(e2)];
+        
+    if(s1.substr(b1, 1) == s2.substr(b2, 1))
+        return true;
+
+            
+    for(int len = 1; b1 + len < e1; len++){
+        if((scramble(s1, b1, b1 + len, s2, b2, b2 + len) && scramble(s1, b1 + len, e1, s2, b2 + len, e2)) ||
+            (scramble(s1, b1, b1 + len, s2, e2 - len, e2) && scramble(s1, b1 + len, e1, s2, b2, e2 - len))){
+                hash[to_string(b1) + '+' + to_string(e1) + '+' + to_string(b2) + '+' + to_string(e2)] = true;
+                return true;
+            }
+    }
+    hash[to_string(b1) + '+' + to_string(e1) + '+' + to_string(b2) + '+' + to_string(e2)] = false;
+    return false;
 }
 ```
 
@@ -1240,50 +1450,213 @@ return leftResult && rightResult && isValidBST(root->left) && isValidBST(root->r
 ####100\_SameTree && 101_SymmetricTree
 **Main Algo:** Recursion  
 
-####102\_BinaryTreeLevelOrderTraversal && 103_BinaryTreeZigzagLevelOrderTraversal 1Y  
+####102\_BinaryTreeLevelOrderTraversal && 103_BinaryTreeZigzagLevelOrderTraversal && 107_BinaryTreeLevelOrderTraversalII
 **Main Algo:** DFS or BFS, for Zigzag Order, when the level is odd, insert the node to the begining other wise push_back the node.  
 
 ####104_MaximumDepthOfBinaryTree
 **Main Algo:** Recursion   
 
-107_BinaryTreeLevelOrderTraversalII 1Y  
+####105\_ConstructBinaryTreeFromPreorderAndInorderTraversal && 106_ConstructBinaryTreeFromInorderAndPostorderTraversal
+**Core Codes:** 
 
-108_ConvertSortedArrayToBinarySearchTree 1Y  
+```c++
+// Iterator version for in&post order rebuild.
+typedef vector<int>::iterator P;
+    
+TreeNode* build(P ibegin, P iend, P pbegin, P pend){
+    if(ibegin == iend || pbegin == pend)
+        return nullptr;
+        
+    auto cur = *prev(pend);
+    TreeNode* root = new TreeNode(cur);
+    auto mid = find(ibegin, iend, cur);
+    auto dist = distance(ibegin, mid);
+    root->left = build(ibegin, mid, pbegin, pbegin + dist);
+    root->right = build(next(mid), iend, pbegin + dist, prev(pend));
+    
+    return root;
+}
+```
 
-109_ConvertSortedListToBinarySearchTree 1Y  
+####108\_ConvertSortedArrayToBinarySearchTree && 109_ConvertSortedListToBinarySearchTree 1Y  
+**Main Algo:** In order to keep the tree balance, we choose the middle element to be the root and construct left and right subtree recursively.  
+**Core Codes:** 
 
-110_BalancedBinaryTree 1Y  
+```c++
+TreeNode* sortedListToBST(ListNode* head) {
+    if(head == nullptr)
+        return nullptr;
+    if(head->next == nullptr)
+        return new TreeNode(head->val);
+    
+    int count = 0;
+    ListNode *p = head;
+    while(p != nullptr){
+        count++;
+        p = p->next;
+    }
+    
+    count = count / 2;
+    ListNode *pre, *now = head;
+    for(int i = 0; i < count; i++){
+        pre = now;
+        now = now->next;
+    }
+    TreeNode *root = new TreeNode(now->val);
+    pre->next = nullptr;
+    root->left = sortedListToBST(head);
+    root->right = sortedListToBST(now->next);
+    
+    return root;
+}
+```
 
-111_MinimumDepthOfBinaryTree 2Y  
-1WA a leaf node is a node whose left and right children are all nullptr  
+####110\_BalancedBinaryTree && 111_MinimumDepthOfBinaryTree  
+**Corner Cases:** If a node has only one child, the depth should depth(child) + 1.    
+**Main Codes:**
 
-112_PathSum 1Y  
-Pay attention to leaf node.  
+```c++
+if(root == nullptr)
+    return 0;
+if(root->left == nullptr && root->right == nullptr)
+    return 1;
+if(root->left == nullptr)
+    return minDepth(root->right) + 1;
+if(root->right == nullptr)
+    return minDepth(root->left) + 1;
+return min(minDepth(root->left), minDepth(root->right)) + 1;
+```  
 
-113_PathSumII 2Y  
-If use vector to store the path, remember to erase the item whenever at the end of the function  
+####112\_PathSum && 113_PathSumII
+**Main Algo:** Recursion or DFS search. There could be identical paths since there could be nodes with the same vals.  
+**Corner Cases:** Do not use (sum == 0 && root == nullptr) to judge. Since we can not guarantee it is generated by a leaf node and will make the same path be recorded twice.  
+**Core Codes:**
+   
+```c++
+vector<vector<int>> pathSum(TreeNode* root, int sum) {
+vector<vector<int>> result;
+if(root == nullptr)
+    return result;
+if(root->left == nullptr && root->right == nullptr && root->val == sum)
+    return vector<vector<int>>(1, vector<int>(1, root->val));
 
-114_FlattenBinaryTreeToLinkedList 2Y  
-1WA forgot to delete the left child of root  
+vector<vector<int>> temp = pathSum(root->left, sum - root->val);
+result.insert(result.end(), temp.begin(), temp.end());
 
-115_DistinctSubsequence 1Y  
-DP  
+temp = pathSum(root->right, sum - root->val);
+result.insert(result.end(), temp.begin(), temp.end());
 
-116_PopulatingNextRightPointerInEachNode 3Y  
-1WA Didn't consider the left node or the only root  
-2WA Didn't consider root has no next  
+for(auto& k:result)
+    k.insert(k.begin(), root->val);
 
-117_PopulatingNextRightPointerInEachNode Multi WA  
-BFS use queue.  
+return result;
+}
+```
+####114_FlattenBinaryTreeToLinkedList
+**Main Algo:** We insert the left subtree between root and right subtree, and left left node to be null, and then flatten right subtree(which has been changed since we insert left subtree here). This takes only O(1) space.  
+**Core Codes:**
 
-118_PascalsTriangle 1Y  
-Pay attention to returning a new vector, we do not have to add new because once we do that we will return a pointer  
+```c++
+TreeNode *left = root->left;
+root->left = nullptr;
 
-119_PascalsTriangleII 2Y  
-1WA At first I want to use the formula to calculate, but it would overload when I was calculating the factor.So i just sum up from the last row.  
+if(left != nullptr){
+    TreeNode *cur = left;
+    while(cur->right != nullptr)
+        cur = cur->right;
+    cur->right = root->right;
+    root->right = left;
+}
+flatten(root->right);
+```  
 
-120_Triangle 2Y  
-When j is 0 or i, there is only one way.  
+####115_DistinctSubsequence
+**Main Algo:** DP. if s[i - 1] equals t[j - 1]. Then we have two choices here, pair or not. So f[i][j] = f[i - 1][j - 1] + f[i - 1][j]; Otherwise f[i][j] can only be f[i - 1][j];  
+**Core Codes:**
+
+```c++
+vector<vector<int> > f(m + 1, vector<int>(n + 1, 0));
+        
+for(int i = 0; i <= m; i++)
+    f[i][0] = 1;
+    
+for(int j = 1; j <= n; j++){
+    for(int i = j; i <= m; i++){
+        if(s[i - 1] == t[j - 1])
+            f[i][j] = f[i - 1][j - 1] + f[i - 1][j];
+        else
+            f[i][j] = f[i - 1][j];
+    }
+}
+return f[m][n];
+```
+
+####116\_PopulatingNextRightPointerInEachNode && 117_PopulatingNextRightPointerInEachNode Multi
+**Main Algo:** For population problem 1, the tree is perfect, so we can just use the simple recursion to do that. In problem II, since there will be gaps, it's much easier to use BFS.  
+**Core Codes:** 
+
+```c++
+// recursive solution for populatingI 
+if (!r) return;
+if (r->left) r->left->next = r->right;
+if (r->right) r->right->next = (r->next)? r->next->left : NULL;
+connect(r->left);
+connect(r->right);
+
+//BFS solution.
+``` 
+
+####118\_PascalsTriangle && 119_PascalsTriangleII
+**Main Algo:** 
+
+* Calculate row by row. 
+* Math formula. Control overflow.
+
+**Core Codes:**
+
+```c++
+// Row by row.
+vector<int> last = getRow(rowIndex - 1);
+for(int i = 0; i <= last.size(); i++)
+    if(i == 0 || i == last.size())
+        result.push_back(1);
+    else
+        result.push_back(last[i] + last[i - 1]);
+        
+// Math solution
+vector<int> v(rowIndex+1);
+uint m = rowIndex / 2;
+v[0] = 1;
+for (uint i = 1, k = rowIndex; i <= m; i++, k--) {
+    v[i] = (unsigned long long)v[i-1] * k / i;
+}
+for (uint i = m+1, j = (rowIndex-1)/2; i <= rowIndex; i++, j--) {
+    v[i] = v[j];
+}
+return v;
+```
+
+####120_Triangle
+**Main Algo:** DP  
+**Corner Cases:** n = 0    
+**Core Codes:**
+
+```c++
+if(n == 0)
+    return 0;
+
+for(int i = 1; i < n; i++)
+    for(int j = 0; j <= i; j++)
+        if(j > 0 && j < i)
+            triangle[i][j] += min(triangle[i - 1][j], triangle[i - 1][j - 1]);
+        else if(j == 0)
+                triangle[i][j] += triangle[i - 1][j];
+            else
+                triangle[i][j] += triangle[i - 1][j - 1];
+
+return *min_element(triangle[n-1].begin(), triangle[n-1].end());
+```
+
 
 121_BestTimeToBuyAndSellStock 2y  
 The lowest point coult be equal to one of its neightbor so the condition should be >= and<=  
@@ -1301,33 +1674,246 @@ if(i == prices.size() - 1 && prices[i] > prices[i - 1])
 if(i > 0 && i < prices.size() - 1 && prices[i+1] <= prices[i] && prices[i - 1] < prices[i])  
     maxProfit += prices[i] - buyPoint;  
 
-125_ValidPalindrome 2Y  
-1TLE used recursive function  
+####124_BinaryTreeMaximumPathSum
+**Main Algo:** DFS return the maximum path to the node, all we have to compare is the two maximum paths plus root or the result in the two subtrees.  
+**Core Codes:**
+```c++
+public:
+	int maxPathSum(TreeNode* root) {
+        if(root == nullptr)
+            return 0;
+        if (root->left == nullptr && root->right == nullptr)
+            return root->val;
+            
+        int a = dfs(root);
+        
+        return result;
+    }
+    
+private:
+	 int result = -INT_MIN;
+    
+    int dfs(TreeNode *root){
+        if(root == nullptr) return 0;
+        
+        int left = dfs(root->left);
+        int right = dfs(root->right);
+        
+        if(root->val + left + right > result)
+            result = root->val + left + right;
+            
+        return max(max(left, right) + root->val, 0); 
+    }
+```
 
-129_SumRootToLeafNumbers 1Y  
-If use a char to initialize a string, use string(int, char);  
+####125_ValidPalindrome
+**Main Algo:** Compare head and tail, ignore cases and non-letters.  
 
-105_ConstructBinaryTreeFromPreorderAndInorderTraversal 3Y  
-1 MLE Since every time we passed two new vectors so the memory limits were exceeded  
-2 WA If we use the head and end pointer, find function would be dificult because it return a iterator.  
+####128_LongestConsecutiveSequence
+**Main Algo:** Use an unordered_map to store the numbers and find all clusters. **Take care of overflows.**
+**Core Codes:**
 
-106_ConstructBinaryTreeFromInorderAndPostorderTraversal 1Y  
-Similar to the previous problem.  
+```c++
+unordered_map<int, bool> hash;
+for(auto i:nums) hash[i] = false;
 
-136_SingleNumber 1Y  
-Use unordeded_set  
-A better way is to use XOR  
+int maxLength = 0;
+for(auto i:nums){
+    if(hash[i])
+        continue;
+    else {
+        int count = 1;
+        for(long j = i + 1; j <= INT_MAX && hash.count(j) && !hash[j]; j++){
+            count++;
+            hash[j] = true;
+        }
+        
+        for(long j = i - 1; j >= INT_MIN && hash.count(j) && !hash[j]; j--){
+            count++;
+            hash[j] = true;
+        }
+        maxLength = max(maxLength, count);
+    }
+}
+```
 
-137_SingleNumberII 1Y  
-Use unordered_map  
-A better way is to count for every bit and mod 3  
+####129_SumRootToLeafNumbers
+**Main Algo:** Simple recursion.   
 
-##2016.9.22  
-128_LongestConsecutiveSequence 1Y  
-Use unordered_map to record if it has appeared.  
+####130_SurroundedRegions  
+**Main Algo:** DFS, from all O's at the boundary, and find all adjacent O's change them into a new state. Finally we change all O's to X because they can not be reached(surrounded by Xs) and change the middle-state to Os.  
+**Core Codes:**
 
-131_PalindromePartitioning 2Y  
-Typo, should insert s.substr(0, i) at the end of partition(s.substr(i));  
+```c++
+void dfs(int i, int j, vector<vector<char>>& board){
+    int direc[5] = {0, 1, 0, -1, 0};
+    
+
+    board[i][j] = '#';
+    for(int d = 0; d < 4; d++){
+        int i1 = i + direc[d], j1 = j + direc[d + 1];   
+        if(i1 > 0 && i1 < board.size() - 1 && j1 > 0 && j1 < board[0].size() - 1 && board[i1][j1] == 'O')
+            dfs(i1, j1, board);
+    }
+}
+```
+
+####131\_PalindromePartitionI && 132_PalindromePartitioningII 
+**Core Codes:**
+
+```c++
+// PalindromePartitionI
+for(int i = 1; i < s.length();i++){
+    if(isPalindrome(s.substr(0, i))){
+        vector<vector<string>> right = partition(s.substr(i));
+            
+        for(int j = 0; j < right.size(); j++) {
+            right[j].insert(right[j].begin(), s.substr(0, i));
+        }
+        result.insert(result.end(), right.begin(), right.end());
+    }
+}
+
+if(isPalindrome(s))
+    result.push_back(vector<string>(1, s));
+
+// PalindromePartitionII
+vector<int> minCut(n, INT_MAX);
+vector<vector<bool>> palin(n, vector<bool>(n, false));
+
+minCut[0] = 0;
+for(int end = 1; end < n; end++)
+    for(int start = end; start >= 0; start--){
+        if(s[start] == s[end] && (end - start < 2 || palin[start + 1][end - 1])){
+            palin[start][end] = true;
+            if(start == 0)
+                minCut[end] = 0;
+            else
+                minCut[end] = min(minCut[end], minCut[start - 1] + 1); 
+        }
+    }
+```
+####133_CloneGraph
+**Main Algo:** To reduce redundant clone, we use a unordered_map to store whether this label's node has been cloned or not.  
+**Core Codes:**
+
+```c++
+UndirectedGraphNode *graphNode(UndirectedGraphNode *node, 
+	unordered_map<int, UndirectedGraphNode*> &searched){
+    if(searched.count(node->label))
+        return searched[node->label];
+        
+    UndirectedGraphNode *newNode = new UndirectedGraphNode(node->label);
+    for(int i = 0; i < node->neighbors.size(); i++)
+        newNode->neighbors.push_back(node->neighbors[i]);
+    
+    searched[newNode->label] = newNode;
+    
+    for(int i = 0; i < newNode->neighbors.size(); i++)
+        newNode->neighbors[i] = graphNode(newNode->neighbors[i], searched);
+    
+    return newNode;
+}
+```
+
+####134_GasStation
+**Main Algo:** The start station could be the position where remain[i] > 0 and remain[i - 1] < 0. Then we check all possible start stations to see if we could reach a circle.  
+**Core Codes:**
+
+```c++
+vector<int> remain;
+vector<int> start;
+for(int i = 0; i < gas.size(); i++){
+    remain.push_back(gas[i] - cost[i]);
+    if(i != 0 && remain[i] >= 0 && remain[i - 1] < 0) //Only the start of positive remaining are added.
+        start.push_back(i);
+}
+if(*remain.begin() >= 0 && *prev(remain.end()) < 0)
+    start.push_back(0);
+    
+if(remain.size() == 1)
+    if(remain[0] < 0)
+        return -1;
+    else
+        return 0;
+    
+for(auto s:start){
+    int i = s;
+    int total = 0;
+    while(true){
+        total += remain[i];
+        if(total < 0)
+            break;
+        else{
+            i = (i + 1) % remain.size();
+            if(i == s)
+                return s;
+        }
+    }
+}
+return -1;
+```
+
+####135_Candy
+**Main Algo:** Initially we assign all element to be the mininum 1, and we find from left to right and right to left to ensure that every point suffer the relation.  
+**Core Codes:**
+
+```c++
+vector<int> candy(ratings.size(), 1); 
+        
+for(int i = 1; i < ratings.size(); i++)
+    if(ratings[i] > ratings[i - 1])
+        candy[i] = max(candy[i], candy[i - 1] + 1);
+        
+for(int i = ratings.size() - 2; i >= 0; i--)
+    if(ratings[i] > ratings[i + 1])
+        candy[i] = max(candy[i], candy[i + 1] + 1);
+
+return accumulate(candy.begin(), candy.end(), 0);
+```
+
+####136\_SingleNumber && 137_SingleNumberII
+**Main Algo** For problem I, xor even times will get 0. So we can just xor all elements. The result is the single number. For problem II, we count the digits of 1's in every bit, and we can get the result by mod 3.  
+**Core Codes:**
+
+```c++
+//Xor Solution for SingleNumberI
+return accumulate(nums.begin(), nums.end(), 0, bit_xor<int>());
+
+//Count digits for SingleNubmerII
+vector<int> count(32, 0);
+        
+for(auto n:nums){
+    for(int i = 0; i < 32; i++)
+        count[i] += (n >> i) & 1; 
+        // Here we can not use (n & (1 << i)) > 0 since there are negative nubmers. 
+}
+    
+int result = 0;
+for(int i = 0; i < 32; i++)
+    result += (count[i] % 3) << i;
+```
+
+####138_CopyListWithRandomPointer
+**Main Algo:** Similar to clone graph.  
+**Core Codes:**
+
+```c++
+RandomListNode *copyRandomList(RandomListNode *head) {
+    if(head == nullptr)
+        return nullptr;
+    if(hash.count(head->label))
+        return hash[head->label];
+        
+    RandomListNode *newhead = new RandomListNode(head->label);
+    hash[head->label] = newhead;
+    
+    newhead->next = copyRandomList(head->next);
+    newhead->random = copyRandomList(head->random);
+            
+    return newhead;
+}
+```
 
 139_WordBreak 3Y  
 1 Naive dfs TLE  
@@ -1448,6 +2034,75 @@ Solved recursively
 209_MinimunSizeSubarraySum 2Y  
 1 WA Mistunderstood subarray, used minheap,
 2Y Used two pointers.  
+
+####212_WordSearchII
+**Main Algo:** Build a trie tree using the words for search. DFS the board and push_back the index once we find one.  
+**Corner Cases:** Since we can not go out of the board, so we check the next nodes's idx. For example board is [[a]], word is a.
+**Core Codes:**
+
+```c++
+class Solution {
+public:
+    vector<string> findWords(vector<vector<char>>& board, vector<string>& words) {
+        TrieNode *root = new TrieNode();
+        for(int i = 0; i < words.size(); i++)
+            constructTrieTree(root, words[i], i);
+        
+        for(int i = 0; i < board.size(); i++)
+            for(int j = 0; j < board[0].size(); j++)
+                dfs(i, j, root, board);
+                
+        vector<string> result;
+        for(auto i:result_idx)
+            result.push_back(words[i]);
+            
+        return result;
+    }
+private:
+    struct TrieNode{
+        TrieNode* next[26];
+        int idx = -1;
+        TrieNode(){
+            fill(next, next + 26, nullptr);
+        }
+    };
+    vector<int> result_idx;
+    
+    void dfs(int i, int j, TrieNode* root, vector<vector<char>>& board){
+        if(board[i][j] == 0 || root->next[board[i][j] - 'a'] == nullptr)
+            return;
+            
+        char cur = board[i][j];
+        TrieNode *p = root->next[cur - 'a'];
+        // we check if we can find a word by the end of this node.
+        if(p->idx != -1){
+            result_idx.push_back(p->idx);
+            p->idx = -1;
+        }
+        
+        board[i][j] = 0;
+        if(i > 0) 
+            dfs(i - 1, j, root->next[cur - 'a'], board);
+        if(i < board.size() - 1) 
+            dfs(i + 1, j, root->next[cur - 'a'], board);
+        if(j > 0) 
+            dfs(i, j - 1, root->next[cur - 'a'], board);
+        if(j < board[0].size() - 1) 
+            dfs(i, j + 1, root->next[cur - 'a'], board);
+        board[i][j] = cur;
+    }
+    
+    void constructTrieTree(TrieNode* root, string s, int i_idx){
+        for(auto c:s){
+            if(root->next[c - 'a'] == nullptr){
+                root->next[c - 'a'] = new TrieNode();
+                root = root->next[c - 'a'];
+            } else root = root->next[c - 'a'];
+        }
+        root->idx = i_idx;
+    }
+};
+```
 
 215_KthLargestElementInAnArray 1Y  
 min_heap using priority queue  
@@ -1695,8 +2350,8 @@ Since it's bijection, check both side.
 Since it's bijection, check both side.  
 
 292_NimGame 2Y  
-At first I tried to use dp, but actually if you can let the other one face n*4 everytime you can always win.  
-So if at first you are not n*4, you will win.  
+At first I tried to use dp, but actually if you can let the other one face n4 everytime you can always win.  
+So if at first you are not n4, you will win.  
 
 295_FindMedianFromDataStream 1Y  
 Use multiset  
@@ -1827,9 +2482,6 @@ Use small prime to delete non-prime, need high space
 156_BinaryTreeUpsideDown 1Y  
 Return the root of the left subtree, and then find until right end and then insert root.  
 
-130_SurroundedRegions  2Y  
-DFS, find all illegal regions rather than legal  
-
 134_GasStation 2Y  
 Find the beginnings of non-negative serires, and check if it can cover the whole circle.  
 
@@ -1866,9 +2518,6 @@ If there is a difference in the string, and used four ways to change , still dif
 
 163_MissingRanges 3Y  
 Should consider empty condition and need to consider overload conditions.  
-
-124_BinaryTreeMaximumPathSum 3Y  
-Recursively solve it, whether include root or do not include root.  
 
 170_TwoSumII-DataStructureDesign 2Y  
 Used an unordered_map to implement it  
@@ -2036,9 +2685,6 @@ BFS to find all paths.
 
 334_IncreasingTripletSubsequence 1Y  
 Use two interger to record the first two increasing, and substitute them if a new one is smalller than any of it.  
-
-132_PalindromePartitioningII 3Y  
-O(n^2) DP  
 
 417_PacificAtlanticWaterFlow 2Y  
 Floodfill, pay attention that if not using reference might MLE.  
