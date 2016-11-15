@@ -1923,12 +1923,35 @@ RandomListNode *copyRandomList(RandomListNode *head) {
 140_WordBreakII 1Y  
 The same DP as the previous one, pay attention that when you use for(auto i:vector) you cannot change the value of vectors buy changing i  
 
-141_LinkedListCycle 1Y  
-Slower and O(n) space by using unordered_set  
-Faster and O(1) space by using two pointers in different speeds  
+####141\_LinkedListCycle && 142_LinkedListCycleII
+**Main Algo:** For problem II, set two speed pointers. Let the initial step to be a, the length of cycle is c, so the meeting point of two pointers is a + b, then we could see that (a + b) * 2 = a + b  + c. where c == a + b. Then we let a new pointer start from the head, and let slow move. The place they met is a distance from the head.  
+**Core Codes:**  
 
-142_LinkedListCycle 1Y  
-The same as the previous problem, for the faster method, when the speed 2 meed speed 1, make a new speed1 from head, they will meet at the begining of the cycle.  
+```c++
+// LinkedListCycle
+ListNode *slow = head, *fast = head;
+while(fast->next != nullptr && fast->next->next != nullptr){
+    slow = slow->next;
+    fast = fast->next->next;
+    if(slow == fast)
+        return true;
+}
+
+// LinkedListCycleII        
+ListNode *slow = head, *fast = head;
+while(fast->next != nullptr && fast->next->next != nullptr){
+    slow = slow->next;
+    fast = fast->next->next;
+    if(slow == fast){
+        ListNode *newNode = head;
+        while(slow != newNode){
+            slow = slow->next;
+            newNode = newNode->next;
+        }
+        return newNode;
+    }
+}
+``` 
 
 143_ReorderList 1Y  
 If not in_place use a vector to do it.  
@@ -1952,88 +1975,1023 @@ Use stack to perform preorder traversal.
 145_BinaryTreePostorderTraversal 1Y  
 Push the root, right, left in order, once the kids were pushed, the root could be poped the next time.  
 
-151_ReverseWordsInAString 3Y  
-1 WA when result is empty, used t = s.substr()  
-2 WA at the end when last is zero, don't have to add anything.  
+####146_LRUCache
+**Core Codes:**
 
-152_MaximumProductArray 3Y  
-Greedy.  
-1 WA the if else structure is not clear  
-2 WA Since there will be negative product, need calculate twice for order and reversed.  
+```c++
+class LRUCache{
+public:
+    LRUCache(int capacity) {
+        this->capacity = capacity;
+    }
+    
+    int get(int key) {
+        int value = -1;
+        
+        // Key exist and is valid.
+        if(key2idx.count(key) && valid[key2idx[key]]){
+        	  // Get the value and set the idx to be invalid.
+            int cur_idx = key2idx[key];
+            value = cache[cur_idx];
+            valid[cur_idx] = false;
+            
+            // Insert the value to the back and change the index map
+            cache.push_back(value);
+            valid.push_back(true);
+            key2idx[key] = cache.size() - 1;
+            
+            // Check if the least used index was modified.
+            if(cur_idx == min_idx){
+                while(!valid[min_idx])
+                    min_idx++;    
+            }
+        }  
+        return value;
+    }
+    
+    void set(int key, int value) {
+    	  // Key exist and is valid.
+        if(key2idx.count(key) && valid[key2idx[key]]){
+        	  // Set the index to be invalid.
+            int cur_idx = key2idx[key];
+            valid[cur_idx] = false;
+            
+            // Insert the value to the back and change the index map
+            cache.push_back(value);
+            valid.push_back(true);
+            key2idx[key] = cache.size() - 1;
+            
+            // Check if the least use index was changed.
+            if(cur_idx == min_idx){
+                while(!valid[min_idx])
+                    min_idx++;    
+            }
+        } else {
+        	  // If the key does not exist, we have to insert a new key and value.
+            cache.push_back(value);
+            valid.push_back(true);
+            key2idx[key] = cache.size() - 1;
+            cur_load++;
+			  
+			  // Check if the current load exceeded the capacity, and change the least used index.
+            if(cur_load > capacity){
+                valid[min_idx++] = false;
+                while(!valid[min_idx])
+                    min_idx++;
+            }
+        }
+    }
+private:
+    vector<int> cache;
+    vector<bool> valid;
+    unordered_map<int, int> key2idx;
+    
+    int capacity;
+    int min_idx = 0;
+    int cur_load = 0;
+};
+```
 
-155_MinStack 2Y  
-1 TLE  
-2 Keep a min and refresh it to reduce time cost  
+####147_InsertionSortList
+**Main Algo:** Recursion.  
+**Core Codes:**
 
-153_FindMinimumInRotatedSortedArray 1Y  
-Binary search  
+```c++
+ListNode *newHead = insertionSortList(head->next);
 
-154_FindMinimumInRotatedSortedArray 2Y  
-1WA The last could be the same as the first one.  
+if(head->val < newHead->val){
+    head->next = newHead;
+    return head;
+}
+    
+ListNode *now = newHead;
+while(now->next != nullptr && head->val > now->next->val){
+    now = now->next;
+}
+head->next = now->next;
+now->next = head;
+return newHead;
+```
 
-160_IntersectionOfTwoLinkedLists 1Y  
-First time I used undered_set, O(n) time complexity and O(n) space \\  
-Then I used two pointer to find the length difference, then start at the same length begin point. O(n) Time complexity and O(1) space
+####148_SortList 
+**Core Codes:**
 
-162_FindPeakElement 2Y
+```c++
+ListNode* MergeSort(ListNode* head, int n){
+    if(n == 1)
+        return head;
+        
+    ListNode *now = head;
+    int i;
+    for(i = 0; i < (n - 1) / 2; i++)
+        now = now->next;
+    
+    ListNode *right = MergeSort(now->next, n - i  - 1);
+    now->next = nullptr;
+    ListNode *left = MergeSort(head, i + 1);
+    
+    ListNode *newHead;
+    if(left->val < right->val){
+        newHead = left;
+        left = left->next;
+    } else{
+        newHead = right;
+        right = right->next;
+    }
+    
+    now = newHead;
+    while(right != nullptr && left != nullptr){
+        if(left->val < right->val){
+            now->next = left;
+            now = now->next;
+            left = left->next;
+        } else {
+            now->next = right;
+            now = now->next;
+            right = right->next;
+        }
+    }
+    while(right != nullptr){
+        now->next = right;
+        now = now->next;
+        right = right->next;
+    }
+    while(left != nullptr){
+        now->next = left;
+        now = now->next;
+        left = left->next;
+    }
+    now->next = nullptr;
+    return newHead;
+}
+```
 
-099_RecoverBinarySearchTree 2Y
-1WA Forget to consider leaf node
-There are three types  
-1, two nodes are from left and right subtree  
-2, both come from left subtree  
-3, both come from right subtree  
+####149_MaxPointsOnALine
+**Main Algo:** For each points, calculate the how many points in each slope and plus the duplicate points.  
+**Core Codes:** 
 
-165_CompareVersionNumbers 2Y
-1WA Forgot 1.0 vs 1 this condition
+```c++
+unordered_map<float,int> slopes;
+int maxP = 0;
+for(int j = points.size() - 1; j >= maxP; j--){
+    slopes.clear();
+    int dup = 1;
+    for(int i = 0; i < j; i++)
+        if(points[i].x == points[j].x)
+            if(points[i].y == points[j].y)
+                dup++;
+            else
+                slopes[INT_MAX]++;
+        else
+            slopes[(float)(points[j].y - points[i].y) / (points[j].x - points[i].x)]++;
+    int m = 0;
+    for(auto s:slopes)
+        m = max(m, s.second);
+    maxP = max(maxP, m + dup); 
+}
+```
 
-167_TwoSumII
-Using binary search.  
+####150_EvaluateReversePolishNotation
+**Core Codes:**
 
-## 2016.9.26
-168_ExcelSheetColumnTitle 1Y  
+```c++
+tack<int> st;                          
+// use stack to store candidate numbers
+    
+for (string token : tokens) {
+    if (token == "+" || token == "-" || token == "*" || token == "/") {
+        int b = st.top(); st.pop();     
+        // merge top two numbers in stack
+        st.top() = token == "+" ? st.top() + b : token == "-" ? st.top() - b : token == "*" ? st.top() * b : st.top() / b;
+    } else {
+        st.push(stoi(token));           
+        // add candidates in stack
+    }
+}
+    
+return st.top();
+```
 
-169_MajorityElement 1Y  
-Used hash map  
+####151\_ReverseWordsInAString && 186_ReverseWordsInAStringII
+**Main Algo:** Using istringstream or reverse the whole string first and reverse the word one by one.
+**Corner Cases:**Mind multiple spaces and the spaces at the begining and ending of the string.
+**Core Codes:**
 
-171_ExcelSheetColumnNumber 1Y  
+```c++
+while(!s.empty() && s[0] == ' ')
+    s.erase(0, 1);
+reverse(s.begin(), s.end());
+while(!s.empty() && s[0] == ' ')
+    s.erase(0, 1);
+   
+for(int i = 0; i < (int)s.length() - 1;)
+    if(s[i] == ' ' && s[i + 1] == ' ')
+        s.erase(i + 1, 1);
+    else
+        i++;
 
-174_DungeonGame 1Y  
-DP my favourite  
+int head = 0;
+while(head < (int)s.length()){
+    int idx = s.find(' ', head);
+    if(idx == string::npos)
+        idx = s.length();
+ 
+    reverse(s.begin() + head, s.begin() + idx);
+    if(idx != s.length())
+        head = idx + 1;
+    else
+        head = idx;
+}
+```
 
-189_RotateArray 1Y  
+####152_MaximumProductArray
+**Core Codes:**
 
-190_ReverseBits 2Y  
-1WA n >> 1 is not the same as n = n / 2  
+```c++
+int maxN = INT_MIN, product = 1;
+int len = nums.size();
 
-191_NumberOf1Bits 1Y  
+for(int i = 0; i < len; i++) {
+    maxN = max(product *= nums[i], maxN);
+    if (nums[i] == 0) product = 1;
+}
 
-198_HouseRobber 1Y  
-DP  
+product = 1;
+for(int i = len - 1; i >= 0; i--) {
+    maxN = max(product *= nums[i], maxN);
+    if (nums[i] == 0) product = 1;
+}
+```
 
-199_BinaryTreeRightSideView 2Y
-1WA Forgot to consider that the left subtree might be higher than the right subtree  
+####153\_FindMinimumInRotatedSortedArray && 154_FindMinimumInRotatedSortedArrayII
 
-200_NumberOfIslands 2Y  
-1 Use a bool vector to record would TLE  
+**Core Codes:** 
 
-201_BitwiseANDOfNumbersRange Good One  
+```c++
+if(nums.empty())
+    return 0;
+int head = 0, tail = nums.size() - 1;
+while(head < tail){
+    int mid = (head + tail) / 2;
+    if(nums[head] == nums[tail]){
+        tail--;
+    } else if(nums[head] < nums[tail]){
+        tail = mid;
+    } else
+        if(nums[mid] < nums[head])
+            tail = mid;
+        else
+            head = mid + 1;
+}
 
-202_HappyNumber 1Y
-Do not forget to insert into hash set  
+return nums[head];
+```
 
-203_RemoveLinkedListElements 2Y  
-1 WA Forgot to consider remove all elements, it will be dead-loop  
+####155_MinStack 
+**Main Algo:** Refresh the minimum after push and pop option.  
+**Core Codes:**
 
-205_IsomorphicStrings 1Y  
+```c++
+void push(int x) {
+    s.push_back(x);
+    if(x < min)
+        min = x;
+}
 
-## 2016.9.27  
-206_ReverseLinkedList 1Y  
-Solved recursively
+void pop() {
+    if(s[s.size() - 1] == min){
+        s.erase(s.end() - 1);
+        auto index = min_element(s.begin(), s.end());
+        if(index == s.end())
+            min = INT_MAX;
+        else
+            min = *index;
+    }else {
+        s.erase(s.end() - 1);
+    }
+}
+```
 
-209_MinimunSizeSubarraySum 2Y  
-1 WA Mistunderstood subarray, used minheap,
-2Y Used two pointers.  
+####156_BinaryTreeUpsideDown
+**Main Algo:** Return the root of the result upside down left subtree. Find it's right most left node, and add root and right node to it's left and right. Then return the root.  
+**Core Codes:**
+
+```c++
+if(root == nullptr || root->left == nullptr)
+    return root;
+    
+TreeNode* newNode = upsideDownBinaryTree(root->left);
+TreeNode* now = newNode;
+while(now->right != nullptr)
+    now = now->right;
+now->left = root->right;
+root->left = nullptr;
+root->right = nullptr;
+now->right = root;
+
+return newNode;
+```
+####159_LongestSubstringWithAtMostTwoDistinctCharacters
+**Main Algo:** Two pointers, sliding window.  
+**Core Codes:** 
+
+```c++
+while(tail < s.length()){
+    if(hash.size() < 2){
+        hash[s[tail]]++;
+        tail++;
+        if(tail - head > max)
+            max = tail - head;
+    } else {
+        if(hash.count(s[tail])){
+            hash[s[tail]]++;
+            tail++;
+            if(tail - head > max)
+                max = tail - head;
+        } else {
+            while(hash[s[head]] != 1){
+                hash[s[head]]--;
+                head++;
+            }
+            hash.erase(s[head]);
+            head++;
+            hash.insert({s[tail], 1});
+            tail++;
+            if(tail - head > max)
+                max = tail - head;
+        }
+    }
+}
+```
+
+####160_IntersectionOfTwoLinkedLists
+**Main Algo:** Let two pointers start from both heads, and when one reaches the end, it lead the same steps as the difference between the two list's length. Thus we put the pointer to the start of the other list, and so is the the other pointer. Finally they will meet at the intersection.  
+**Core Codes:**
+
+```c++
+ListNode *cur1 = headA, *cur2 = headB;
+while(cur1 != cur2){
+    cur1 = cur1?cur1->next:headB;
+    cur2 = cur2?cur2->next:headA;
+}
+return cur1;
+```
+
+####161_OneEditDistance 
+**Main Algo:** Directly compare or DP.  
+**Core Codes:**
+
+```c++
+for (int i = 0;i < min(s.size(), t.size());++i) {
+    if (s[i] != t[i])  
+        return s.substr(i + 1) == t.substr(i + 1) || 
+        			s.substr(i + 1) == t.substr(i) || 
+        				s.substr(i) == t.substr(i + 1);
+}
+return abs(int(s.size()) - int(t.size())) == 1;
+```
+
+####162_FindPeakElement
+
+####163_MissingRanges
+**Core Codes:**
+
+```c++
+if(nums.empty()){
+    string s = to_string(lower);
+    if(upper != lower){s += "->" + to_string(upper);}
+    res.push_back(s);
+    return res;
+}
+
+int n = nums.size();
+for(int i = 0; i < n; ++i){
+    if(nums[i] > lower){
+        string s = to_string(lower);
+        if(lower != nums[i] - 1){s +="->" + to_string(nums[i] - 1);}
+        res.push_back(s);
+    }
+    lower = nums[i] + 1;
+}
+
+if(nums[n-1] != upper){
+    string s = to_string(nums[n-1] + 1);
+    if(nums[n-1] + 1 != upper) s += "->" + to_string(upper);
+    res.push_back(s);
+}
+```
+
+####164_MaximumGap
+**Main Algo:** Bucket and pigon hole theory.  
+**Core Codes:**  
+
+```c++
+if(nums.size() < 2)
+    return 0;
+int n = nums.size(), maxN = *max_element(nums.begin(), nums.end()), minN = *min_element(nums.begin(), nums.end());
+
+if(maxN == minN)
+    return 0;
+    
+int width = ceil((maxN - minN) * 1.0 / (n - 1));
+
+vector<int> bucket_max(n, INT_MIN);
+vector<int> bucket_min(n, INT_MAX);
+
+for(auto n:nums){
+    int idx = (n - minN) / width;
+    bucket_max[idx] = max(bucket_max[idx], n);
+    bucket_min[idx] = min(bucket_min[idx], n);
+}
+
+int cur_max = bucket_max[0], maxGap = 0;
+for(int i = 1; i < n; i++){
+    if(bucket_min[i] != INT_MAX && bucket_min[i] - cur_max > maxGap)
+        maxGap = bucket_min[i] - cur_max;
+    if(bucket_max[i] != INT_MIN)
+        cur_max = bucket_max[i];
+}
+
+return maxGap;
+```
+
+####165_CompareVersionNumbers
+**Corner Cases:** "01" = "1", "1.0.0" = "1"
+**Core Codes:**
+
+```c++
+istringstream in1(version1), in2(version2);
+
+for(;;){
+    string v1 ,v2;
+    if(getline(in1, v1, '.')){
+        if(getline(in2, v2, '.')){
+            if(stoi(v1) < stoi(v2))
+                return -1;
+            else if(stoi(v1) > stoi(v2))
+                return 1;
+            else
+                continue;
+        } else {
+            if(stoi(v1) == 0)
+                continue;
+            else
+                return 1;
+        }
+    } else {
+        if(getline(in2, v2, '.'))
+            if(stoi(v2) == 0)
+                continue;
+            else
+                return -1;
+        else
+            return 0;
+    }
+}
+return 0;
+```
+
+####167_TwoSumII
+**Main Algo:** Two pointers.  
+**Core Codes:**
+
+```c++
+int i = 0, j = numbers.size() - 1;
+while(i < j){
+    if(numbers[i] + numbers[j] == target)
+        return vector<int>({i + 1, j + 1});
+    if(numbers[i] + numbers[j] > target) j--;
+    else i++;
+}
+return vector<int>();
+```
+
+####168 & 171_ExcelSheetColumnTitle
+**Core Codes:**
+
+```c++
+// 168
+string result;
+while(n > 0){
+    result = (char)((n - 1) % 26 + 'A') + result;
+    n = (n - 1) / 26;
+}
+return result;
+
+// 171
+int result = 0;
+for(auto i:s){
+    result = result*26 + (i - 'A') + 1;
+}
+```
+
+####169_MajorityElement
+**Core Codes:**
+
+```c++
+// Bit count solution.
+int result = 0;
+for(int i = 0; i < 32; i++){
+    int count = 0;
+    for(auto n:nums)
+        count += (n >> i) & 1;
+    result += (count > nums.size() / 2) << i;
+}
+```
+####170_Factorial Trailing Zeroes
+**Main Algo:**
+**Core Codes:**
+
+```c++
+return n == 0 ? 0 : n / 5 + trailingZeroes(n / 5);
+```
+
+####173_BinarySearchTreeIterator
+**Main Algo:** In order traversal.
+**Core Codes:**
+
+```c++
+/** @return the next smallest number */
+int next() {
+    TreeNode* cur = s.top()->right;
+    int result = s.top()->val;
+    s.pop();
+    while(cur != nullptr){
+        s.push(cur);
+        cur = cur->left;
+    }
+    return result;
+}
+```
+
+####174_DungeonGame
+**Main Algo:** DP
+**Core Codes:**
+
+```c++
+for(int i = m - 1; i >= 0; i--)
+    for(int j = n - 1; j >= 0; j--){
+        if(i == m - 1 && j == n - 1){
+            if(dungeon[i][j] < 0)
+                f[i][j] = 1 - dungeon[i][j];
+            else
+                f[i][j] = 1;
+        } else if(i == m - 1){
+            f[i][j] = max(1, f[i][j + 1] - dungeon[i][j]);
+        } else if(j == n - 1)
+            f[i][j] = max(1, f[i + 1][j] - dungeon[i][j]);
+        else
+            f[i][j] = max(1, min(f[i + 1][j], f[i][j + 1]) - dungeon[i][j]);
+    }
+```
+
+####179_LargestNumber
+**Corner Cases:** All are 0, return only 1 zero. 
+**Core Codes:**
+
+```c++
+// The sort function
+static bool compare(int a, int b){
+    string sa = to_string(a);
+    string sb = to_string(b);
+    
+    return sa + sb > sb + sa;
+}
+```
+
+####187_RepeatedDNASequences
+**Core Codes:**
+
+```c++
+vector<string> result;
+unordered_map<string, int> hash;
+
+for(int start = 0; start + 9 < s.length(); start++){
+    string cur = s.substr(start, 10);
+    if(hash[cur] == 1)
+        result.push_back(cur);
+    hash[cur]++;
+}
+```
+
+####189_RotateArray
+**Core Codes:**
+
+```c++
+// Insert the end k elements to the begin.
+k = k % nums.size();
+        
+nums.insert(nums.begin(), nums.end() - k, nums.end());
+nums.erase(nums.end() - k, nums.end());
+
+// Reverse three times
+k = k % nums.size();
+
+reverse(nums.begin(), nums.end());
+reverse(nums.begin(), nums.begin() + k);
+reverse(nums.begin() + k, nums.end());
+
+// Rotate function (std::)
+k = k % nums.size();
+std::rotate(nums.begin(), nums.end() - k, nums.end());
+```  
+
+####190_ReverseBits
+**Core Code:**
+
+```c++
+uint32_t result = 0;
+for(int i = 0; i < 32; i++)
+	 // Take care of the order of operations.  
+    result += (n >> i & 1) << (31 - i);
+```
+
+####191_NumberOf1Bits 1Y  
+**Core Codes:**
+
+```c++
+int result = 0;
+for(int i = 0; i < 32; i++)
+    result += n >> i & 1;
+```
+
+####198_HouseRobber I & II
+**Main Algo:** DP, but the states can be compressed. In problem II, since 0 and n-1 are adjacent, we just neet to find out two distinct conditions:0 to n - 2, and 1 to n - 1.
+**Core Codes:**
+
+```c++
+// Code for house robber II, the robber function is the same as house robber I.
+int rob(vector<int>& nums) {
+    int n = nums.size();
+    if(n == 0)
+        return 0;
+    if(n < 3)
+        return *max_element(nums.begin(), nums.end());
+    
+    return max(robber(nums, 0, n - 1), robber(nums, 1, n));
+}
+
+int robber(vector<int>& nums, int start, int end) {
+    int prev = 0, cur = 0;
+    for(int i = start; i < end; i++){
+        int temp = max(prev + nums[i], cur);
+        prev = cur;
+        cur = temp;
+    }
+    return cur;
+}
+``` 
+
+####199_BinaryTreeRightSideView
+**Corner Cases:** The left subtree is higher than right subtree. We could also use dfs and bfs.
+**Core Codes:**
+
+```c++
+// Recursion
+vector<int> resultLeft;
+if(root->right != nullptr)
+    result = rightSideView(root->right);
+    
+if(root->left != nullptr)
+    resultLeft = rightSideView(root->left);
+
+if(resultLeft.size() > result.size())
+    result.insert(result.end(), resultLeft.end() - (resultLeft.size() - result.size()), resultLeft.end());
+
+result.insert(result.begin(), root->val);
+
+// BFS
+queue<TreeNode*> q;
+vector<int> result;
+
+if(root == nullptr)
+    return result;
+    
+q.push(root);
+int depth = 0;
+
+while(!q.empty()){
+    int curWidth = q.size();
+    result.push_back(0);
+    for(int i = 0; i < curWidth; i++){
+        TreeNode* cur = q.front();
+        q.pop();
+        result[depth] = cur->val;
+        if(cur->left)
+            q.push(cur->left);
+        if(cur->right)
+            q.push(cur->right);
+    }
+    depth++;
+}
+```
+
+####200_NumberOfIslands
+**Main Algo:** Floodfill
+**Core Codes:**
+
+```c++
+// Floodfill for problem I
+void floodfill(vector<vector<char>>& grid, int i , int j){
+    if(i < 0 || i == grid.size() || j < 0 || j == grid[0].size() || grid[i][j] != '1')
+        return;
+        
+    grid[i][j] = '0'; // If we do not want to use extra space.
+    
+    floodfill(grid, i + 1, j);
+    floodfill(grid, i - 1, j);
+    floodfill(grid, i, j + 1);
+    floodfill(grid, i, j - 1);
+}
+
+// Union find for problem II
+for(auto i:positions){
+    int x = i.first;
+    int y = i.second;
+
+    parent[x * n + y] = x * n + y;
+    result++;
+    
+    unordered_set<int> count;
+    count.clear();
+    for(int j = 0; j < 4; j++){
+        if(x + pos[j] >= m || x + pos[j] < 0 || y + pos[j + 1] >= n || y + pos[j + 1] < 0)
+            continue;
+            
+        int curPos = (x + pos[j]) * n + y + pos[j + 1];
+            
+        if(parent[curPos] >= 0){
+            while(parent[curPos] != curPos){
+                curPos = parent[curPos] = parent[parent[curPos]];
+            }
+            count.insert(parent[curPos]);
+        }
+    }
+    result -= count.size();
+    res.push_back(result);
+    
+    for(auto i:count)
+        parent[i] = x * n + y;
+}
+```
+
+####201_BitwiseANDOfNumbersRange
+**Main Algo:**
+Suppose from 00101 to 01011, the critical points the the highest different digit - 00XXX to 01XXX which will include 00111 to 01000 and the answer is 00000, 
+
+**Core Codes:**
+
+```c++
+while(n > m) n = n & (n - 1);
+    return n;
+   
+int result = 0;
+for(int i = 31; i >= 0; i--){
+    if((m >> i & 1) != (n >> i & 1))
+        break;
+    else
+        result += (m >> i & 1) << i;
+}
+return result;
+```
+
+####202_HappyNumber
+
+####203_RemoveLinkedListElements
+**Corner Cases:** [1], [1,1]
+**Core Codes:**
+
+```c++
+ListNode *dummy = new ListNode(-1);
+dummy->next = head;
+ListNode* now = dummy;
+while(now != nullptr && now->next != nullptr){
+    while(now->next != nullptr && now->next->val == val)
+        now->next = now->next->next;
+    now = now->next;
+}
+
+return dummy->next;
+```
+
+####204_CountPrimes
+**Core Codes:**
+
+```c++
+// Bitmap solution. Reduce space complexity.
+int countPrimes(int n) {
+    vector<int> f(n / 32 + 1, -1);
+
+    int result = 0;
+
+    for(int i = 2; i < n; i++){
+        if(get(f, i)){
+            result++;
+            int k = i * 2;
+            while(k < n){
+                set(f, k);
+                k += i;
+            }
+        }
+    }
+
+    return result;
+}
+
+void set(vector<int>& f, int pos){
+    f[pos / 32] &= (-1 ^ (1 << pos % 32));
+}
+int get(vector<int>& f, int pos){
+    return f[pos / 32] >> (pos % 32) & 1;
+}
+```
+
+####205_IsomorphicStrings
+**Main Algo:** Set up a bijection between the chars.  
+**Core Codes:**
+
+```c++
+unordered_map<char, char> map1, map2;
+
+for(int i = 0; i < s.length(); i++){
+    if(map1.find(s[i]) == map1.end() && map2.find(t[i]) == map2.end()){
+        map1.insert({s[i], t[i]});
+        map2.insert({t[i], s[i]});
+    } else if(map1[s[i]] == t[i] && map2[t[i]] == s[i]) {} 
+        else return false;
+}
+```
+ 
+####206_ReverseLinkedList 
+**Core Codes:**
+
+```c++
+// Iteration
+ListNode *prev = nullptr, *cur = head, *next = nullptr;
+while(cur != nullptr){
+    next = cur->next;
+    cur->next = prev;
+    prev = cur;
+    cur = next;
+}
+return prev;
+        
+// Recursion
+ListNode* newHead = reverseList(head->next);
+        
+ListNode* now = newHead;
+while(now->next != nullptr) now = now->next;
+
+now->next = head;
+head->next = nullptr;
+
+return newHead;
+```
+
+####207\_CourseSchedule I&II
+**Main Algo:** Simple topologic sort
+**Corner Cases:** The final course number is not equal to n
+**Core Codes:**
+
+```c++
+vector<int> result;
+vector<vector<int> > post(numCourses);
+vector<int> indegree(numCourses);
+
+for(auto i:prerequisites){
+    post[i.second].push_back(i.first);
+    indegree[i.first]++;
+}
+
+queue<int> q;
+for(int i = 0; i < numCourses; i++)
+    if(indegree[i] == 0)
+        q.push(i);
+        
+while(!q.empty()){
+    int cur = q.front();
+    q.pop();
+    result.push_back(cur);
+    for(auto i:post[cur]){
+        if(--indegree[i] == 0)
+            q.push(i);
+    }
+}
+```       
+
+####208_ImplementTrie
+**Core Codes**
+
+```c++
+class TrieNode {
+public:
+    // Initialize your data structure here.
+    bool is_word;
+    TrieNode* children[26];
+    
+    TrieNode(){
+        is_word = false;
+        fill(children, children + 26, nullptr);
+    }
+};
+
+class Trie {
+public:
+    Trie() {
+        root = new TrieNode();
+    }
+
+    // Inserts a word into the trie.
+    void insert(string word) {
+        TrieNode *now = root;
+        for(int i = 0; i < word.length(); i++){
+            int idx = word[i] - 'a';
+            if(now->children[idx])
+                now = now->children[idx];
+            else{
+                now->children[idx] = new TrieNode();
+                now = now->children[idx];
+            }
+        }
+        now->is_word = true;
+    }
+
+    // Returns if the word is in the trie.
+    bool search(string word) {
+        TrieNode *now = root;
+        for(int i = 0; i < word.size(); i++){
+            int idx = word[i] - 'a';
+            if(!now->children[idx])
+                return false;
+            else
+                now = now->children[idx];
+        }
+        return now->is_word;
+    }
+
+    // Returns if there is any word in the trie
+    // that starts with the given prefix.
+    bool startsWith(string prefix) {
+        TrieNode *now = root;
+        for(int i = 0; i < prefix.size(); i++){
+            int idx = prefix[i] - 'a';
+            if(!now->children[idx])
+                return false;
+            else
+                now = now->children[idx];
+        }
+        return true;   
+    }
+
+private:
+    TrieNode* root;
+};
+```
+
+####209_MinimunSizeSubarraySum
+**Core Codes:**
+
+```c++
+// Using two pointers.
+int head = 0, tail = 0, sum = 0, min = INT_MAX;
+while(tail < nums.size()){
+    sum += nums[tail++];
+    if(sum >= s){
+        while(sum - nums[head] >= s){
+            sum -= nums[head];
+            head++;
+        }
+        if(tail - head < min)
+            min = tail - head;
+    }
+}
+```
+
+####211_AddAndSearchWord
+**Main Algo:** Implement trie tree and dfs with '.'
+**Core Codes:**
+
+```c++
+bool dfs(string word, TrieNode* root){
+    if(word.empty())
+        return root->is_word;
+    
+    if(word[0] == '.'){
+        for(int idx = 0; idx < 26; idx++)
+            if(root->children[idx])
+                if(dfs(word.substr(1), root->children[idx]))
+                    return true;
+        return false;
+    } else {
+        int idx = word[0] - 'a'; 
+        if(!root->children[idx])
+            return false;
+        else
+            return dfs(word.substr(1), root->children[idx]);
+    }   
+}
+```
+**Follow Up:** How to reduce time complexity? Add . to the trie tree, which will increase space complexity.
 
 ####212_WordSearchII
 **Main Algo:** Build a trie tree using the words for search. DFS the board and push_back the index once we find one.  
@@ -2104,17 +3062,115 @@ private:
 };
 ```
 
-215_KthLargestElementInAnArray 1Y  
-min_heap using priority queue  
+####215_KthLargestElementInAnArray 
+**Main Algo:**
 
-216_CombinationSumII 2Y
-DFS 1WA didn't request a good range  
+```c++
+// Implement nth_largest based on parition
+int partition (vector<int>& nums, int left, int right) {
+    swap(nums[left], nums[left + random() % (right - left + 1)]);   
+    // randomly choose a pivot and put it on left position
+    
+    int pivot = nums[left], slow = left + 1, fast = left + 1;       
+    // use two pointers to partition: slow and fast
+    
+    while (fast <= right) {
+        if (pivot < nums[fast]) {
+            swap(nums[slow++], nums[fast]);
+        }
+        fast++;
+    }
+    
+    swap(nums[left], nums[--slow]);                                 
+    // position pivot 
+    return slow;                                                    
+    // return pivot position
+}
+    
+public:
+int findKthLargest(vector<int>& nums, int k) {
+    int l = 0, r = nums.size() - 1;
+    k--;
+    
+    while (l <= r) {                                
+        int n = partition(nums, l, r);                              
+        
+        if (n == k) { return nums[n]; }
+        if (n < k) { 
+            l = n + 1; 
+        } else {
+            r = n - 1;
+        }
+    }
+    return -1;
+}
 
-179_LargestNumber Good one
-Use sort function, rewrite the compare part  
+// Using nth_element function.
+nth_element(nums.begin(), prev(nums.end(), k), nums.end(), less<int>());
+return *prev(nums.end(), k);
 
-217_ContainsDuplicate 1Y
-Use unordered_set  
+nth_element(nums.begin(), next(nums.begin(), k - 1), nums.end(), greater<int>());
+
+return nums[k - 1];
+```
+
+####216_CombinationSumIII
+**Main Algo:** DFS
+**Core Codes:**
+
+```c++
+vector<vector<int>> dfs(int last, int k, int n) {
+    if(k == 0 && n != 0 || k*(19 - k)/2 < n)
+        return vector<vector<int>>();
+    if(k == 1)
+        return vector<vector<int>>(1, vector<int>(1, n));
+        
+    vector<vector<int>> result;
+    int i = last + 1;
+    while((2 * i + k - 1) * k / 2 <= n){
+    // To ensure there will be a solution.
+        vector<vector<int>> temp =  dfs(i, k - 1, n - i);
+        for(int j = 0; j < temp.size(); j++)
+            temp[j].insert(temp[j].begin(), i);
+        result.insert(result.end(), temp.begin(), temp.end());
+        i++;
+    }
+    return result;
+}
+```
+
+####217_ContainsDuplicate I & II & III
+**Main Algo:** 
+
+* I: Whether dup exist, using hashset.
+* II: Dup exist with distant K? Keep a hashset with size k + 1, erase num[i - k - 1].
+* III: In distance k with difference t? Keep a multiset with size k + 1, insert each new element and compare with it's prev and next.
+
+**Core Codes:**
+
+```c++
+multiset<int> s;
+if(k == 0 || t < 0)
+    return false;
+    
+for(int i = 0; i < nums.size(); i++){
+    if(s.empty())
+        s.insert(nums[i]);
+    else if(s.size() <= k){
+        s.insert(nums[i]);
+        auto idx = s.find(nums[i]);
+        if((idx != s.begin() && *prev(idx) + t >= nums[i]) || (idx != prev(s.end()) && *next(idx) - t <= nums[i]))
+            return true;
+    } else {
+        s.erase(s.find(nums[i - k - 1]));
+        s.insert(nums[i]);
+        auto idx = s.find(nums[i]);
+        if((idx != s.begin() && *prev(idx) + t >= nums[i]) || (idx != prev(s.end()) && *next(idx) - t <= nums[i]))
+            return true;
+    }
+}
+return false;
+```
 
 ####218_TheSkylineProblem  
 **Main Algo:** 
@@ -2151,19 +3207,305 @@ for(p : points){
 }
 ``` 
 
-219_ContainsDuplicateII 2Y  
-1 WA instead of s.erase(s.begin()) it's better to erase the exact number  
-Use a maximized size set
+####221_MaximalSquare
+**Core Codes:** 
 
-##2016.9.28  
-221_MaximalSquare 2Y  
-f[i][j] = min(f[i - 1][j], f[i][j - 1], f[i - 1][j - 1]) + 1;  
+```c++
+for(int i = 0; i < n; i++)
+    for(int j = 0; j < m; j++)
+        if(matrix[i][j] == '1'){
+            if(i == 0 || j == 0)
+                f[i][j] = 1;
+            else{
+                f[i][j] = min(min(f[i - 1][j], f[i][j - 1]), f[i - 1][j - 1]) + 1;
+            }
+            if(f[i][j] > max)
+                    max = f[i][j];
+            
+        }
+return max * max;
+```
 
-225_ImplementStackUsingQueues 1Y
-Using a queue will be dumb  
+####222_CountCompleteTreeNodes
+**Main Algo:** By calculating the depth of right subtree and the whole tree, we could find if the left tree is complete.  
+**Core Codes:**
 
-226_InvertBinaryTree 1Y  
+```c++
+int countNodes(TreeNode* root) {
+    int h = height(root);
+    if(h == 0)
+        return 0;
+        
+    if(height(root->right) == h - 1)
+        return (1 << (h - 1)) + countNodes(root->right);
+    else
+        return (1 << (h - 2)) + countNodes(root->left);
+}
 
+int height(TreeNode* root){
+    int result = 0;
+    while(root != nullptr){
+        result++;
+        root = root->left;
+    }
+    return result;
+}
+```
+
+####223_RectangleArea
+**Core Codes:**
+
+```c++
+return ((long)D - B) * ((long)C - A) + 
+			((long)H - F) * ((long)G - E) - 
+				max(((long)min(C,G) - max(A, E)),(long)0) * 
+					max(((long)min(D, H) - max(B, F)), (long)0);
+```
+
+####224
+
+####225_ImplementStackUsingQueues
+**Core Codes:**
+
+```c++
+// Removes the element on top of the stack.
+void pop() {
+    for(int i = 0; i < s.size(); i++){
+        if(i < s.size() - 1)
+            s.push(s.front());
+        s.pop();
+    }
+}
+
+// Get the top element.
+int top() {
+    int result;
+    for(int i = 0; i < s.size(); i++){
+        if(i == s.size() - 1)
+            result = s.front();
+        s.push(s.front());
+        s.pop();
+    }
+    return result;
+}
+```
+
+####226_InvertBinaryTree
+**Core Codes:**
+
+```c++
+if(root == nullptr)
+    return root;
+
+root->left = invertTree(root->left);
+root->right = invertTree(root->right);
+
+swap(root->left, root->right);
+return root;
+```
+
+####228_SummaryRanges
+**Corner Cases:** Pay attention to the final element of the array.
+**Core Codes:**
+
+```c++
+for(int i = 0; i < nums.size(); i++){
+    if(i == 0){
+        head = nums[i];
+    } else if(i == nums.size() - 1){
+        if(nums[i] - nums[i - 1] != 1){
+            if(nums[i - 1] != head)
+                result.push_back(to_string(head) + "->" + to_string(nums[i - 1]));
+            else
+                result.push_back(to_string(head));
+            result.push_back(to_string(nums[i]));
+        } else
+            result.push_back(to_string(head) + "->" + to_string(nums[i]));
+    } else if(nums[i] - nums[i - 1] != 1){
+        if(nums[i - 1] != head)
+            result.push_back(to_string(head) + "->" + to_string(nums[i - 1]));
+        else
+            result.push_back(to_string(head));
+        head = nums[i];
+    } else {}
+}  
+```
+
+####230_KthSmallestElementInABST
+**Core Codes:**
+
+```c++
+// Iterative inorder traversal
+stack<TreeNode*> s;
+s.push(root);
+while(s.top()->left != nullptr)
+    s.push(s.top()->left);
+    
+int counter = 0;
+while(!s.empty()){
+    TreeNode* cur = s.top();
+    s.pop();
+    counter++;
+    if(counter == k)
+        return cur->val;
+    if(cur->right != nullptr){
+        s.push(cur->right);
+        while(s.top()->left != nullptr)
+            s.push(s.top()->left);
+    }
+}
+```
+
+####232_ImplementQueueUsingStacks
+**Core Codes:**
+
+```c++
+// Removes the element from in front of queue.
+void pop(void) {
+    while(s.size() != 1){
+        cache.push(s.top());
+        s.pop();
+    }
+    s.pop();
+    while(cache.size() != 0){
+        s.push(cache.top());
+        cache.pop();
+    }
+}
+
+// Get the front element.
+int peek(void) {
+    int res;
+    while(s.size() != 1){
+        cache.push(s.top());
+        s.pop();
+    }
+    res = s.top();
+    while(cache.size() != 0){
+        s.push(cache.top());
+        cache.pop();
+    }
+    return res;
+}
+```
+
+####234_PalindromeLinkedList
+**Core Codes:**
+
+```c++
+// Reverse the right half. O(n) time and O(1) space.
+bool isPalindrome(ListNode* head) {
+    if(head==NULL||head->next==NULL)
+        return true;
+    ListNode* slow=head;
+    ListNode* fast=head;
+    while(fast->next!=NULL&&fast->next->next!=NULL){
+        slow=slow->next;
+        fast=fast->next->next;
+    }
+    slow->next=reverseList(slow->next);
+    slow=slow->next;
+    while(slow!=NULL){
+        if(head->val!=slow->val)
+            return false;
+        head=head->next;
+        slow=slow->next;
+    }
+    return true;
+}
+ListNode* reverseList(ListNode* head) {
+    ListNode* pre=NULL;
+    ListNode* next=NULL;
+    while(head!=NULL){
+        next=head->next;
+        head->next=pre;
+        pre=head;
+        head=next;
+    }
+    return pre;
+}
+```
+
+####235_LowestCommonAncestorOfABinarySearchTree
+**Core Codes:**
+
+```c++
+if(p->val < root->val && q->val < root->val){
+    return lowestCommonAncestor(root->left, p, q);
+} else if(p->val > root->val && q->val > root->val){
+    return lowestCommonAncestor(root->right, p, q);
+} else return root;
+```
+
+####236_LowestCommonAncestorOfABinarySearchTree
+**Main Algo:** Recursively use the function, to check the return value of left and right subtree.
+**Core Codes:**
+
+```c++
+if(root == nullptr ||root == p || root == q)
+    return root;
+TreeNode *inLeft = lowestCommonAncestor(root->left, p, q);
+TreeNode *inRight = lowestCommonAncestor(root->right, p, q);
+
+if(inLeft == nullptr)
+    return inRight;
+else if(inRight == nullptr)
+    return inLeft;
+else 
+    return root;
+```
+
+####237_DeleteNodeInALinkedList
+**Core Codes:**
+
+```c++
+while(node->next != nullptr){
+    if(node->next->next == nullptr){
+        node->val = node->next->val;
+        node->next = nullptr;
+    } else {
+        node->val = node->next->val;
+        node = node->next;
+    }
+}
+```
+
+####238_ProductOfArrayExceptSelf
+**Core Codes:**
+
+```c++
+// Left product and right products
+for (int i = 0, j = nums.size() - 1, lp = 1, rp = 1; 
+	i < nums.size(); lp *= nums[i++], rp *= nums[j--]) {
+    ans[i] *= lp, ans[j] *= rp;             
+    // update ans elements
+}
+
+// Count zeros. A optimization is to record the position of zero
+vector<int> ans(nums.size(), 0);
+int p = 1, zcnt = 0, zi = 0;                
+// p is the current product; zcnt is zero count; zi is zero element index
+
+for (int i = 0; i < nums.size(); i++) {
+    if (nums[i] == 0) {
+        zi = i;
+        if (++zcnt > 1) { return ans; }     
+        // if nums has more than 1 zeros, ans is all 0s
+    } else {
+        p *= nums[i];
+    }
+}
+    
+if (zcnt == 1) {                            
+	 // if has one 0, the only non-zero element is on zi position
+    ans[zi] = p;
+} else {                                    
+	 // meaning zcnt == 0
+    for (int i = 0; i < nums.size(); i++) { ans[i] = p / nums[i]; }
+}
+return ans;
+```
+  
 405_ConvertANumberToHex 1Y  
 
 404_SumOfLeftLeaves 2Y  
@@ -2186,9 +3528,7 @@ Forgot to consider when hour or second overloaded.
 
 400_NthDigit 2Y  
 When calculating the pow, it might overload  
-
-228_SummaryRanges 2Y  
-Pay attention to the final element of the array, it has several oprations to do.  
+ 
 
 230_KthSmallestElementInABST 2Y
 It's worthwhile to write three traversals iteratively  
@@ -2202,19 +3542,11 @@ Used two stacks
 234_PalindromeLinkedList 1Y  
 Used vector, took O(n) time and O(n) space.  
 
-235_LowestCommonAncestorOfABinarySearchTree 1Y
-
-236_LowestCommonAncestorOfABinarySearchTree 2Y  
-At first I used the same method as the previous problem that to find where the two nodes are. It's almost TLE. Then I just recursive used the function, to check the return value of left and right subtree.  
-
 237_DeleteNodeInALinkedList 2Y  
 You can not let the current node to be nullptr, instead, let the next pointed to a nulltpr  
 
 237_DeleteNodeInALinkedList 2Y  
 You can not let the current node to be nullptr, instead, let the next pointed to a nulltpr  
-
-238_ProductOfArrayExceptSelf  1Y  
-Pay attention to the number of zeros  
 
 239_SlidingWindowMaximum 3Y  
 I used map(set cannot hold same items), a better way is to use deque(Monotonic Queue)  
@@ -2494,11 +3826,6 @@ Used unordered_map to count and priority queue to store and ranking.
 343_IntegerBreak 1Y  
 DP, f[n] = max(max(k, f[k]) * max(n - k, f[n - k]), f[n]) (for k = 1 to n - 1)  
 
-147_InsertionSortList 1Y  
-
-148_SortList 2Y  
-Mergesort, an optimization is to count the number of nodes at first.  
-
 149_MaxPointsOnALine 3Y  
 My solution enumerates all pairs and check others which is a O(n^3). A better way is to enumerate all points and check all others with different slopes. Then add the same points as the original one.  
 
@@ -2650,10 +3977,7 @@ Similar to the previous problem.
 Top logic sort, but pay attention to duplicate orders. and pay attention to the final output.  
 
 208_ImplementTrie 2Y  
-
-211_AddAndSearchWord 1Y  
-Used trie tree.  
-
+ 
 339_NestedListWeightSum 1Y  
 
 360_NestedListWeightSumII 2Y  
@@ -2822,14 +4146,6 @@ class Solution {
         return ans;    
     }
 };
-
-222_CountCompleteTreeNodes 1Y  
-By calculating the depth of right subtree and the whole tree, we could find if the left tree is complete.  
-Thus,
-if(height(root->right) == h - 1)
-    return (1 << (h - 1)) + countNodes(root->right);
-else
-    return (1 << (h - 2)) + countNodes(root->left);  
 
 330_PatchingArray 2Y  
 It's important to see that when [1, n] is can be got, if there is an i <= n + 1, [1, n + i] is achievable.  

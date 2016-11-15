@@ -1,0 +1,4050 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Leetcode Log</title>
+
+
+<style type="text/css">
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote {
+    margin: 10px;
+    padding: 0;
+}
+body {
+    font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", Arial, sans-serif;
+    font-size: 11px;
+    line-height: 15px;
+    color: #737373;
+    background-color: white;
+    margin: 10px 10px 10px 10px;
+}
+table {
+	margin: 10px 0 15px 0;
+	border-collapse: collapse;
+}
+td,th {
+	border: 1px solid #ddd;
+	padding: 3px 10px;
+}
+th {
+	padding: 5px 10px;
+}
+
+a {
+    color: #0069d6;
+}
+a:hover {
+    color: #0050a3;
+    text-decoration: none;
+}
+a img {
+    border: none;
+}
+p {
+    margin-bottom: 9px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #404040;
+    line-height: 36px;
+}
+h1 {
+    margin-bottom: 18px;
+    font-size: 30px;
+}
+h2 {
+    font-size: 24px;
+}
+h3 {
+    font-size: 15px;
+}
+h4 {
+    font-size: 13px;
+}
+h5 {
+    font-size: 11px;
+}
+h6 {
+    font-size: 13px;
+}
+hr {
+    margin: 0 0 19px;
+    border: 0;
+    border-bottom: 1px solid #ccc;
+}
+blockquote {
+    padding: 13px 13px 21px 15px;
+    margin-bottom: 18px;
+    font-family:georgia,serif;
+    font-style: italic;
+}
+blockquote:before {
+    content:"\201C";
+    font-size:40px;
+    margin-left:-10px;
+    font-family:georgia,serif;
+    color:#eee;
+}
+blockquote p {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 18px;
+    margin-bottom: 0;
+    font-style: italic;
+}
+code, pre {
+    font-family: Monaco, Andale Mono, Courier New, monospace;
+}
+code {
+    background-color: #fee9cc;
+    color: rgba(0, 0, 0, 0.75);
+    padding: 1px 3px;
+    font-size: 11px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+pre {
+    display: block;
+    padding: 14px;
+    margin: 10px 10px 10px;
+    line-height: 16px;
+    font-size: 11px;
+    border: 1px solid #d9d9d9;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+pre code {
+    background-color: #fff;
+    color:#737373;
+    font-size: 11px;
+    padding: 0;
+}
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font-size: 11px;
+  line-height: 10px;
+  color: #555;
+  vertical-align: middle;
+  background-color: #fcfcfc;
+  border: solid 1px #ccc;
+  border-bottom-color: #bbb;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #bbb;
+}
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:10px;
+    }
+}
+@media print {
+	body,code,pre code,h1,h2,h3,h4,h5,h6 {
+		color: black;
+	}
+	table, pre {
+		page-break-inside: avoid;
+	}
+}
+</style>
+
+<style type="text/css">
+/**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: black;
+	background: none;
+	text-shadow: 0 1px white;
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+@media print {
+	code[class*="language-"],
+	pre[class*="language-"] {
+		text-shadow: none;
+	}
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #f5f2f0;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: slategray;
+}
+
+.token.punctuation {
+	color: #999;
+}
+
+.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #905;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #690;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+	color: #a67f59;
+	background: hsla(0, 0%, 100%, .5);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+	color: #07a;
+}
+
+.token.function {
+	color: #DD4A68;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+	color: #e90;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+</style>
+
+<style type="text/css">
+pre.line-numbers {
+	position: relative;
+	padding-left: 3.8em;
+	counter-reset: linenumber;
+}
+
+pre.line-numbers > code {
+	position: relative;
+}
+
+.line-numbers .line-numbers-rows {
+	position: absolute;
+	pointer-events: none;
+	top: 0;
+	font-size: 100%;
+	left: -3.8em;
+	width: 3em; /* works for line-numbers below 1000 lines */
+	letter-spacing: -1px;
+	border-right: 1px solid #999;
+
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+
+}
+
+	.line-numbers-rows > span {
+		pointer-events: none;
+		display: block;
+		counter-increment: linenumber;
+	}
+
+		.line-numbers-rows > span:before {
+			content: counter(linenumber);
+			color: #999;
+			display: block;
+			padding-right: 0.8em;
+			text-align: right;
+		}
+</style>
+
+
+</head>
+
+<body>
+
+<h3 id="toc_0">Leetcode Review</h3>
+
+<h4 id="toc_1">001_TwoSum</h4>
+
+<p><strong>Main Algo:</strong> using unordered_map<br><br>
+<strong>Corner Case:</strong> target = 2 * nums[i]<br><br>
+<strong>Core Codes:</strong>  </p>
+
+<h4 id="toc_2">002_AddTwoNumbers</h4>
+
+<p><strong>Main Algo:</strong> LinkedList<br><br>
+<strong>Corner Case:</strong> 9-&gt;9 + 1  </p>
+
+<h4 id="toc_3">003_LongestSubstringWithoutRepeatingCharacters</h4>
+
+<p><strong>Main Algo:</strong> Greedy, similar to two pointers.<br><br>
+<strong>Cornere Case:</strong> &quot;&quot;, &quot;pppp&quot;<br><br>
+<strong>Core Codes:</strong>  </p>
+
+<div><pre class="line-numbers"><code class="language-cpp">int last[ASCII_MAX];
+int start = 0, maxLen = 0;
+fill(last, last + ASCII_MAX, -1);
+
+for(int i = 0; i &lt; s.size(); i++){
+    if(last[s[i]] &gt;= start){
+        if(i - start &gt; maxLen)
+            maxLen = i - start;
+        start = last[s[i]] + 1;
+    }
+    last[s[i]] = i;
+}
+if(s.size() - start &gt; maxLen)
+    maxLen = s.size() - start;
+return maxLen;</code></pre></div>
+
+<h4 id="toc_4">004_MedianOfTwoSortedArrays</h4>
+
+<p><strong>Main Algo:</strong> Check the k/2 th element in both array(remaining). If nums1[k/2] &lt; nums2[k/2], the first k/2 element must be in the first half part.<br><br>
+<strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">double findMedianSortedArrays(vector&lt;int&gt;&amp; nums1, vector&lt;int&gt;&amp; nums2) {
+    int m = nums1.size(), n = nums2.size();
+    int total = m + n;
+    
+    if(total % 2 == 1)
+        return findMedian(nums1, 0, nums2, 0, total / 2 + 1);
+    else
+        return (findMedian(nums1, 0, nums2, 0, total/2) + findMedian(nums1, 0, nums2, 0, total/2+1)) / 2.0;
+}
+
+int findMedian(vector&lt;int&gt;&amp; nums1, int start1, vector&lt;int&gt;&amp; nums2, int start2, int k){
+    if(start1 &gt;= nums1.size())
+        return nums2[start2 + k - 1];
+    if(start2 &gt;= nums2.size())
+        return nums1[start1 + k - 1];
+    if(k == 1)
+        return min(nums1[start1], nums2[start2]);
+        
+    int mid1 = start1 + k/2 &lt;= nums1.size()?nums1[start1 + k/2 - 1]:INT_MAX; // If one of the array&#39;s size is less than k/2
+    int mid2 = start2 + k/2 &lt;= nums2.size()?nums2[start2 + k/2 - 1]:INT_MAX;
+    
+    if(mid1 &lt; mid2)
+        return findMedian(nums1, start1 + k/2, nums2, start2, k - k/2);
+    else
+        return findMedian(nums1, start1, nums2, start2 + k/2, k - k/2);
+}</code></pre></div>
+
+<h4 id="toc_5">005_LongestPalindromicSubstring</h4>
+
+<p><strong>Main Algo:</strong> </p>
+
+<ul>
+<li>Enum all mids(odd and even are differnt), find the length, or DP, O(n^2).<br></li>
+<li><strong>Manacher’s Algorithm O(n)</strong></li>
+</ul>
+
+<h4 id="toc_6">006_ZigZagCoversion</h4>
+
+<p><strong>Main Algo:</strong> Math<br><br>
+<strong>Corner Case:</strong> s = &quot;&quot;, numRows = 1<br><br>
+<strong>Core Codes:</strong>  </p>
+
+<div><pre class="line-numbers"><code class="language-cpp">for(int i = 0; i &lt; s.size(); i++){
+    int p = i % (2 * numRows - 2);
+    if(p &lt; numRows){
+        row[p] += s[i];
+    } else {
+        row[2 * numRows - 2 - p] += s[i]; // think about the graph of the function.
+    }
+}</code></pre></div>
+
+<h4 id="toc_7">007_ReverseInteger</h4>
+
+<p><strong>Corner Case:</strong> Overload</p>
+
+<h4 id="toc_8">008_StringToInteger</h4>
+
+<p><strong>Corner Case:</strong></p>
+
+<ul>
+<li>WhiteSpaces at the beginning</li>
+<li>‘+’ and ‘-’</li>
+<li>conversion breaks when there is a character which is not a number. </li>
+<li>overload of MAX<em>INT and MIN</em>INT.<br></li>
+</ul>
+
+<div><pre class="line-numbers"><code class="language-cpp">int myAtoi(string str) {
+    // sign is to record +/- if any in str; num is the number value; pos is the progress position in str
+    long sign = 1, num = 0, pos = 0;
+    
+    // skip initial spaces
+    while (pos &lt; str.length() &amp;&amp; str[pos] == &#39; &#39;) pos++;                        
+    
+    // extract sign if any
+    if (pos &lt; str.length() &amp;&amp; (str[pos] == &#39;+&#39; || str[pos] == &#39;-&#39;))
+        sign = str[pos++] == &#39;-&#39; ? -1 : 1;    
+    
+    // extract number if any, stop if num exceeds INT_MAX boundary
+    while (pos &lt; str.length() &amp;&amp; isdigit(str[pos]) &amp;&amp; num &lt;= INT_MAX)
+        num = num * 10 + (str[pos++] - &#39;0&#39;);
+    
+    // make sure answer does not exceed int boundary
+    return sign == 1 ? min(num, (long)INT_MAX) : max(-num, (long)INT_MIN);
+}</code></pre></div>
+
+<h4 id="toc_9">009_PalindromeNumber</h4>
+
+<p><strong>Corner Case:</strong></p>
+
+<ul>
+<li>All negative numbers are not palindromes.</li>
+<li>Ignore white spaces.</li>
+</ul>
+
+<h4 id="toc_10">010_RegularExpressionMatching</h4>
+
+<p><strong>Main Algo:</strong></p>
+
+<ul>
+<li>Recursion,</li>
+<li>DP, compress the space complexity<br></li>
+</ul>
+
+<p><strong>Corner Case:</strong>  </p>
+
+<ul>
+<li>P&#39;s end contians redundant *s.</li>
+</ul>
+
+<p><strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">if(s_pos == s.length()) {
+     // Remove redundant *s
+     while((p_pos + 1 &lt; p.length() &amp;&amp; p[p_pos + 1] == &#39;*&#39;))
+        p_pos += 2;
+    return p_pos == p.length();
+} 
+if(p_pos == p.length())
+    return s_pos == s.length();
+    
+if(p[p_pos] == &#39;.&#39; || s[s_pos] == p[p_pos]) // currently matched
+    if(p_pos + 1 &lt; p.length() &amp;&amp; p[p_pos + 1] == &#39;*&#39;)
+        return match(s, p, s_pos + 1, p_pos) || match(s, p, s_pos, p_pos + 2);
+    else 
+        return match(s, p, s_pos + 1, p_pos + 1);
+else 
+    if(p_pos + 1 &lt; p.length() &amp;&amp; p[p_pos + 1] == &#39;*&#39;)
+        return match(s, p, s_pos, p_pos + 2);
+    else 
+        return false;
+
+//DP with space compression
+for(int i = 1; i &lt;= n; i++){
+    f[i % 2][0] = false; // Must write this
+    for(int j = 1; j &lt;= m; j++)
+        if(p[j - 1] == &#39;*&#39;)
+            f[i % 2][j] = f[i % 2][j - 2] || (f[(i + 1) % 2][j] &amp;&amp; (s[i - 1] == p[j - 2] || p[j - 2] == &#39;.&#39;));
+        else
+            if(p[j - 1] == &#39;.&#39; || (s[i - 1] == p[j - 1]))
+                f[i % 2][j] = f[(i + 1)%2][j - 1];
+            else
+                f[i % 2][j] = false;
+}</code></pre></div>
+
+<h4 id="toc_11">011_ContainerWithMostWater</h4>
+
+<p><strong>Main Algo:</strong> Greedy, from the outside to inside, the height was determined by the lower buck. So we always choose the higher one to be remained. Since the distance is decreasing.<br><br>
+<strong>Core codes</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">while (start &lt; end) {
+    int area = min(height[end], height[start]) * (end - start);
+    result = max(result, area);
+    if (height[start] &lt;= height[end]) {
+        start++;
+    } else {
+        end--; 
+    }
+}</code></pre></div>
+
+<h4 id="toc_12">012_IntegerToRoman &amp;&amp; 013_RomanToInteger</h4>
+
+<p><strong>Main Algo:</strong> There are only two types of digits, IX (X minus I) or else(Add all letters together).  </p>
+
+<h4 id="toc_13">014_LongestCommonPrefix</h4>
+
+<h4 id="toc_14">015_3Sum</h4>
+
+<p><strong>Main Algo:</strong> </p>
+
+<ul>
+<li>Hashmap O(n^2), we have to sort first. And it will TLE if do not pass the same numbers. <strong>Here why hashmap works with dups existing?</strong></li>
+<li>Use three pointers. O(n^(k - 1))</li>
+</ul>
+
+<p><strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">// Three pointers.
+sort(nums.begin(), nums.end());
+for(int i = 0; i &lt; nums.size() - 2; i++){
+    if(i &gt; 0 &amp;&amp; nums[i] == nums[i - 1])
+        continue;
+    int j = i + 1, k = nums.size() - 1;
+    while(j &lt; k){
+        if(nums[i] + nums[j] + nums[k] &lt; 0){
+            j++;
+            while(j &lt; k &amp;&amp; nums[j] == nums[j - 1])
+                j++;
+        } else if (nums[i] + nums[j] + nums[k] &gt; 0){
+            k--;
+            while(j &lt; k &amp;&amp; nums[k] == nums[k + 1])
+                k--;
+        } else {
+            result.push_back(vector&lt;int&gt;({nums[i], nums[j], nums[k]}));
+            k--;
+            while(j &lt; k &amp;&amp; nums[k] == nums[k + 1])
+                k--;
+        }
+    }
+}</code></pre></div>
+
+<h4 id="toc_15">016_3SumClosest</h4>
+
+<p><strong>Main Algo:</strong> Three pointers.<br><br>
+<strong>Core Codes:</strong> </p>
+
+<div><pre class="line-numbers"><code class="language-cpp">sort(nums.begin(), nums.end());        
+for(auto i = nums.begin(); i != prev(nums.end(), 2); i++){
+    auto j = next(i);
+    auto k = prev(nums.end());
+    
+    while(j &lt; k){
+        int sum = *i + *j + *k;
+        int gap = abs(target - sum);
+        if(gap &lt; min_gap){
+            min_gap = gap;
+            min_sum = sum;
+        }
+        if(sum &lt; target) j++;
+        else k--;
+    }
+}</code></pre></div>
+
+<h4 id="toc_16">017_LetterCombinationOfAPhoneNumber</h4>
+
+<p><strong>Main Algo:</strong> Typical DFS  </p>
+
+<h4 id="toc_17">018_4Sum</h4>
+
+<p><strong>Main Algo:</strong> Four pointers  </p>
+
+<h4 id="toc_18">019_RemoveNthNodeFromEndOfList</h4>
+
+<p><strong>Main Algo:</strong> The best way to solve this problem is to set two pointer at the begining. The first one go n steps first and then they go together until the first on goes to the end.<br><br>
+<strong>Corner Cases:</strong> empty list, or remove the head node.<br><br>
+<strong>Core Codes:</strong>  </p>
+
+<div><pre class="line-numbers"><code class="language-cpp">ListNode* now = head;
+
+if(now == NULL)
+    return now;
+
+int tempN = n;
+while(tempN &gt; 1){
+    now = now-&gt;next;
+    tempN--;
+}
+
+if(now-&gt;next == nullptr)
+    return head-&gt;next;
+    
+ListNode* newHead = head;
+ListNode* last;
+while(now-&gt;next != nullptr){
+    last = newHead;
+    newHead = newHead-&gt;next;
+    now = now-&gt;next;
+}
+last-&gt;next = newHead-&gt;next;
+return head;</code></pre></div>
+
+<h4 id="toc_19">020_ValidParentheses</h4>
+
+<p><strong>Main Algo:</strong> Use a stack to pair the brackets and pop, once the current right bracket can not be paired to the top of the stack it goes wrong.    </p>
+
+<h4 id="toc_20">021_MergeTwoSortedLists &amp;&amp; 023_MergeKSortedLists</h4>
+
+<p><strong>Main Algo:</strong> Using a priority_queue, O(nlogk).<br><br>
+<strong>Core Codes:</strong>  </p>
+
+<div><pre class="line-numbers"><code class="language-cpp">auto cmp = [](ListNode* l1, ListNode* l2){
+    return l1-&gt;val &gt; l2-&gt;val;
+};
+priority_queue&lt;ListNode*, vector&lt;ListNode*&gt;, decltype(cmp) &gt; heap(cmp);
+
+for(auto i:lists)
+    if(i != nullptr)
+        heap.push(i);
+if(heap.empty())
+    return nullptr;
+
+ListNode *head = heap.top();
+ListNode *now = head;
+if(heap.top()-&gt;next != nullptr)
+    heap.push(heap.top()-&gt;next);
+heap.pop();
+
+while(!heap.empty()){
+    now-&gt;next = heap.top();
+    now = now-&gt;next;
+    if(heap.top()-&gt;next != nullptr)
+        heap.push(heap.top()-&gt;next);
+    heap.pop();
+}
+now-&gt;next = nullptr;
+return head;</code></pre></div>
+
+<h4 id="toc_21">022_GenerateParentheses</h4>
+
+<p><strong>Main Algo:</strong> The parentheses follow the rule that if the unpaired left ones are zero, you couldn’t put a right one. Besides, if n * 2 - pos == leftn, then you can only put right ones.<br><br>
+<strong>Core codes:</strong> </p>
+
+<div><pre class="line-numbers"><code class="language-cpp">if(leftn == 0){
+    resultChar[pos] = &#39;(&#39;;
+    getParenthesis(n, pos + 1, leftn + 1, resultChar, result);
+} else {
+    if(n * 2 - pos &gt; leftn){
+        resultChar[pos] = &#39;(&#39;;
+        getParenthesis(n, pos + 1, leftn + 1, resultChar, result);
+
+        resultChar[pos] = &#39;)&#39;;
+        getParenthesis(n, pos + 1, leftn - 1, resultChar, result);
+    } else {
+        resultChar[pos] = &#39;)&#39;;
+        getParenthesis(n, pos + 1, leftn - 1, resultChar, result);
+    }
+}  </code></pre></div>
+
+<h4 id="toc_22">024_SwapNodesInPairs &amp;&amp; 025_ReverseNodesInKGroup</h4>
+
+<p><strong>Main Algo:</strong> Record the current position, when it is larger than n/k * k, it shouldn&#39;t be reversed.<br><br>
+<strong>Core Codes:</strong> </p>
+
+<div><pre class="line-numbers"><code class="language-cpp">ListNode *newNode;
+newNode = reverse(head-&gt;next, k, order + 1, n);
+    
+if(order % k == 0 || order &gt; n/k * k){
+    head-&gt;next = newNode;
+    return head;
+} else {
+    ListNode* now = newNode;
+    int t = order;
+    while((t + 1) % k != 0){
+        now = now-&gt;next;
+        t++;
+    }
+    head-&gt;next = now-&gt;next;
+    now-&gt;next = head;
+    return newNode;
+}</code></pre></div>
+
+<h4 id="toc_23">026_RemoveDuplicatesFromSortedArray</h4>
+
+<p><strong>Core Codes:</strong>  </p>
+
+<div><pre class="line-numbers"><code class="language-cpp">return distance(nums.begin(), unique(nums.begin(), nums.end()));</code></pre></div>
+
+<h4 id="toc_24">027_RemoveElement</h4>
+
+<p><strong>Mail Algo:</strong> Move all non-val value to the begining of the array.<br><br>
+<strong>Core Codes:</strong>  </p>
+
+<div><pre class="line-numbers"><code class="language-cpp">int index = 0;
+for(int i = 0; i &lt; nums.size(); i++){
+    if(nums[i] != val){
+        nums[index++] = nums[i];
+    }
+}
+return index;</code></pre></div>
+
+<h4 id="toc_25">028_ImplementStrStr()</h4>
+
+<h4 id="toc_26">029_DivideTwoIntegers</h4>
+
+<p><strong>Mail Algo:</strong> The divisor can be doubled every time to accelerate.   <strong>Corner Cases:</strong> overload situation<br><br>
+<strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">if (!divisor || (dividend == INT_MIN &amp;&amp; divisor == -1))
+    return INT_MAX;
+int sign = ((dividend &lt; 0) ^ (divisor &lt; 0)) ? -1 : 1;
+long dvd = labs(dividend);
+long dvs = labs(divisor);
+int res = 0;
+while (dvd &gt;= dvs) { 
+    long temp = dvs, multiple = 1;
+    while (dvd &gt;= (temp &lt;&lt; 1)) {
+        temp &lt;&lt;= 1;
+        multiple &lt;&lt;= 1;
+    }
+    dvd -= temp;
+    res += multiple;
+}
+return sign == 1 ? res : -res; </code></pre></div>
+
+<h4 id="toc_27">030_SubstringWithConcatenationOfAllWords</h4>
+
+<p><strong>Main Algo:</strong> An important condition--all words are the same length.<br><br>
+<strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">for(auto word:words)
+    expected[word]++;
+
+for(int i = 0; i + n * len &lt;= s.length(); i++){
+    unordered_map&lt;string, int&gt; seen;
+    int j = i;
+    int count = 0;
+    while(true){
+        string now = s.substr(j, len);
+        if(expected.find(now) == expected.end() || seen[now] == expected[now])
+            break;
+        else{
+            count++;
+            seen[now]++;
+            j += len;
+        }
+    }
+    if(count == n)
+        result.push_back(i);
+}</code></pre></div>
+
+<h4 id="toc_28">031_NextPermutation</h4>
+
+<p><strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">for(auto first = nums.end() - 2; first &gt;= nums.begin(); first--){  
+    for(auto last = nums.end() - 1; last != first; last--){  
+        if(*last &gt; *first){  
+            swap(*last, *first);  
+            sort(first + 1, nums.end());  
+            return;  
+        }  
+    }  
+}  </code></pre></div>
+
+<h4 id="toc_29">032_LongestValidParentheses</h4>
+
+<p><strong>Corner Cases:</strong> &quot;(()&quot; we have to apply this algorithm twice.<br><br>
+<strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">for(int pos = 0; pos &lt; s.length(); pos++ ){  
+    if(s[pos] == &#39;(&#39;)  
+        unpair++;  
+    else  
+        if(unpair == 0)  
+            lastPos = pos;  
+        else{  
+            unpair--;  
+            if(unpair == 0)  
+                if(pos - lastPos &gt; max)  
+                    max = pos - lastPos;  
+        }  
+}  </code></pre></div>
+
+<h4 id="toc_30">033_SearchInRotatedSortedArrayI &amp;&amp; 081_SearchInRotatedSortedArrayII</h4>
+
+<p><strong>Main Algo:</strong> Binary Search with different conditions. In the later problem, the difference is that once mid == tail, tail--.<br><br>
+<strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">while(head &lt; tail){
+    int mid = (head + tail) / 2;
+    if(nums[mid] &gt; nums[tail])f
+        if(target &gt;= nums[head] &amp;&amp; target &lt;= nums[mid])
+            tail = mid;
+        else
+            head = mid + 1;
+    else if(nums[mid] &lt; nums[tail])
+        if(target &gt; nums[mid] &amp;&amp; target &lt;= nums[tail])
+            head = mid + 1;
+        else
+            tail = mid;
+    else
+        tail--;
+}</code></pre></div>
+
+<h4 id="toc_31">034_SearchForARange</h4>
+
+<p><strong>Main Algo:</strong> Binary search to find the lower and upper bounds.<br>
+<strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">// lower_bound &amp; upper_bound
+std::vector&lt;int&gt;::iterator low=std::lower_bound (nums.begin(), nums.end(), target);
+    if(*low != target) return result;
+    std::vector&lt;int&gt;::iterator up= std::upper_bound (low, nums.end(), target) -1;
+    result[0] = low - nums.begin();
+    result[1] = up - nums.begin();
+
+// Binary search twice
+int head = 0, tail = nums.size();
+while(head &lt; tail){
+    int mid = (head + tail) / 2;
+    if(nums[mid] &gt;= target)
+        tail = mid;
+    else
+        head = mid + 1;
+}
+if(nums[head] != target) // check if there is a range
+    return result;
+result[0] = head;
+
+head = 0, tail = nums.size();
+while(head &lt; tail){
+    int mid = (head + tail) / 2;
+    if(nums[mid] &lt;= target)
+        head = mid + 1;
+    else
+        tail = mid;
+}
+result[1] = tail - 1;</code></pre></div>
+
+<h4 id="toc_32">035_SearchInsertPosition</h4>
+
+<p><strong>Main Algo:</strong> Binary Search  </p>
+
+<h4 id="toc_33">036_ValidSudoku &amp;&amp; 037_SudokuSolver</h4>
+
+<p><strong>Main Algo:</strong> DFS  </p>
+
+<h4 id="toc_34">038_CountAndSay</h4>
+
+<h4 id="toc_35">039_CombinationSum &amp;&amp; 040_CombinationSum II</h4>
+
+<p><strong>Main Algo:</strong> Recursion, sort the candidates first.<br><br>
+For combinationII, we can not choose the same candidates more than once. And finally we have to remove duplicate answers.<br><br>
+<strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">if(target == 0)
+    return vector&lt;vector&lt;int&gt;&gt;(1, vector&lt;int&gt;());
+    
+if(start == candidates.size() || candidates[start] &gt; target)
+    return result;
+
+result = findComb(candidates, start, target - candidates[start]);
+for(int i = 0; i &lt; result.size(); i++)
+    result[i].insert(result[i].begin(), candidates[start]);
+vector&lt;vector&lt;int&gt;&gt; temp = findComb(candidates, start + 1, target);
+result.insert(result.end(), temp.begin(), temp.end());
+        </code></pre></div>
+
+<h4 id="toc_36">041_FirstMissingPositive</h4>
+
+<div><pre class="line-numbers"><code class="language-cpp">//Interval solution
+for(auto i = nums.begin(); i != nums.end(); i++){  
+    if(*i &lt;= 0)  
+        continue;  
+
+    for(int j = 0; j &lt; result.size(); j++){  
+        if(*i &gt;= result[j].first &amp;&amp; *i &lt;= result[j].second){  
+            pair&lt;int, int&gt; left, right;  
+            left = make_pair(result[j].first, *i - 1);  
+            right = make_pair(*i + 1, result[j].second);  
+            result.erase(result.begin() + j);  
+            if(left.first &lt;= left.second)  
+                result.insert(result.begin() + j++, left);  
+            if(right.first &lt;= right.second)  
+                result.insert(result.begin() + j, right);  
+            break;  
+        }  
+    }  
+}  
+    
+// O(1) space.
+int i, n = nums.size();
+for(i=0; i&lt;n; i++){
+    while(nums[i]&gt;=1 &amp;&amp; nums[i]&lt;=n &amp;&amp; nums[i]!=nums[nums[i]-1])
+        swap(nums[i], nums[nums[i]-1]);
+}
+    
+int j=1;
+for(j=1; j&lt;=n; j++)
+    if(nums[j-1]!=j)
+        break;
+        
+return j;</code></pre></div>
+
+<h4 id="toc_37">042_TrappingRainWater 2Y</h4>
+
+<p><strong>Main Algo:</strong>  </p>
+
+<ul>
+<li>Find the left most height and right most height at each point, the result will be sum (min(left[i], right[i]) - height[i])</li>
+<li>From the outest two bars go inside to the </li>
+</ul>
+
+<p><strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">// Find left and right most.
+for(int i = 0; i &lt; n; i++){
+    if(i == 0){
+        left[i] = height[i];
+        right[n - i - 1] = height[n - i - 1];
+    } else {
+        if(height[i] &lt;= left[i - 1])
+            left[i] = left[i - 1];
+        else
+            left[i] = height[i];
+        if(height[n - i - 1] &lt;= right[n - i])
+            right[n - i - 1] = right[n - i];
+        else
+            right[n - i - 1] = height[n - i - 1];
+    }
+}
+
+// From outside to inside
+int trap(vector&lt;int&gt;&amp; height) {
+    auto l = height.begin(), r = height.end() - 1;
+    int level = 0, water = 0;
+    while (l != r + 1) {
+        int lower = *l &lt; *r ? *l++ : *r--;
+        level = max(level, lower);
+        water += level - lower;
+    }
+    return water;
+}</code></pre></div>
+
+<h4 id="toc_38">043_MultiplyStrings 2Y</h4>
+
+<p><strong>Corner Cases:</strong> One of the factor is 0.<br><br>
+<strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">for(int i = 0; i &lt; num1.size(); i++){
+    for(int j = 0; j &lt; num2.size(); j++){
+        mulResult[i + j] += n1[i] * n2[j] % 10;
+        mulResult[i + j + 1] += n1[i] * n2[j] / 10;
+    }
+}
+
+for(int i  = 0; i &lt; length - 1; i++){
+    if(mulResult[i] &gt; 9) {
+        mulResult[i + 1] += mulResult[i] / 10;
+        mulResult[i] = mulResult[i] % 10 ; 
+    }
+}</code></pre></div>
+
+<h4 id="toc_39">044_WildcardMatching</h4>
+
+<p><strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">//DP similar to regex expression matching
+for(int i = 1; i &lt;= n; i++){
+    f[i % 2][0] = false;
+    for(int j = 1; j &lt;= m; j++)
+        if(p[j - 1] == &#39;*&#39;){
+            f[i % 2][j] = f[i % 2][j - 1] || f[(i + 1) % 2][j];
+        } else if(p[j - 1] == &#39;?&#39; || s[i - 1] == p[j - 1])
+            f[i % 2][j] = f[(i + 1) % 2][j - 1];
+        else
+            f[i % 2][j] = false;
+}</code></pre></div>
+
+<h4 id="toc_40">046_Permutations and 047_PermutationsII</h4>
+
+<p><strong>Main Algo:</strong> </p>
+
+<ul>
+<li>Dfs could solve, for permutation II, we have to cut edges. </li>
+<li>Next permutation function.<br></li>
+</ul>
+
+<p><strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">sort(nums.begin(), nums.end());
+
+do{
+    result.push_back(nums);
+} while(next_permutation(nums.begin(), nums.end()));</code></pre></div>
+
+<h4 id="toc_41">048_RotateImage</h4>
+
+<p><strong>Main Algo:</strong> Rotate in place, since it&#39;s a square matrix.<br><br>
+<strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">while(start &lt; end){
+    for(int i = 0; i &lt; end - start; i++){
+        int mid = matrix[start][start + i];
+        matrix[start][start + i] = matrix[end - i][start];
+        matrix[end - i][start] = matrix[end][end - i];
+        matrix[end][end - i] = matrix[start + i][end];
+        matrix[start + i][end] = mid;
+    }
+    start++;
+    end--;
+}</code></pre></div>
+
+<h4 id="toc_42">049_GroupAnagrams</h4>
+
+<p><strong>Main Algo:</strong> Use a unordered_map to map the sorted version to the orginal string. Other wise it would TLE. <br>
+<strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">for(auto k : strs){
+    string a = k;
+    sort(a.begin(), a.end());
+    s[a].push_back(k);
+}</code></pre></div>
+
+<h4 id="toc_43">050_Pow(x, n)</h4>
+
+<p><strong>Main Algo:</strong> Split n to n / 2.<br><br>
+<strong>Corner Cases:</strong> n = 0, n &lt; 0<br><br>
+<strong>Core Codes:</strong>  </p>
+
+<div><pre class="line-numbers"><code class="language-cpp">double myPow(double x, int n) {
+    if(n &lt; 0)
+        return 1.0 / power(x, -n); // deal with n &lt; 0
+    else
+        return power(x, n);
+}
+
+double power(double x, long n){
+    if(n == 0)
+        return 1.0;
+        
+    double half = power(x, n / 2);
+
+    if(n % 2 == 0)
+        return half * half;
+    else
+        return half * half * x;
+}</code></pre></div>
+
+<h4 id="toc_44">051_N-Queens &amp;&amp; 052_N-QueensII</h4>
+
+<p><strong>Main Algo:</strong> Typical DFS<br><br>
+<strong>Core Codes:</strong> </p>
+
+<div><pre class="line-numbers"><code class="language-cpp">// Bit operation.
+void solve(int row, int ld, int rd) {
+    if (row == lim) { // have placed row queens
+        ans ++;  // we have a solution
+        return;
+    }
+    int pos = lim &amp; (~(row | ld | rd)); // valid positions
+    while (pos != 0) {
+        int p = pos &amp; (-pos); // rightmost position
+        pos -= p; // have tried this
+        solve(row + p, (ld + p) &lt;&lt; 1, (rd + p) &gt;&gt; 1);
+    }
+}
+ 
+int totalNQueens(int n) {
+    ans = 0;
+    lim = (1 &lt;&lt; n) - 1;
+    solve(0, 0, 0);
+    return ans;
+}  </code></pre></div>
+
+<h4 id="toc_45">053_MaximumSubarray</h4>
+
+<p><strong>Main Algo:</strong> Greedy, when current sum is less than 0, let it be 0.   </p>
+
+<h4 id="toc_46">054_SpiralMatrix &amp;&amp; 059_SpiralMatrixII</h4>
+
+<p><strong>Main Algo:</strong> Move towards four directions. Each time when the next step is illegal, change the direction.<br><br>
+<strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">vector&lt;vector&lt;int&gt;&gt; result(n, vector&lt;int&gt;(n, 0));
+int direc[5] = {0, 1, 0, -1, 0};
+
+int x = 0, y = 0, d = 0;
+for(int i = 1; i &lt;= n * n; i++){
+    result[x][y] = i;
+    if(x + direc[d] == n || x + direc[d] &lt; 0 || y + direc[d + 1] == n || y + direc[d + 1] &lt; 0 || result[x + direc[d]][y + direc[d + 1]] != 0)
+        d = (d + 1) % 4;
+    x += direc[d];
+    y += direc[d + 1];
+}
+    return result;  </code></pre></div>
+
+<h4 id="toc_47">055_JumpGame &amp;&amp; 045_JumpGameII</h4>
+
+<p><strong>Main Algo:</strong> For jump game II, it&#39;s similar to BFS, but we could use a greedy algorithm.<br><br>
+<strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">for(int i = 0; i &lt; nums.size(); i++){
+    if(i &gt; last){ // out of the range of step
+        step++;
+        last = max;
+    }
+    
+    if(i == nums.size() - 1) // arrive the end
+        return step;
+        
+    if(i + nums[i] &gt; max) // find the range of the next step
+        max = i + nums[i];
+}</code></pre></div>
+
+<h4 id="toc_48">056_MergeIntervals &amp;&amp; 057_InsertIntervals</h4>
+
+<p><strong>Main Algo:</strong> All can be solved by sort by the starts, and insert them to the answer one by one.<br><br>
+<strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">sort(intervals.begin(), intervals.end(), [=](const Interval a, const Interval b){
+    return a.start &lt; b.start;
+});
+
+vector&lt;Interval&gt; result;
+
+for(auto i : intervals)
+    if(result.empty() || i.start &gt; result.back().end)
+        result.push_back(i);
+    else
+        result.back().end = max(result.back().end, i.end);
+
+return result;</code></pre></div>
+
+<h4 id="toc_49">058_LengthOfLastWord</h4>
+
+<p><strong>Main Algo:</strong> The best way is to use stringstream. <br>
+<strong>Corner Cases:</strong> If do not use stringstream, we need to consiter multiple spaces and a space at the end of the input string.<br><br>
+<strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">istringstream in(s);
+string last = &quot;&quot;;
+while(in &gt;&gt; last);
+return last.length();</code></pre></div>
+
+<h4 id="toc_50">060_PermutationSquence</h4>
+
+<p><strong>Main Algo:</strong> If we simply calculate the next permutation it would TLE. This problem is a math problem, where k determines which of the candidate we could choose.<br><br>
+<strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">string cand = &quot;123456789&quot;; 
+string result(n, &#39;0&#39;);
+for(int i = 0; i &lt; n; i++){
+    int cur = (k - 1) / fac(n - i - 1); // Choose the current digit.
+    k = (k - 1) % fac(n - i - 1) + 1; // Calculate the remaining.
+    cout &lt;&lt; i &lt;&lt; cur &lt;&lt; k &lt;&lt; cand[cur] &lt;&lt; endl;
+    result[i] = cand[cur];
+    cand.erase(cur, 1);
+}</code></pre></div>
+
+<h4 id="toc_51">061_RotateList</h4>
+
+<p><strong>Main Algo:</strong> We circle the list first, and find the newHead to split.<br><br>
+<strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">int len=1; // number of nodes
+ListNode *newH, *tail;
+newH=tail=head;
+    
+// get the number of nodes in the list
+while(tail-&gt;next){
+    tail = tail-&gt;next;
+    len++;
+}
+tail-&gt;next = head; // circle the link
+
+if(k %= len){
+    for(auto i=0; i&lt;len-k; i++) tail = tail-&gt;next; // the tail node is the (len-k)-th node (1st node is head)
+}
+newH = tail-&gt;next; 
+tail-&gt;next = NULL;
+return newH;</code></pre></div>
+
+<h4 id="toc_52">062_UniquePaths &amp;&amp; 063<em>UniquePathsII &amp;&amp; 064</em>MinimumPathSum</h4>
+
+<p><strong>Main Algo:</strong> DP<br><br>
+<strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">f[1][1] = !obstacleGrid[0][0];
+    
+for(int i = 1; i &lt;= m; i++)
+    for(int j = 1; j &lt;= n; j++)
+        if(i == 1 &amp;&amp; j == 1)
+            continue;
+        else if(obstacleGrid[i - 1][j - 1] == 1)
+            f[i][j] = 0;
+        else
+            f[i][j] = f[i - 1][j] + f[i][j - 1];
+</code></pre></div>
+
+<h4 id="toc_53">065_ValidNumber</h4>
+
+<p>Can contain only 1 e, right should be pure number.<br>
+For fraction, right should not contain &#39;-&#39; or &#39;+&#39;  </p>
+
+<h4 id="toc_54">066_PlusOne</h4>
+
+<h4 id="toc_55">067_AddBinary</h4>
+
+<h4 id="toc_56">068_TextJustification</h4>
+
+<p>Mind the details. </p>
+
+<h4 id="toc_57">069_Sqrt(x)</h4>
+
+<p><strong>Main Algo:</strong> Binary Search<br><br>
+<strong>Corner Cases:</strong>Overflow when compare mid * mid &lt;= x, so we have to compare mid and x / mid.<br><br>
+<strong>Core Codes:</strong> </p>
+
+<div><pre class="line-numbers"><code class="language-cpp">long head = 0, tail = x;
+while(head &lt; tail){
+    int mid = (head + tail + 1) / 2;
+    if(mid  &gt; (double)x / mid)
+        tail = mid - 1;
+    else
+        head = mid;
+}</code></pre></div>
+
+<h4 id="toc_58">070_ClimbingStaris</h4>
+
+<p><strong>Main Algo:</strong> DP</p>
+
+<h4 id="toc_59">071_SimplifyPath</h4>
+
+<p><strong>Main Algo:</strong> Using istringstream to split the path, use a stack to record the whole path.<br><br>
+<strong>Corner Cases:</strong> &quot;///&quot;, &quot;/../&quot;<br>
+<strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">stack&lt;string&gt; dir;
+istringstream in(path);
+
+string cur;
+while(getline(in, cur, &#39;/&#39;)){
+    if(cur.empty() || cur == &quot;.&quot; || (cur == &quot;..&quot; &amp;&amp; dir.empty()))
+        continue;
+    if(cur == &quot;..&quot;)
+        dir.pop();
+    else
+        dir.push(&#39;/&#39; + cur);
+}</code></pre></div>
+
+<h4 id="toc_60">072_EditDistance</h4>
+
+<p><strong>Main Algo:</strong> DP<br><br>
+<strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">f[0][0] = 0;
+for(int i = 1; i &lt;= m; i++)
+    f[i][0] = i;
+for(int j = 1; j &lt;= n; j++)
+    f[0][j] = j;
+
+for(int i = 0; i &lt;= m; i++)
+    for(int j = 0; j &lt;= n; j++)
+        if(word1[i - 1] == word2[j - 1])
+            f[i][j] = f[i - 1][j - 1];
+        else
+            f[i][j] = min(f[i - 1][j], min(f[i][j - 1], f[i - 1][j - 1])) + 1;</code></pre></div>
+
+<h4 id="toc_61">073_SetMatrixZeroes</h4>
+
+<p><strong>Main Algo:</strong> To do it in-place, we use the first row and first column to help us to record whether to delete this column or this row. At first we have to find out whether to delete the first row or first column.<br><br>
+<strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">if(matrix.empty()) return ;
+int rowSize = matrix.size(), colSize = matrix[0].size();
+bool firstRow = false, firstCol = false;
+for(int c = 0; c &lt; colSize; ++c) if(matrix[0][c] == 0) firstRow = true;
+for(int r = 0; r &lt; rowSize; ++r) if(matrix[r][0] == 0) firstCol = true;
+for(int r = 1; r &lt; rowSize; ++r)
+    for(int c = 1; c &lt; colSize; ++c)
+        if(matrix[r][c] == 0) matrix[0][c] = matrix[r][0] = 0;
+for(int c = 1; c &lt; colSize; ++c) 
+    if(matrix[0][c] == 0)
+        for(int r = 1; r &lt; rowSize; ++r)
+            matrix[r][c] = 0;
+for(int r = 1; r &lt; rowSize; ++r) 
+    if(matrix[r][0] == 0)
+        for(int c = 1; c &lt; colSize; ++c)
+            matrix[r][c] = 0;
+if(firstRow) for(int c = 0; c &lt; colSize; ++c) matrix[0][c] = 0;
+if(firstCol) for(int r = 0; r &lt; rowSize; ++r) matrix[r][0] = 0;</code></pre></div>
+
+<h4 id="toc_62">074_SearchA2DMatrix</h4>
+
+<p><strong>Main Algo:</strong> We start from the top-right most position. Every time if the element is smaller than target, we move down to the next row; if it is larger than target, we move to the left column.<br><br>
+<strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">int x = 0, y = matrix[0].size() - 1;
+while(x &lt; matrix.size() &amp;&amp; y &gt;= 0){
+    if(matrix[x][y] &lt; target)
+        x++;
+    else if(matrix[x][y] &gt; target)
+        y--;
+    else
+        return true;
+}</code></pre></div>
+
+<h4 id="toc_63">075_SortColors</h4>
+
+<p><strong>Main Algo:</strong> Count the numbers each color. Or do it in the way below.<br><br>
+<strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">vector&lt;int&gt; colors(k);
+for (int i = 0; i &lt; nums.size; i++) {
+    int current = k, num = nums[i];
+    while (--current &gt;= num)
+        nums[colors[current]++] = current;
+}</code></pre></div>
+
+<h4 id="toc_64">076_MinimumWindowSubstring</h4>
+
+<p><strong>Main Algo:</strong> Sliding window with two pointers, once we expand the tail and find it cover the t string, we shrink the head.<br><br>
+<strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">string minWindow(string s, string t) {
+    int minLength = INT_MAX, start = 0, min_start;
+    int cur = 0;
+    unordered_map&lt;char, int&gt; t_count;
+    for(auto i:t) t_count[i]++;
+    
+    for(int i = 0; i &lt; s.length(); i++){
+        if(t_count[s[i]]-- &gt; 0) cur++;
+        
+        while(cur == t.size()){
+            if(i - start + 1 &lt; minLength){
+                minLength = i - start + 1;
+                min_start = start;
+            } 
+            if(t_count[s[start++]]++ == 0) cur--;
+        }
+    }
+    
+    return minLength == INT_MAX?&quot;&quot;:s.substr(min_start, minLength);
+}</code></pre></div>
+
+<h4 id="toc_65">077_Combinations</h4>
+
+<p><strong>Main Algo:</strong> DFS<br><br>
+<strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">if(depth == k) {
+    result.push_back(path);
+    return;
+}
+
+for(int i = last + 1; i &lt;= n; i++){ // keep it in asendant order
+    path.push_back(i);
+    dfs(depth + 1, i, n, k, path, result);
+    path.pop_back();
+}</code></pre></div>
+
+<h4 id="toc_66">078_Subsets &amp;&amp; 090_SubsetsII</h4>
+
+<p><strong>Main Algo:</strong> For each number we have two distinct choice, choose or not. In subsetsII, we have to sort the nums first to ensure the answers are in asendant order and have to remove the duplicate results at the end.<br><br>
+<strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">vector&lt;vector&lt;int&gt;&gt; result(1, vector&lt;int&gt;());
+for(int i = 0; i &lt; nums.size(); i++){
+    vector&lt;vector&lt;int&gt;&gt; temp = result;
+    for(auto&amp; k:temp)
+        k.push_back(nums[i]);
+    result.insert(result.end(), temp.begin(), temp.end());
+}</code></pre></div>
+
+<h4 id="toc_67">079_WordSearch &amp;&amp; 212_WordSearchII</h4>
+
+<p><strong>Main Algo:</strong> For WordSearchII, we build a trie tree using the words for search. DFS the board and push_back the index once we find one.<br><br>
+<strong>Corner Cases:</strong> Since we can not go out of the board, so we check the next nodes&#39;s idx. For example board is [[a]], word is a.<br><br>
+<strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">class Solution {
+public:
+    vector&lt;string&gt; findWords(vector&lt;vector&lt;char&gt;&gt;&amp; board, vector&lt;string&gt;&amp; words) {
+        TrieNode *root = new TrieNode();
+        for(int i = 0; i &lt; words.size(); i++)
+            constructTrieTree(root, words[i], i);
+        
+        for(int i = 0; i &lt; board.size(); i++)
+            for(int j = 0; j &lt; board[0].size(); j++)
+                dfs(i, j, root, board);
+                
+        vector&lt;string&gt; result;
+        for(auto i:result_idx)
+            result.push_back(words[i]);
+            
+        return result;
+    }
+private:
+    struct TrieNode{
+        TrieNode* next[26];
+        int idx = -1;
+        TrieNode(){
+            fill(next, next + 26, nullptr);
+        }
+    };
+    vector&lt;int&gt; result_idx;
+    
+    void dfs(int i, int j, TrieNode* root, vector&lt;vector&lt;char&gt;&gt;&amp; board){
+        if(board[i][j] == 0 || root-&gt;next[board[i][j] - &#39;a&#39;] == nullptr)
+            return;
+            
+        char cur = board[i][j];
+        TrieNode *p = root-&gt;next[cur - &#39;a&#39;];
+        // we check if we can find a word by the end of this node.
+        if(p-&gt;idx != -1){
+            result_idx.push_back(p-&gt;idx);
+            p-&gt;idx = -1;
+        }
+        
+        board[i][j] = 0;
+        if(i &gt; 0) 
+            dfs(i - 1, j, root-&gt;next[cur - &#39;a&#39;], board);
+        if(i &lt; board.size() - 1) 
+            dfs(i + 1, j, root-&gt;next[cur - &#39;a&#39;], board);
+        if(j &gt; 0) 
+            dfs(i, j - 1, root-&gt;next[cur - &#39;a&#39;], board);
+        if(j &lt; board[0].size() - 1) 
+            dfs(i, j + 1, root-&gt;next[cur - &#39;a&#39;], board);
+        board[i][j] = cur;
+    }
+    
+    void constructTrieTree(TrieNode* root, string s, int i_idx){
+        for(auto c:s){
+            if(root-&gt;next[c - &#39;a&#39;] == nullptr){
+                root-&gt;next[c - &#39;a&#39;] = new TrieNode();
+                root = root-&gt;next[c - &#39;a&#39;];
+            } else root = root-&gt;next[c - &#39;a&#39;];
+        }
+        root-&gt;idx = i_idx;
+    }
+};</code></pre></div>
+
+<h4 id="toc_68">080_RemoveDuplicatesfromSortedArrayII</h4>
+
+<p><strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">int i = 0;
+for (int n : nums)
+    if (i &lt; 2 || n &gt; nums[i-2])
+        nums[i++] = n;
+return i;</code></pre></div>
+
+<h4 id="toc_69">082_RemoveDuplicatesfromSortedListII &amp;&amp; 083_RemoveDuplicatesfromSortedListI</h4>
+
+<p><strong>Core Codes:</strong> A dummy node will sometimes help.<br><br>
+<strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">ListNode *dummy = new ListNode(-1);
+dummy-&gt;next = head;
+ListNode *last = dummy;
+
+while(last-&gt;next != nullptr &amp;&amp; last-&gt;next-&gt;next != nullptr)
+    if(last-&gt;next-&gt;val == last-&gt;next-&gt;next-&gt;val){
+        int same = last-&gt;next-&gt;val;
+        while(last-&gt;next != nullptr &amp;&amp; last-&gt;next-&gt;val == same)
+            last-&gt;next = last-&gt;next-&gt;next;
+    } else{
+        last = last-&gt;next;
+    }
+return dummy-&gt;next;</code></pre></div>
+
+<h4 id="toc_70">084_LargestRectangleInHistogram</h4>
+
+<p><strong>Main Algo:</strong> Keep an asendant stack, we push the current idx if the height is larger then the top one, and we pop one by one once the current index&#39;s height is smaller than the top. Each pop we could calculate the area of the top element by <strong>height * (currentIdx - nextTop(if not then it&#39;s 0))</strong> And at then end we push a height 0 to the end of the heights.<br><br>
+<strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">stack&lt;int&gt; s;
+heights.push_back(0);
+
+int maxArea = 0;
+for(int i = 0; i &lt; heights.size(); i++){
+    if(s.empty() || heights[i] &gt; heights[s.top()])
+        s.push(i);
+    else{
+        while(!s.empty() &amp;&amp; heights[s.top()] &gt; heights[i]){
+            int curIdx = s.top();
+            s.pop();
+            int curArea = heights[curIdx] * (s.empty()?i:(i - s.top() - 1));
+            if(curArea &gt; maxArea)
+                maxArea = curArea;
+        }
+        s.push(i);
+    }
+}</code></pre></div>
+
+<h4 id="toc_71">086_PartitionList</h4>
+
+<p><strong>Main Algo:</strong> Recursively we got the PartitionedList of the next node, and decide where to insert the current node.<br>
+<strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">if(head-&gt;val &lt; x){
+    head-&gt;next = partition(head-&gt;next, x);
+    return head;
+} else{
+    ListNode* dummy = new ListNode(-1);
+    dummy-&gt;next = partition(head-&gt;next, x);
+    ListNode* last = dummy, *now = dummy-&gt;next;
+    while(head-&gt;val &gt;= x &amp;&amp; now != nullptr &amp;&amp; now-&gt;val &lt; x){
+        last = now;
+        now = now-&gt;next;
+    }
+    last-&gt;next = head;
+    head-&gt;next = now;
+    return dummy-&gt;next;
+}</code></pre></div>
+
+<h4 id="toc_72">087_ScrambleString</h4>
+
+<p><strong>Main Algo:</strong> We just enum all possible breaks(roots) and check if rotate(or not) can form the two string to be the same.  For recursion algorithm. In order to reduce redundant calculation, we use an unordered_map to store the results that we have calculated.<br><br>
+<strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">//DP version, faster
+for(int i = 0; i &lt; n; i++)
+    for(int j = 0; j &lt; n; j++)
+        f[1][i][j] = (s1[i] == s2[j]);
+
+for(int len = 2; len &lt;= n; len++)
+    for(int i = 0; i + len &lt;= n; i++)
+        for(int j = 0; j + len &lt;= n; j++)
+            for(int breakLen = 1; breakLen &lt; len; breakLen++)
+                if((f[breakLen][i][j] &amp;&amp; f[len - breakLen][i + breakLen][j + breakLen]) || 
+                    (f[breakLen][i][j + len - breakLen] &amp;&amp; f[len - breakLen][i + breakLen][j])){
+                        f[len][i][j] = true;
+                        break;
+                    }
+                            
+// Recursion with memory, slow.
+unordered_map&lt;string, bool&gt; hash;
+    
+bool scramble(string&amp; s1, int b1, int e1, string&amp; s2, int b2, int e2){
+    if(hash.count(to_string(b1) + &#39;+&#39; + to_string(e1) + &#39;+&#39; + to_string(b2) + &#39;+&#39; + to_string(e2)))
+        return hash[to_string(b1) + &#39;+&#39; + to_string(e1) + &#39;+&#39; + to_string(b2) + &#39;+&#39; + to_string(e2)];
+        
+    if(s1.substr(b1, 1) == s2.substr(b2, 1))
+        return true;
+
+            
+    for(int len = 1; b1 + len &lt; e1; len++){
+        if((scramble(s1, b1, b1 + len, s2, b2, b2 + len) &amp;&amp; scramble(s1, b1 + len, e1, s2, b2 + len, e2)) ||
+            (scramble(s1, b1, b1 + len, s2, e2 - len, e2) &amp;&amp; scramble(s1, b1 + len, e1, s2, b2, e2 - len))){
+                hash[to_string(b1) + &#39;+&#39; + to_string(e1) + &#39;+&#39; + to_string(b2) + &#39;+&#39; + to_string(e2)] = true;
+                return true;
+            }
+    }
+    hash[to_string(b1) + &#39;+&#39; + to_string(e1) + &#39;+&#39; + to_string(b2) + &#39;+&#39; + to_string(e2)] = false;
+    return false;
+}</code></pre></div>
+
+<h4 id="toc_73">088_MergeSortedArray</h4>
+
+<p><strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">int ia = m - 1, ib = n - 1, icur = m + n - 1;
+while(ia &gt;= 0 &amp;&amp; ib &gt;= 0) {
+    A[icur--] = A[ia] &gt;= B[ib] ? A[ia--] : B[ib--];
+}
+while(ib &gt;= 0) {
+    A[icur--] = B[ib--];  
+}</code></pre></div>
+
+<h4 id="toc_74">089_GrayCode</h4>
+
+<p><strong>Main Algo:</strong> For a n bit gray code, the first 2^(n - 1) and last 2^(n - 1) are symmetric except the highest digit, for the former one is zero, and for the later one is 1.<br>
+<strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">if(n == 0)
+    return vector&lt;int&gt;(1, 0);
+
+vector&lt;int&gt; result1;
+result1 = grayCode(n - 1);
+vector&lt;int&gt; result = result1;
+for(int i = result1.size() - 1; i &gt;=0; i--)
+    result.push_back((1 &lt;&lt; (n - 1)) + result1[i]);</code></pre></div>
+
+<h4 id="toc_75">091_DecodeWays</h4>
+
+<p><strong>Main Algo:</strong> DP<br>
+<strong>Corner Cases:</strong> s[i - 1] == &#39;0&#39;<br><br>
+<strong>Core Codes:</strong>  </p>
+
+<div><pre class="line-numbers"><code class="language-cpp">for(int i = 0; i &lt; s.length(); i++){
+    if(i == 0){
+        if(s[0] != &#39;0&#39;)
+            f[i] = 1;
+        else
+            f[i] = 0;
+    } else if (i == 1){
+        if(s[i] != &#39;0&#39;)
+            f[i] = f[i - 1];
+        if(stoi(s.substr(i - 1, 2)) &lt;= 26 &amp;&amp; s[i - 1] != &#39;0&#39;)
+            f[i] += 1;
+    } else {
+        if(s[i] != &#39;0&#39;)
+            f[i] = f[i - 1];
+        if(stoi(s.substr(i - 1, 2)) &lt;= 26 &amp;&amp; s[i - 1] != &#39;0&#39;)
+            f[i] += f[i - 2];
+    }
+}</code></pre></div>
+
+<h4 id="toc_76">092_ReverseLinkedListII</h4>
+
+<p><strong>Main Algo:</strong> Recursion, return the result of the next node.<br>
+<strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">if(count &lt; m){
+    head-&gt;next = reverse(head-&gt;next, count + 1, m ,n);
+    return head;
+} else if(count == n){
+    return head;
+} else {
+    ListNode* newHead = reverse(head-&gt;next, count + 1, m, n);
+    int nowCount = count + 1; 
+    ListNode* now = newHead;
+    while(nowCount != n){
+        now = now-&gt;next;
+        nowCount++;
+    }
+    head-&gt;next = now-&gt;next;
+    now-&gt;next = head;
+    
+    return newHead;
+}</code></pre></div>
+
+<h4 id="toc_77">093_ValidIPAddress</h4>
+
+<p><strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">if(s.empty())
+    return;
+
+for(int i = 1; i &lt;= min((int)s.length(), 3); i++){
+    string now = s.substr(0, i);
+    // Illegal conditions, multiple 0&#39;s or larger than 255
+    if(i == 3 &amp;&amp; now &gt; &quot;255&quot; || (i != 1 &amp;&amp; s[0] == &#39;0&#39;)) 
+        break;
+    num[pos] = now;
+    dfs(pos + 1, num, s.substr(i), result);
+}</code></pre></div>
+
+<h4 id="toc_78">095_UniqueBinarySearchTreeII &amp;&amp; 096_UniqueBinarySearchTrees</h4>
+
+<p><strong>Main Algo:</strong> Divide and conquer, recursion or DP all work.<br><br>
+<strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">//UniqueBinarySearchTreeI
+f[0] = 1;
+f[1] = 1;
+for(int i = 2; i&lt;= n; i++)
+    for(int root = 1; root &lt;= i; root++){
+        f[i] += f[root - 1] * f[i - root];
+    }
+    
+//UniqueBinarySearchTreeII
+if(begin &gt; end){
+    result.push_back(nullptr);
+    return result;
+}
+if(begin == end){
+    TreeNode *newRoot = new TreeNode(begin);
+    result.push_back(newRoot);
+    return result;
+}
+
+for(int root = begin; root &lt;= end; root++){
+    vector&lt;TreeNode*&gt; left_nodes = genTree(begin, root - 1);
+    vector&lt;TreeNode*&gt; right_nodes = genTree(root + 1, end);
+    for(auto i = left_nodes.begin(); i != left_nodes.end(); ++i)
+        for(auto j = right_nodes.begin(); j != right_nodes.end(); ++j){
+            TreeNode *newRoot = new TreeNode(root);
+            newRoot-&gt;left = *i;
+            newRoot-&gt;right = *j;
+            result.push_back(newRoot);
+        }
+}</code></pre></div>
+
+<h4 id="toc_79">097_InterleavingString</h4>
+
+<p><strong>Main Algo:</strong> DP, if use recursion, it would TLE.<br><br>
+<strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">for(int i = 1; i &lt;= n; i++)
+    f[i][0] = s1[i - 1] == s3[i - 1]?f[i - 1][0]:false;
+for(int j = 1; j &lt;=m; j++)
+    f[0][j] = s2[j - 1] == s3[j - 1]?f[0][j - 1]:false;
+    
+for(int i = 1; i &lt;= n; i++)
+    for(int j = 1; j &lt;= m; j++)
+        if(s1[i - 1] == s3[i + j - 1] &amp;&amp; s2[j - 1] == s3[i + j - 1])
+            f[i][j] = f[i - 1][j] || f[i][j - 1];
+        else if (s1[i - 1] == s3[i + j - 1])
+                f[i][j] = f[i - 1][j];
+        else if (s2[j - 1] == s3[i + j - 1])
+                f[i][j] = f[i][j - 1];
+        else f[i][j] = false;</code></pre></div>
+
+<h4 id="toc_80">098_ValidateBinarySearchTree</h4>
+
+<p><strong>Main Algo:</strong> Check if the right-most node of the left subtree is smaller than the root and the left-most node of the right subtree is larger than the root.<br><br>
+<strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">if(root-&gt;left == nullptr)
+    leftResult = true;
+else{
+    TreeNode *now = root-&gt;left;
+    while(now-&gt;right != nullptr)
+        now = now-&gt;right;
+    leftResult = now-&gt;val &lt; root-&gt;val;
+}
+
+if(root-&gt;right == nullptr)
+    rightResult = true;
+else{
+    TreeNode *now = root-&gt;right;
+    while(now-&gt;left != nullptr)
+        now = now-&gt;left;
+    rightResult = now-&gt;val &gt; root-&gt;val;
+}
+
+return leftResult &amp;&amp; rightResult &amp;&amp; isValidBST(root-&gt;left) &amp;&amp; isValidBST(root-&gt;right);</code></pre></div>
+
+<h4 id="toc_81">099_RecoverBinarySearchTree</h4>
+
+<h4 id="toc_82">100_SameTree &amp;&amp; 101_SymmetricTree</h4>
+
+<p><strong>Main Algo:</strong> Recursion  </p>
+
+<h4 id="toc_83">102_BinaryTreeLevelOrderTraversal &amp;&amp; 103<em>BinaryTreeZigzagLevelOrderTraversal &amp;&amp; 107</em>BinaryTreeLevelOrderTraversalII</h4>
+
+<p><strong>Main Algo:</strong> DFS or BFS, for Zigzag Order, when the level is odd, insert the node to the begining other wise push_back the node.  </p>
+
+<h4 id="toc_84">104_MaximumDepthOfBinaryTree</h4>
+
+<p><strong>Main Algo:</strong> Recursion   </p>
+
+<h4 id="toc_85">105_ConstructBinaryTreeFromPreorderAndInorderTraversal &amp;&amp; 106_ConstructBinaryTreeFromInorderAndPostorderTraversal</h4>
+
+<p><strong>Core Codes:</strong> </p>
+
+<div><pre class="line-numbers"><code class="language-cpp">// Iterator version for in&amp;post order rebuild.
+typedef vector&lt;int&gt;::iterator P;
+    
+TreeNode* build(P ibegin, P iend, P pbegin, P pend){
+    if(ibegin == iend || pbegin == pend)
+        return nullptr;
+        
+    auto cur = *prev(pend);
+    TreeNode* root = new TreeNode(cur);
+    auto mid = find(ibegin, iend, cur);
+    auto dist = distance(ibegin, mid);
+    root-&gt;left = build(ibegin, mid, pbegin, pbegin + dist);
+    root-&gt;right = build(next(mid), iend, pbegin + dist, prev(pend));
+    
+    return root;
+}</code></pre></div>
+
+<h4 id="toc_86">108_ConvertSortedArrayToBinarySearchTree &amp;&amp; 109_ConvertSortedListToBinarySearchTree 1Y</h4>
+
+<p><strong>Main Algo:</strong> In order to keep the tree balance, we choose the middle element to be the root and construct left and right subtree recursively.<br><br>
+<strong>Core Codes:</strong> </p>
+
+<div><pre class="line-numbers"><code class="language-cpp">TreeNode* sortedListToBST(ListNode* head) {
+    if(head == nullptr)
+        return nullptr;
+    if(head-&gt;next == nullptr)
+        return new TreeNode(head-&gt;val);
+    
+    int count = 0;
+    ListNode *p = head;
+    while(p != nullptr){
+        count++;
+        p = p-&gt;next;
+    }
+    
+    count = count / 2;
+    ListNode *pre, *now = head;
+    for(int i = 0; i &lt; count; i++){
+        pre = now;
+        now = now-&gt;next;
+    }
+    TreeNode *root = new TreeNode(now-&gt;val);
+    pre-&gt;next = nullptr;
+    root-&gt;left = sortedListToBST(head);
+    root-&gt;right = sortedListToBST(now-&gt;next);
+    
+    return root;
+}</code></pre></div>
+
+<h4 id="toc_87">110_BalancedBinaryTree &amp;&amp; 111_MinimumDepthOfBinaryTree</h4>
+
+<p><strong>Corner Cases:</strong> If a node has only one child, the depth should depth(child) + 1.<br><br>
+<strong>Main Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">if(root == nullptr)
+    return 0;
+if(root-&gt;left == nullptr &amp;&amp; root-&gt;right == nullptr)
+    return 1;
+if(root-&gt;left == nullptr)
+    return minDepth(root-&gt;right) + 1;
+if(root-&gt;right == nullptr)
+    return minDepth(root-&gt;left) + 1;
+return min(minDepth(root-&gt;left), minDepth(root-&gt;right)) + 1;</code></pre></div>
+
+<h4 id="toc_88">112_PathSum &amp;&amp; 113_PathSumII</h4>
+
+<p><strong>Main Algo:</strong> Recursion or DFS search. There could be identical paths since there could be nodes with the same vals.<br><br>
+<strong>Corner Cases:</strong> Do not use (sum == 0 &amp;&amp; root == nullptr) to judge. Since we can not guarantee it is generated by a leaf node and will make the same path be recorded twice.<br><br>
+<strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">vector&lt;vector&lt;int&gt;&gt; pathSum(TreeNode* root, int sum) {
+vector&lt;vector&lt;int&gt;&gt; result;
+if(root == nullptr)
+    return result;
+if(root-&gt;left == nullptr &amp;&amp; root-&gt;right == nullptr &amp;&amp; root-&gt;val == sum)
+    return vector&lt;vector&lt;int&gt;&gt;(1, vector&lt;int&gt;(1, root-&gt;val));
+
+vector&lt;vector&lt;int&gt;&gt; temp = pathSum(root-&gt;left, sum - root-&gt;val);
+result.insert(result.end(), temp.begin(), temp.end());
+
+temp = pathSum(root-&gt;right, sum - root-&gt;val);
+result.insert(result.end(), temp.begin(), temp.end());
+
+for(auto&amp; k:result)
+    k.insert(k.begin(), root-&gt;val);
+
+return result;
+}</code></pre></div>
+
+<h4 id="toc_89">114_FlattenBinaryTreeToLinkedList</h4>
+
+<p><strong>Main Algo:</strong> We insert the left subtree between root and right subtree, and left left node to be null, and then flatten right subtree(which has been changed since we insert left subtree here). This takes only O(1) space.<br><br>
+<strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">TreeNode *left = root-&gt;left;
+root-&gt;left = nullptr;
+
+if(left != nullptr){
+    TreeNode *cur = left;
+    while(cur-&gt;right != nullptr)
+        cur = cur-&gt;right;
+    cur-&gt;right = root-&gt;right;
+    root-&gt;right = left;
+}
+flatten(root-&gt;right);</code></pre></div>
+
+<h4 id="toc_90">115_DistinctSubsequence</h4>
+
+<p><strong>Main Algo:</strong> DP. if s[i - 1] equals t[j - 1]. Then we have two choices here, pair or not. So f[i][j] = f[i - 1][j - 1] + f[i - 1][j]; Otherwise f[i][j] can only be f[i - 1][j];<br><br>
+<strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">vector&lt;vector&lt;int&gt; &gt; f(m + 1, vector&lt;int&gt;(n + 1, 0));
+        
+for(int i = 0; i &lt;= m; i++)
+    f[i][0] = 1;
+    
+for(int j = 1; j &lt;= n; j++){
+    for(int i = j; i &lt;= m; i++){
+        if(s[i - 1] == t[j - 1])
+            f[i][j] = f[i - 1][j - 1] + f[i - 1][j];
+        else
+            f[i][j] = f[i - 1][j];
+    }
+}
+return f[m][n];</code></pre></div>
+
+<h4 id="toc_91">116_PopulatingNextRightPointerInEachNode &amp;&amp; 117_PopulatingNextRightPointerInEachNode Multi</h4>
+
+<p><strong>Main Algo:</strong> For population problem 1, the tree is perfect, so we can just use the simple recursion to do that. In problem II, since there will be gaps, it&#39;s much easier to use BFS.<br><br>
+<strong>Core Codes:</strong> </p>
+
+<div><pre class="line-numbers"><code class="language-cpp">// recursive solution for populatingI 
+if (!r) return;
+if (r-&gt;left) r-&gt;left-&gt;next = r-&gt;right;
+if (r-&gt;right) r-&gt;right-&gt;next = (r-&gt;next)? r-&gt;next-&gt;left : NULL;
+connect(r-&gt;left);
+connect(r-&gt;right);
+
+//BFS solution.</code></pre></div>
+
+<h4 id="toc_92">118_PascalsTriangle &amp;&amp; 119_PascalsTriangleII</h4>
+
+<p><strong>Main Algo:</strong> </p>
+
+<ul>
+<li>Calculate row by row. </li>
+<li>Math formula. Control overflow.</li>
+</ul>
+
+<p><strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">// Row by row.
+vector&lt;int&gt; last = getRow(rowIndex - 1);
+for(int i = 0; i &lt;= last.size(); i++)
+    if(i == 0 || i == last.size())
+        result.push_back(1);
+    else
+        result.push_back(last[i] + last[i - 1]);
+        
+// Math solution
+vector&lt;int&gt; v(rowIndex+1);
+uint m = rowIndex / 2;
+v[0] = 1;
+for (uint i = 1, k = rowIndex; i &lt;= m; i++, k--) {
+    v[i] = (unsigned long long)v[i-1] * k / i;
+}
+for (uint i = m+1, j = (rowIndex-1)/2; i &lt;= rowIndex; i++, j--) {
+    v[i] = v[j];
+}
+return v;</code></pre></div>
+
+<h4 id="toc_93">120_Triangle</h4>
+
+<p><strong>Main Algo:</strong> DP<br><br>
+<strong>Corner Cases:</strong> n = 0<br><br>
+<strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">if(n == 0)
+    return 0;
+
+for(int i = 1; i &lt; n; i++)
+    for(int j = 0; j &lt;= i; j++)
+        if(j &gt; 0 &amp;&amp; j &lt; i)
+            triangle[i][j] += min(triangle[i - 1][j], triangle[i - 1][j - 1]);
+        else if(j == 0)
+                triangle[i][j] += triangle[i - 1][j];
+            else
+                triangle[i][j] += triangle[i - 1][j - 1];
+
+return *min_element(triangle[n-1].begin(), triangle[n-1].end());</code></pre></div>
+
+<p>121_BestTimeToBuyAndSellStock 2y<br><br>
+The lowest point coult be equal to one of its neightbor so the condition should be &gt;= and&lt;=  </p>
+
+<p>122_BestTimeToBuyAndSellStockII 1Y<br><br>
+if(i == 0 &amp;&amp; prices[i + 1] &gt; prices[i])<br><br>
+    buyPoint = prices[i];                              </p>
+
+<p>if(i &gt; 0 &amp;&amp; i &lt; prices.size() - 1 &amp;&amp; prices[i+1] &gt; prices[i] &amp;&amp; prices[i - 1] &gt;= prices[i])<br><br>
+    buyPoint = prices[i];  </p>
+
+<p>if(i == prices.size() - 1 &amp;&amp; prices[i] &gt; prices[i - 1])<br><br>
+    maxProfit += prices[i] - buyPoint;  </p>
+
+<p>if(i &gt; 0 &amp;&amp; i &lt; prices.size() - 1 &amp;&amp; prices[i+1] &lt;= prices[i] &amp;&amp; prices[i - 1] &lt; prices[i])<br><br>
+    maxProfit += prices[i] - buyPoint;  </p>
+
+<h4 id="toc_94">124_BinaryTreeMaximumPathSum</h4>
+
+<p><strong>Main Algo:</strong> DFS return the maximum path to the node, all we have to compare is the two maximum paths plus root or the result in the two subtrees.<br><br>
+<strong>Core Codes:</strong><br>
+```c++<br>
+public:<br>
+    int maxPathSum(TreeNode* root) {<br>
+        if(root == nullptr)<br>
+            return 0;<br>
+        if (root-&gt;left == nullptr &amp;&amp; root-&gt;right == nullptr)<br>
+            return root-&gt;val;</p>
+
+<div><pre class="line-numbers"><code class="language-none">    int a = dfs(root);
+
+    return result;
+}</code></pre></div>
+
+<p>private:<br>
+     int result = -INT_MIN;</p>
+
+<div><pre class="line-numbers"><code class="language-none">int dfs(TreeNode *root){
+    if(root == nullptr) return 0;
+
+    int left = dfs(root-&gt;left);
+    int right = dfs(root-&gt;right);
+
+    if(root-&gt;val + left + right &gt; result)
+        result = root-&gt;val + left + right;
+
+    return max(max(left, right) + root-&gt;val, 0); 
+}</code></pre></div>
+
+<div><pre class="line-numbers"><code class="language-none">
+####125_ValidPalindrome
+**Main Algo:** Compare head and tail, ignore cases and non-letters.  
+
+####128_LongestConsecutiveSequence
+**Main Algo:** Use an unordered_map to store the numbers and find all clusters. **Take care of overflows.**
+**Core Codes:**
+
+```c++
+unordered_map&lt;int, bool&gt; hash;
+for(auto i:nums) hash[i] = false;
+
+int maxLength = 0;
+for(auto i:nums){
+    if(hash[i])
+        continue;
+    else {
+        int count = 1;
+        for(long j = i + 1; j &lt;= INT_MAX &amp;&amp; hash.count(j) &amp;&amp; !hash[j]; j++){
+            count++;
+            hash[j] = true;
+        }
+        
+        for(long j = i - 1; j &gt;= INT_MIN &amp;&amp; hash.count(j) &amp;&amp; !hash[j]; j--){
+            count++;
+            hash[j] = true;
+        }
+        maxLength = max(maxLength, count);
+    }
+}</code></pre></div>
+
+<h4 id="toc_95">129_SumRootToLeafNumbers</h4>
+
+<p><strong>Main Algo:</strong> Simple recursion.   </p>
+
+<h4 id="toc_96">130_SurroundedRegions</h4>
+
+<p><strong>Main Algo:</strong> DFS, from all O&#39;s at the boundary, and find all adjacent O&#39;s change them into a new state. Finally we change all O&#39;s to X because they can not be reached(surrounded by Xs) and change the middle-state to Os.<br><br>
+<strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">void dfs(int i, int j, vector&lt;vector&lt;char&gt;&gt;&amp; board){
+    int direc[5] = {0, 1, 0, -1, 0};
+    
+
+    board[i][j] = &#39;#&#39;;
+    for(int d = 0; d &lt; 4; d++){
+        int i1 = i + direc[d], j1 = j + direc[d + 1];   
+        if(i1 &gt; 0 &amp;&amp; i1 &lt; board.size() - 1 &amp;&amp; j1 &gt; 0 &amp;&amp; j1 &lt; board[0].size() - 1 &amp;&amp; board[i1][j1] == &#39;O&#39;)
+            dfs(i1, j1, board);
+    }
+}</code></pre></div>
+
+<h4 id="toc_97">131_PalindromePartitionI &amp;&amp; 132_PalindromePartitioningII</h4>
+
+<p><strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">// PalindromePartitionI
+for(int i = 1; i &lt; s.length();i++){
+    if(isPalindrome(s.substr(0, i))){
+        vector&lt;vector&lt;string&gt;&gt; right = partition(s.substr(i));
+            
+        for(int j = 0; j &lt; right.size(); j++) {
+            right[j].insert(right[j].begin(), s.substr(0, i));
+        }
+        result.insert(result.end(), right.begin(), right.end());
+    }
+}
+
+if(isPalindrome(s))
+    result.push_back(vector&lt;string&gt;(1, s));
+
+// PalindromePartitionII
+vector&lt;int&gt; minCut(n, INT_MAX);
+vector&lt;vector&lt;bool&gt;&gt; palin(n, vector&lt;bool&gt;(n, false));
+
+minCut[0] = 0;
+for(int end = 1; end &lt; n; end++)
+    for(int start = end; start &gt;= 0; start--){
+        if(s[start] == s[end] &amp;&amp; (end - start &lt; 2 || palin[start + 1][end - 1])){
+            palin[start][end] = true;
+            if(start == 0)
+                minCut[end] = 0;
+            else
+                minCut[end] = min(minCut[end], minCut[start - 1] + 1); 
+        }
+    }</code></pre></div>
+
+<h4 id="toc_98">133_CloneGraph</h4>
+
+<p><strong>Main Algo:</strong> To reduce redundant clone, we use a unordered_map to store whether this label&#39;s node has been cloned or not.<br><br>
+<strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">UndirectedGraphNode *graphNode(UndirectedGraphNode *node, 
+    unordered_map&lt;int, UndirectedGraphNode*&gt; &amp;searched){
+    if(searched.count(node-&gt;label))
+        return searched[node-&gt;label];
+        
+    UndirectedGraphNode *newNode = new UndirectedGraphNode(node-&gt;label);
+    for(int i = 0; i &lt; node-&gt;neighbors.size(); i++)
+        newNode-&gt;neighbors.push_back(node-&gt;neighbors[i]);
+    
+    searched[newNode-&gt;label] = newNode;
+    
+    for(int i = 0; i &lt; newNode-&gt;neighbors.size(); i++)
+        newNode-&gt;neighbors[i] = graphNode(newNode-&gt;neighbors[i], searched);
+    
+    return newNode;
+}</code></pre></div>
+
+<h4 id="toc_99">134_GasStation</h4>
+
+<p><strong>Main Algo:</strong> The start station could be the position where remain[i] &gt; 0 and remain[i - 1] &lt; 0. Then we check all possible start stations to see if we could reach a circle.<br><br>
+<strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">vector&lt;int&gt; remain;
+vector&lt;int&gt; start;
+for(int i = 0; i &lt; gas.size(); i++){
+    remain.push_back(gas[i] - cost[i]);
+    if(i != 0 &amp;&amp; remain[i] &gt;= 0 &amp;&amp; remain[i - 1] &lt; 0) //Only the start of positive remaining are added.
+        start.push_back(i);
+}
+if(*remain.begin() &gt;= 0 &amp;&amp; *prev(remain.end()) &lt; 0)
+    start.push_back(0);
+    
+if(remain.size() == 1)
+    if(remain[0] &lt; 0)
+        return -1;
+    else
+        return 0;
+    
+for(auto s:start){
+    int i = s;
+    int total = 0;
+    while(true){
+        total += remain[i];
+        if(total &lt; 0)
+            break;
+        else{
+            i = (i + 1) % remain.size();
+            if(i == s)
+                return s;
+        }
+    }
+}
+return -1;</code></pre></div>
+
+<h4 id="toc_100">135_Candy</h4>
+
+<p><strong>Main Algo:</strong> Initially we assign all element to be the mininum 1, and we find from left to right and right to left to ensure that every point suffer the relation.<br><br>
+<strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">vector&lt;int&gt; candy(ratings.size(), 1); 
+        
+for(int i = 1; i &lt; ratings.size(); i++)
+    if(ratings[i] &gt; ratings[i - 1])
+        candy[i] = max(candy[i], candy[i - 1] + 1);
+        
+for(int i = ratings.size() - 2; i &gt;= 0; i--)
+    if(ratings[i] &gt; ratings[i + 1])
+        candy[i] = max(candy[i], candy[i + 1] + 1);
+
+return accumulate(candy.begin(), candy.end(), 0);</code></pre></div>
+
+<h4 id="toc_101">136_SingleNumber &amp;&amp; 137_SingleNumberII</h4>
+
+<p><strong>Main Algo</strong> For problem I, xor even times will get 0. So we can just xor all elements. The result is the single number. For problem II, we count the digits of 1&#39;s in every bit, and we can get the result by mod 3.<br><br>
+<strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">//Xor Solution for SingleNumberI
+return accumulate(nums.begin(), nums.end(), 0, bit_xor&lt;int&gt;());
+
+//Count digits for SingleNubmerII
+vector&lt;int&gt; count(32, 0);
+        
+for(auto n:nums){
+    for(int i = 0; i &lt; 32; i++)
+        count[i] += (n &gt;&gt; i) &amp; 1; 
+        // Here we can not use (n &amp; (1 &lt;&lt; i)) &gt; 0 since there are negative nubmers. 
+}
+    
+int result = 0;
+for(int i = 0; i &lt; 32; i++)
+    result += (count[i] % 3) &lt;&lt; i;</code></pre></div>
+
+<h4 id="toc_102">138_CopyListWithRandomPointer</h4>
+
+<p><strong>Main Algo:</strong> Similar to clone graph.<br><br>
+<strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">RandomListNode *copyRandomList(RandomListNode *head) {
+    if(head == nullptr)
+        return nullptr;
+    if(hash.count(head-&gt;label))
+        return hash[head-&gt;label];
+        
+    RandomListNode *newhead = new RandomListNode(head-&gt;label);
+    hash[head-&gt;label] = newhead;
+    
+    newhead-&gt;next = copyRandomList(head-&gt;next);
+    newhead-&gt;random = copyRandomList(head-&gt;random);
+            
+    return newhead;
+}</code></pre></div>
+
+<p>139_WordBreak 3Y<br><br>
+1 Naive dfs TLE<br><br>
+2 Sorted the length of words in decent order and then dfs TLE<br><br>
+3 DP  </p>
+
+<p>140_WordBreakII 1Y<br><br>
+The same DP as the previous one, pay attention that when you use for(auto i:vector) you cannot change the value of vectors buy changing i  </p>
+
+<h4 id="toc_103">141_LinkedListCycle &amp;&amp; 142_LinkedListCycleII</h4>
+
+<p><strong>Main Algo:</strong> For problem II, set two speed pointers. Let the initial step to be a, the length of cycle is c, so the meeting point of two pointers is a + b, then we could see that (a + b) * 2 = a + b  + c. where c == a + b. Then we let a new pointer start from the head, and let slow move. The place they met is a distance from the head.<br><br>
+<strong>Core Codes:</strong>  </p>
+
+<div><pre class="line-numbers"><code class="language-cpp">// LinkedListCycle
+ListNode *slow = head, *fast = head;
+while(fast-&gt;next != nullptr &amp;&amp; fast-&gt;next-&gt;next != nullptr){
+    slow = slow-&gt;next;
+    fast = fast-&gt;next-&gt;next;
+    if(slow == fast)
+        return true;
+}
+
+// LinkedListCycleII        
+ListNode *slow = head, *fast = head;
+while(fast-&gt;next != nullptr &amp;&amp; fast-&gt;next-&gt;next != nullptr){
+    slow = slow-&gt;next;
+    fast = fast-&gt;next-&gt;next;
+    if(slow == fast){
+        ListNode *newNode = head;
+        while(slow != newNode){
+            slow = slow-&gt;next;
+            newNode = newNode-&gt;next;
+        }
+        return newNode;
+    }
+}</code></pre></div>
+
+<p>143<em>ReorderList 1Y<br><br>
+If not in</em>place use a vector to do it.<br><br>
+If in_place, find the middle of the linkedlist and reverse the later half, and finally merge.<br><br>
+ListNode* reverse(ListNode *head) {<br><br>
+    if (head == nullptr || head-&gt;next == nullptr) return head;  </p>
+
+<div><pre class="line-numbers"><code class="language-none">ListNode *prev = head;  
+for (ListNode *curr = head-&gt;next, *next = curr-&gt;next; curr;  
+    prev = curr, curr = next, next = next ? next-&gt;next : nullptr) {  
+        curr-&gt;next = prev;  
+}  
+
+head-&gt;next = nullptr;  
+return prev;      </code></pre></div>
+
+<p>}  </p>
+
+<p>144_BinaryTreePreorderTraversal 1Y<br><br>
+Use stack to perform preorder traversal.  </p>
+
+<p>145_BinaryTreePostorderTraversal 1Y<br><br>
+Push the root, right, left in order, once the kids were pushed, the root could be poped the next time.  </p>
+
+<h4 id="toc_104">146_LRUCache</h4>
+
+<p><strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">class LRUCache{
+public:
+    LRUCache(int capacity) {
+        this-&gt;capacity = capacity;
+    }
+    
+    int get(int key) {
+        int value = -1;
+        
+        // Key exist and is valid.
+        if(key2idx.count(key) &amp;&amp; valid[key2idx[key]]){
+              // Get the value and set the idx to be invalid.
+            int cur_idx = key2idx[key];
+            value = cache[cur_idx];
+            valid[cur_idx] = false;
+            
+            // Insert the value to the back and change the index map
+            cache.push_back(value);
+            valid.push_back(true);
+            key2idx[key] = cache.size() - 1;
+            
+            // Check if the least used index was modified.
+            if(cur_idx == min_idx){
+                while(!valid[min_idx])
+                    min_idx++;    
+            }
+        }  
+        return value;
+    }
+    
+    void set(int key, int value) {
+          // Key exist and is valid.
+        if(key2idx.count(key) &amp;&amp; valid[key2idx[key]]){
+              // Set the index to be invalid.
+            int cur_idx = key2idx[key];
+            valid[cur_idx] = false;
+            
+            // Insert the value to the back and change the index map
+            cache.push_back(value);
+            valid.push_back(true);
+            key2idx[key] = cache.size() - 1;
+            
+            // Check if the least use index was changed.
+            if(cur_idx == min_idx){
+                while(!valid[min_idx])
+                    min_idx++;    
+            }
+        } else {
+              // If the key does not exist, we have to insert a new key and value.
+            cache.push_back(value);
+            valid.push_back(true);
+            key2idx[key] = cache.size() - 1;
+            cur_load++;
+              
+              // Check if the current load exceeded the capacity, and change the least used index.
+            if(cur_load &gt; capacity){
+                valid[min_idx++] = false;
+                while(!valid[min_idx])
+                    min_idx++;
+            }
+        }
+    }
+private:
+    vector&lt;int&gt; cache;
+    vector&lt;bool&gt; valid;
+    unordered_map&lt;int, int&gt; key2idx;
+    
+    int capacity;
+    int min_idx = 0;
+    int cur_load = 0;
+};</code></pre></div>
+
+<h4 id="toc_105">147_InsertionSortList</h4>
+
+<p><strong>Main Algo:</strong> Recursion.<br><br>
+<strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">ListNode *newHead = insertionSortList(head-&gt;next);
+
+if(head-&gt;val &lt; newHead-&gt;val){
+    head-&gt;next = newHead;
+    return head;
+}
+    
+ListNode *now = newHead;
+while(now-&gt;next != nullptr &amp;&amp; head-&gt;val &gt; now-&gt;next-&gt;val){
+    now = now-&gt;next;
+}
+head-&gt;next = now-&gt;next;
+now-&gt;next = head;
+return newHead;</code></pre></div>
+
+<h4 id="toc_106">148_SortList</h4>
+
+<p><strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">ListNode* MergeSort(ListNode* head, int n){
+    if(n == 1)
+        return head;
+        
+    ListNode *now = head;
+    int i;
+    for(i = 0; i &lt; (n - 1) / 2; i++)
+        now = now-&gt;next;
+    
+    ListNode *right = MergeSort(now-&gt;next, n - i  - 1);
+    now-&gt;next = nullptr;
+    ListNode *left = MergeSort(head, i + 1);
+    
+    ListNode *newHead;
+    if(left-&gt;val &lt; right-&gt;val){
+        newHead = left;
+        left = left-&gt;next;
+    } else{
+        newHead = right;
+        right = right-&gt;next;
+    }
+    
+    now = newHead;
+    while(right != nullptr &amp;&amp; left != nullptr){
+        if(left-&gt;val &lt; right-&gt;val){
+            now-&gt;next = left;
+            now = now-&gt;next;
+            left = left-&gt;next;
+        } else {
+            now-&gt;next = right;
+            now = now-&gt;next;
+            right = right-&gt;next;
+        }
+    }
+    while(right != nullptr){
+        now-&gt;next = right;
+        now = now-&gt;next;
+        right = right-&gt;next;
+    }
+    while(left != nullptr){
+        now-&gt;next = left;
+        now = now-&gt;next;
+        left = left-&gt;next;
+    }
+    now-&gt;next = nullptr;
+    return newHead;
+}</code></pre></div>
+
+<h4 id="toc_107">149_MaxPointsOnALine</h4>
+
+<p><strong>Main Algo:</strong> For each points, calculate the how many points in each slope and plus the duplicate points.<br><br>
+<strong>Core Codes:</strong> </p>
+
+<div><pre class="line-numbers"><code class="language-cpp">unordered_map&lt;float,int&gt; slopes;
+int maxP = 0;
+for(int j = points.size() - 1; j &gt;= maxP; j--){
+    slopes.clear();
+    int dup = 1;
+    for(int i = 0; i &lt; j; i++)
+        if(points[i].x == points[j].x)
+            if(points[i].y == points[j].y)
+                dup++;
+            else
+                slopes[INT_MAX]++;
+        else
+            slopes[(float)(points[j].y - points[i].y) / (points[j].x - points[i].x)]++;
+    int m = 0;
+    for(auto s:slopes)
+        m = max(m, s.second);
+    maxP = max(maxP, m + dup); 
+}</code></pre></div>
+
+<h4 id="toc_108">150_EvaluateReversePolishNotation</h4>
+
+<p><strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">tack&lt;int&gt; st;                          
+// use stack to store candidate numbers
+    
+for (string token : tokens) {
+    if (token == &quot;+&quot; || token == &quot;-&quot; || token == &quot;*&quot; || token == &quot;/&quot;) {
+        int b = st.top(); st.pop();     
+        // merge top two numbers in stack
+        st.top() = token == &quot;+&quot; ? st.top() + b : token == &quot;-&quot; ? st.top() - b : token == &quot;*&quot; ? st.top() * b : st.top() / b;
+    } else {
+        st.push(stoi(token));           
+        // add candidates in stack
+    }
+}
+    
+return st.top();</code></pre></div>
+
+<h4 id="toc_109">151_ReverseWordsInAString &amp;&amp; 186_ReverseWordsInAStringII</h4>
+
+<p><strong>Main Algo:</strong> Using istringstream or reverse the whole string first and reverse the word one by one.<br>
+<strong>Corner Cases:</strong>Mind multiple spaces and the spaces at the begining and ending of the string.<br>
+<strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">while(!s.empty() &amp;&amp; s[0] == &#39; &#39;)
+    s.erase(0, 1);
+reverse(s.begin(), s.end());
+while(!s.empty() &amp;&amp; s[0] == &#39; &#39;)
+    s.erase(0, 1);
+   
+for(int i = 0; i &lt; (int)s.length() - 1;)
+    if(s[i] == &#39; &#39; &amp;&amp; s[i + 1] == &#39; &#39;)
+        s.erase(i + 1, 1);
+    else
+        i++;
+
+int head = 0;
+while(head &lt; (int)s.length()){
+    int idx = s.find(&#39; &#39;, head);
+    if(idx == string::npos)
+        idx = s.length();
+ 
+    reverse(s.begin() + head, s.begin() + idx);
+    if(idx != s.length())
+        head = idx + 1;
+    else
+        head = idx;
+}</code></pre></div>
+
+<h4 id="toc_110">152_MaximumProductArray</h4>
+
+<p><strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">int maxN = INT_MIN, product = 1;
+int len = nums.size();
+
+for(int i = 0; i &lt; len; i++) {
+    maxN = max(product *= nums[i], maxN);
+    if (nums[i] == 0) product = 1;
+}
+
+product = 1;
+for(int i = len - 1; i &gt;= 0; i--) {
+    maxN = max(product *= nums[i], maxN);
+    if (nums[i] == 0) product = 1;
+}</code></pre></div>
+
+<h4 id="toc_111">153_FindMinimumInRotatedSortedArray &amp;&amp; 154_FindMinimumInRotatedSortedArrayII</h4>
+
+<p><strong>Core Codes:</strong> </p>
+
+<div><pre class="line-numbers"><code class="language-cpp">if(nums.empty())
+    return 0;
+int head = 0, tail = nums.size() - 1;
+while(head &lt; tail){
+    int mid = (head + tail) / 2;
+    if(nums[head] == nums[tail]){
+        tail--;
+    } else if(nums[head] &lt; nums[tail]){
+        tail = mid;
+    } else
+        if(nums[mid] &lt; nums[head])
+            tail = mid;
+        else
+            head = mid + 1;
+}
+
+return nums[head];</code></pre></div>
+
+<h4 id="toc_112">155_MinStack</h4>
+
+<p><strong>Main Algo:</strong> Refresh the minimum after push and pop option.<br><br>
+<strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">void push(int x) {
+    s.push_back(x);
+    if(x &lt; min)
+        min = x;
+}
+
+void pop() {
+    if(s[s.size() - 1] == min){
+        s.erase(s.end() - 1);
+        auto index = min_element(s.begin(), s.end());
+        if(index == s.end())
+            min = INT_MAX;
+        else
+            min = *index;
+    }else {
+        s.erase(s.end() - 1);
+    }
+}</code></pre></div>
+
+<h4 id="toc_113">156_BinaryTreeUpsideDown</h4>
+
+<p><strong>Main Algo:</strong> Return the root of the result upside down left subtree. Find it&#39;s right most left node, and add root and right node to it&#39;s left and right. Then return the root.<br><br>
+<strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">if(root == nullptr || root-&gt;left == nullptr)
+    return root;
+    
+TreeNode* newNode = upsideDownBinaryTree(root-&gt;left);
+TreeNode* now = newNode;
+while(now-&gt;right != nullptr)
+    now = now-&gt;right;
+now-&gt;left = root-&gt;right;
+root-&gt;left = nullptr;
+root-&gt;right = nullptr;
+now-&gt;right = root;
+
+return newNode;</code></pre></div>
+
+<h4 id="toc_114">159_LongestSubstringWithAtMostTwoDistinctCharacters</h4>
+
+<p><strong>Main Algo:</strong> Two pointers, sliding window.<br><br>
+<strong>Core Codes:</strong> </p>
+
+<div><pre class="line-numbers"><code class="language-cpp">while(tail &lt; s.length()){
+    if(hash.size() &lt; 2){
+        hash[s[tail]]++;
+        tail++;
+        if(tail - head &gt; max)
+            max = tail - head;
+    } else {
+        if(hash.count(s[tail])){
+            hash[s[tail]]++;
+            tail++;
+            if(tail - head &gt; max)
+                max = tail - head;
+        } else {
+            while(hash[s[head]] != 1){
+                hash[s[head]]--;
+                head++;
+            }
+            hash.erase(s[head]);
+            head++;
+            hash.insert({s[tail], 1});
+            tail++;
+            if(tail - head &gt; max)
+                max = tail - head;
+        }
+    }
+}</code></pre></div>
+
+<h4 id="toc_115">160_IntersectionOfTwoLinkedLists</h4>
+
+<p><strong>Main Algo:</strong> Let two pointers start from both heads, and when one reaches the end, it lead the same steps as the difference between the two list&#39;s length. Thus we put the pointer to the start of the other list, and so is the the other pointer. Finally they will meet at the intersection.<br><br>
+<strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">ListNode *cur1 = headA, *cur2 = headB;
+while(cur1 != cur2){
+    cur1 = cur1?cur1-&gt;next:headB;
+    cur2 = cur2?cur2-&gt;next:headA;
+}
+return cur1;</code></pre></div>
+
+<h4 id="toc_116">161_OneEditDistance</h4>
+
+<p><strong>Main Algo:</strong> Directly compare or DP.<br><br>
+<strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">for (int i = 0;i &lt; min(s.size(), t.size());++i) {
+    if (s[i] != t[i])  
+        return s.substr(i + 1) == t.substr(i + 1) || 
+                    s.substr(i + 1) == t.substr(i) || 
+                        s.substr(i) == t.substr(i + 1);
+}
+return abs(int(s.size()) - int(t.size())) == 1;</code></pre></div>
+
+<h4 id="toc_117">162_FindPeakElement</h4>
+
+<h4 id="toc_118">163_MissingRanges</h4>
+
+<p><strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">if(nums.empty()){
+    string s = to_string(lower);
+    if(upper != lower){s += &quot;-&gt;&quot; + to_string(upper);}
+    res.push_back(s);
+    return res;
+}
+
+int n = nums.size();
+for(int i = 0; i &lt; n; ++i){
+    if(nums[i] &gt; lower){
+        string s = to_string(lower);
+        if(lower != nums[i] - 1){s +=&quot;-&gt;&quot; + to_string(nums[i] - 1);}
+        res.push_back(s);
+    }
+    lower = nums[i] + 1;
+}
+
+if(nums[n-1] != upper){
+    string s = to_string(nums[n-1] + 1);
+    if(nums[n-1] + 1 != upper) s += &quot;-&gt;&quot; + to_string(upper);
+    res.push_back(s);
+}</code></pre></div>
+
+<h4 id="toc_119">164_MaximumGap</h4>
+
+<p><strong>Main Algo:</strong> Bucket and pigon hole theory.<br><br>
+<strong>Core Codes:</strong>  </p>
+
+<div><pre class="line-numbers"><code class="language-cpp">if(nums.size() &lt; 2)
+    return 0;
+int n = nums.size(), maxN = *max_element(nums.begin(), nums.end()), minN = *min_element(nums.begin(), nums.end());
+
+if(maxN == minN)
+    return 0;
+    
+int width = ceil((maxN - minN) * 1.0 / (n - 1));
+
+vector&lt;int&gt; bucket_max(n, INT_MIN);
+vector&lt;int&gt; bucket_min(n, INT_MAX);
+
+for(auto n:nums){
+    int idx = (n - minN) / width;
+    bucket_max[idx] = max(bucket_max[idx], n);
+    bucket_min[idx] = min(bucket_min[idx], n);
+}
+
+int cur_max = bucket_max[0], maxGap = 0;
+for(int i = 1; i &lt; n; i++){
+    if(bucket_min[i] != INT_MAX &amp;&amp; bucket_min[i] - cur_max &gt; maxGap)
+        maxGap = bucket_min[i] - cur_max;
+    if(bucket_max[i] != INT_MIN)
+        cur_max = bucket_max[i];
+}
+
+return maxGap;</code></pre></div>
+
+<h4 id="toc_120">165_CompareVersionNumbers</h4>
+
+<p><strong>Corner Cases:</strong> &quot;01&quot; = &quot;1&quot;, &quot;1.0.0&quot; = &quot;1&quot;<br>
+<strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">istringstream in1(version1), in2(version2);
+
+for(;;){
+    string v1 ,v2;
+    if(getline(in1, v1, &#39;.&#39;)){
+        if(getline(in2, v2, &#39;.&#39;)){
+            if(stoi(v1) &lt; stoi(v2))
+                return -1;
+            else if(stoi(v1) &gt; stoi(v2))
+                return 1;
+            else
+                continue;
+        } else {
+            if(stoi(v1) == 0)
+                continue;
+            else
+                return 1;
+        }
+    } else {
+        if(getline(in2, v2, &#39;.&#39;))
+            if(stoi(v2) == 0)
+                continue;
+            else
+                return -1;
+        else
+            return 0;
+    }
+}
+return 0;</code></pre></div>
+
+<h4 id="toc_121">167_TwoSumII</h4>
+
+<p><strong>Main Algo:</strong> Two pointers.<br><br>
+<strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">int i = 0, j = numbers.size() - 1;
+while(i &lt; j){
+    if(numbers[i] + numbers[j] == target)
+        return vector&lt;int&gt;({i + 1, j + 1});
+    if(numbers[i] + numbers[j] &gt; target) j--;
+    else i++;
+}
+return vector&lt;int&gt;();</code></pre></div>
+
+<h4 id="toc_122">168 &amp; 171_ExcelSheetColumnTitle</h4>
+
+<p><strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">// 168
+string result;
+while(n &gt; 0){
+    result = (char)((n - 1) % 26 + &#39;A&#39;) + result;
+    n = (n - 1) / 26;
+}
+return result;
+
+// 171
+int result = 0;
+for(auto i:s){
+    result = result*26 + (i - &#39;A&#39;) + 1;
+}</code></pre></div>
+
+<h4 id="toc_123">169_MajorityElement</h4>
+
+<p><strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">// Bit count solution.
+int result = 0;
+for(int i = 0; i &lt; 32; i++){
+    int count = 0;
+    for(auto n:nums)
+        count += (n &gt;&gt; i) &amp; 1;
+    result += (count &gt; nums.size() / 2) &lt;&lt; i;
+}</code></pre></div>
+
+<h4 id="toc_124">170_Factorial Trailing Zeroes</h4>
+
+<p><strong>Main Algo:</strong><br>
+<strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">return n == 0 ? 0 : n / 5 + trailingZeroes(n / 5);</code></pre></div>
+
+<h4 id="toc_125">173_BinarySearchTreeIterator</h4>
+
+<p><strong>Main Algo:</strong> In order traversal.<br>
+<strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">/** @return the next smallest number */
+int next() {
+    TreeNode* cur = s.top()-&gt;right;
+    int result = s.top()-&gt;val;
+    s.pop();
+    while(cur != nullptr){
+        s.push(cur);
+        cur = cur-&gt;left;
+    }
+    return result;
+}</code></pre></div>
+
+<h4 id="toc_126">174_DungeonGame</h4>
+
+<p><strong>Main Algo:</strong> DP<br>
+<strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">for(int i = m - 1; i &gt;= 0; i--)
+    for(int j = n - 1; j &gt;= 0; j--){
+        if(i == m - 1 &amp;&amp; j == n - 1){
+            if(dungeon[i][j] &lt; 0)
+                f[i][j] = 1 - dungeon[i][j];
+            else
+                f[i][j] = 1;
+        } else if(i == m - 1){
+            f[i][j] = max(1, f[i][j + 1] - dungeon[i][j]);
+        } else if(j == n - 1)
+            f[i][j] = max(1, f[i + 1][j] - dungeon[i][j]);
+        else
+            f[i][j] = max(1, min(f[i + 1][j], f[i][j + 1]) - dungeon[i][j]);
+    }</code></pre></div>
+
+<h4 id="toc_127">179_LargestNumber</h4>
+
+<p><strong>Corner Cases:</strong> All are 0, return only 1 zero. <br>
+<strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">// The sort function
+static bool compare(int a, int b){
+    string sa = to_string(a);
+    string sb = to_string(b);
+    
+    return sa + sb &gt; sb + sa;
+}</code></pre></div>
+
+<h4 id="toc_128">187_RepeatedDNASequences</h4>
+
+<p><strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">vector&lt;string&gt; result;
+unordered_map&lt;string, int&gt; hash;
+
+for(int start = 0; start + 9 &lt; s.length(); start++){
+    string cur = s.substr(start, 10);
+    if(hash[cur] == 1)
+        result.push_back(cur);
+    hash[cur]++;
+}</code></pre></div>
+
+<h4 id="toc_129">189_RotateArray</h4>
+
+<p><strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">// Insert the end k elements to the begin.
+k = k % nums.size();
+        
+nums.insert(nums.begin(), nums.end() - k, nums.end());
+nums.erase(nums.end() - k, nums.end());
+
+// Reverse three times
+k = k % nums.size();
+
+reverse(nums.begin(), nums.end());
+reverse(nums.begin(), nums.begin() + k);
+reverse(nums.begin() + k, nums.end());
+
+// Rotate function (std::)
+k = k % nums.size();
+std::rotate(nums.begin(), nums.end() - k, nums.end());</code></pre></div>
+
+<h4 id="toc_130">190_ReverseBits</h4>
+
+<p><strong>Core Code:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">uint32_t result = 0;
+for(int i = 0; i &lt; 32; i++)
+     // Take care of the order of operations.  
+    result += (n &gt;&gt; i &amp; 1) &lt;&lt; (31 - i);</code></pre></div>
+
+<h4 id="toc_131">191_NumberOf1Bits 1Y</h4>
+
+<p><strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">int result = 0;
+for(int i = 0; i &lt; 32; i++)
+    result += n &gt;&gt; i &amp; 1;</code></pre></div>
+
+<p>198_HouseRobber 1Y<br><br>
+DP  </p>
+
+<h4 id="toc_132">199_BinaryTreeRightSideView</h4>
+
+<p><strong>Corner Cases:</strong> The left subtree is higher than right subtree. We could also use dfs and bfs.<br>
+<strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">// Recursion
+vector&lt;int&gt; resultLeft;
+if(root-&gt;right != nullptr)
+    result = rightSideView(root-&gt;right);
+    
+if(root-&gt;left != nullptr)
+    resultLeft = rightSideView(root-&gt;left);
+
+if(resultLeft.size() &gt; result.size())
+    result.insert(result.end(), resultLeft.end() - (resultLeft.size() - result.size()), resultLeft.end());
+
+result.insert(result.begin(), root-&gt;val);
+
+// BFS
+queue&lt;TreeNode*&gt; q;
+vector&lt;int&gt; result;
+
+if(root == nullptr)
+    return result;
+    
+q.push(root);
+int depth = 0;
+
+while(!q.empty()){
+    int curWidth = q.size();
+    result.push_back(0);
+    for(int i = 0; i &lt; curWidth; i++){
+        TreeNode* cur = q.front();
+        q.pop();
+        result[depth] = cur-&gt;val;
+        if(cur-&gt;left)
+            q.push(cur-&gt;left);
+        if(cur-&gt;right)
+            q.push(cur-&gt;right);
+    }
+    depth++;
+}</code></pre></div>
+
+<h4 id="toc_133">200_NumberOfIslands</h4>
+
+<p><strong>Main Algo:</strong> Floodfill<br>
+<strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">// Floodfill for problem I
+void floodfill(vector&lt;vector&lt;char&gt;&gt;&amp; grid, int i , int j){
+    if(i &lt; 0 || i == grid.size() || j &lt; 0 || j == grid[0].size() || grid[i][j] != &#39;1&#39;)
+        return;
+        
+    grid[i][j] = &#39;0&#39;; // If we do not want to use extra space.
+    
+    floodfill(grid, i + 1, j);
+    floodfill(grid, i - 1, j);
+    floodfill(grid, i, j + 1);
+    floodfill(grid, i, j - 1);
+}
+
+// Union find for problem II
+for(auto i:positions){
+    int x = i.first;
+    int y = i.second;
+
+    parent[x * n + y] = x * n + y;
+    result++;
+    
+    unordered_set&lt;int&gt; count;
+    count.clear();
+    for(int j = 0; j &lt; 4; j++){
+        if(x + pos[j] &gt;= m || x + pos[j] &lt; 0 || y + pos[j + 1] &gt;= n || y + pos[j + 1] &lt; 0)
+            continue;
+            
+        int curPos = (x + pos[j]) * n + y + pos[j + 1];
+            
+        if(parent[curPos] &gt;= 0){
+            while(parent[curPos] != curPos){
+                curPos = parent[curPos] = parent[parent[curPos]];
+            }
+            count.insert(parent[curPos]);
+        }
+    }
+    result -= count.size();
+    res.push_back(result);
+    
+    for(auto i:count)
+        parent[i] = x * n + y;
+}</code></pre></div>
+
+<h4 id="toc_134">201_BitwiseANDOfNumbersRange</h4>
+
+<p><strong>Main Algo:</strong><br>
+Suppose from 00101 to 01011, the critical points the the highest different digit - 00XXX to 01XXX which will include 00111 to 01000 and the answer is 00000, </p>
+
+<p><strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">while(n &gt; m) n = n &amp; (n - 1);
+    return n;
+   
+int result = 0;
+for(int i = 31; i &gt;= 0; i--){
+    if((m &gt;&gt; i &amp; 1) != (n &gt;&gt; i &amp; 1))
+        break;
+    else
+        result += (m &gt;&gt; i &amp; 1) &lt;&lt; i;
+}
+return result;</code></pre></div>
+
+<h4 id="toc_135">202_HappyNumber</h4>
+
+<h4 id="toc_136">203_RemoveLinkedListElements</h4>
+
+<p><strong>Corner Cases:</strong> [1], [1,1]<br>
+<strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">ListNode *dummy = new ListNode(-1);
+dummy-&gt;next = head;
+ListNode* now = dummy;
+while(now != nullptr &amp;&amp; now-&gt;next != nullptr){
+    while(now-&gt;next != nullptr &amp;&amp; now-&gt;next-&gt;val == val)
+        now-&gt;next = now-&gt;next-&gt;next;
+    now = now-&gt;next;
+}
+
+return dummy-&gt;next;</code></pre></div>
+
+<h4 id="toc_137">204_CountPrimes</h4>
+
+<p><strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">// Bitmap solution. Reduce space complexity.
+int countPrimes(int n) {
+    vector&lt;int&gt; f(n / 32 + 1, -1);
+
+    int result = 0;
+
+    for(int i = 2; i &lt; n; i++){
+        if(get(f, i)){
+            result++;
+            int k = i * 2;
+            while(k &lt; n){
+                set(f, k);
+                k += i;
+            }
+        }
+    }
+
+    return result;
+}
+
+void set(vector&lt;int&gt;&amp; f, int pos){
+    f[pos / 32] &amp;= (-1 ^ (1 &lt;&lt; pos % 32));
+}
+int get(vector&lt;int&gt;&amp; f, int pos){
+    return f[pos / 32] &gt;&gt; (pos % 32) &amp; 1;
+}</code></pre></div>
+
+<h4 id="toc_138">205_IsomorphicStrings</h4>
+
+<p><strong>Main Algo:</strong> Set up a bijection between the chars.<br><br>
+<strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">unordered_map&lt;char, char&gt; map1, map2;
+
+for(int i = 0; i &lt; s.length(); i++){
+    if(map1.find(s[i]) == map1.end() &amp;&amp; map2.find(t[i]) == map2.end()){
+        map1.insert({s[i], t[i]});
+        map2.insert({t[i], s[i]});
+    } else if(map1[s[i]] == t[i] &amp;&amp; map2[t[i]] == s[i]) {} 
+        else return false;
+}</code></pre></div>
+
+<h4 id="toc_139">206_ReverseLinkedList</h4>
+
+<p><strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">// Iteration
+ListNode *prev = nullptr, *cur = head, *next = nullptr;
+while(cur != nullptr){
+    next = cur-&gt;next;
+    cur-&gt;next = prev;
+    prev = cur;
+    cur = next;
+}
+return prev;
+        
+// Recursion
+ListNode* newHead = reverseList(head-&gt;next);
+        
+ListNode* now = newHead;
+while(now-&gt;next != nullptr) now = now-&gt;next;
+
+now-&gt;next = head;
+head-&gt;next = nullptr;
+
+return newHead;</code></pre></div>
+
+<h4 id="toc_140">207_CourseSchedule</h4>
+
+<p>209_MinimunSizeSubarraySum 2Y<br><br>
+1 WA Mistunderstood subarray, used minheap,<br>
+2Y Used two pointers.  </p>
+
+<h4 id="toc_141">212_WordSearchII</h4>
+
+<p><strong>Main Algo:</strong> Build a trie tree using the words for search. DFS the board and push_back the index once we find one.<br><br>
+<strong>Corner Cases:</strong> Since we can not go out of the board, so we check the next nodes&#39;s idx. For example board is [[a]], word is a.<br>
+<strong>Core Codes:</strong></p>
+
+<div><pre class="line-numbers"><code class="language-cpp">class Solution {
+public:
+    vector&lt;string&gt; findWords(vector&lt;vector&lt;char&gt;&gt;&amp; board, vector&lt;string&gt;&amp; words) {
+        TrieNode *root = new TrieNode();
+        for(int i = 0; i &lt; words.size(); i++)
+            constructTrieTree(root, words[i], i);
+        
+        for(int i = 0; i &lt; board.size(); i++)
+            for(int j = 0; j &lt; board[0].size(); j++)
+                dfs(i, j, root, board);
+                
+        vector&lt;string&gt; result;
+        for(auto i:result_idx)
+            result.push_back(words[i]);
+            
+        return result;
+    }
+private:
+    struct TrieNode{
+        TrieNode* next[26];
+        int idx = -1;
+        TrieNode(){
+            fill(next, next + 26, nullptr);
+        }
+    };
+    vector&lt;int&gt; result_idx;
+    
+    void dfs(int i, int j, TrieNode* root, vector&lt;vector&lt;char&gt;&gt;&amp; board){
+        if(board[i][j] == 0 || root-&gt;next[board[i][j] - &#39;a&#39;] == nullptr)
+            return;
+            
+        char cur = board[i][j];
+        TrieNode *p = root-&gt;next[cur - &#39;a&#39;];
+        // we check if we can find a word by the end of this node.
+        if(p-&gt;idx != -1){
+            result_idx.push_back(p-&gt;idx);
+            p-&gt;idx = -1;
+        }
+        
+        board[i][j] = 0;
+        if(i &gt; 0) 
+            dfs(i - 1, j, root-&gt;next[cur - &#39;a&#39;], board);
+        if(i &lt; board.size() - 1) 
+            dfs(i + 1, j, root-&gt;next[cur - &#39;a&#39;], board);
+        if(j &gt; 0) 
+            dfs(i, j - 1, root-&gt;next[cur - &#39;a&#39;], board);
+        if(j &lt; board[0].size() - 1) 
+            dfs(i, j + 1, root-&gt;next[cur - &#39;a&#39;], board);
+        board[i][j] = cur;
+    }
+    
+    void constructTrieTree(TrieNode* root, string s, int i_idx){
+        for(auto c:s){
+            if(root-&gt;next[c - &#39;a&#39;] == nullptr){
+                root-&gt;next[c - &#39;a&#39;] = new TrieNode();
+                root = root-&gt;next[c - &#39;a&#39;];
+            } else root = root-&gt;next[c - &#39;a&#39;];
+        }
+        root-&gt;idx = i_idx;
+    }
+};</code></pre></div>
+
+<p>215<em>KthLargestElementInAnArray 1Y<br><br>
+min</em>heap using priority queue  </p>
+
+<p>216_CombinationSumII 2Y<br>
+DFS 1WA didn&#39;t request a good range  </p>
+
+<p>179_LargestNumber Good one<br>
+Use sort function, rewrite the compare part  </p>
+
+<p>217<em>ContainsDuplicate 1Y<br>
+Use unordered</em>set  </p>
+
+<h4 id="toc_142">218_TheSkylineProblem</h4>
+
+<p><strong>Main Algo:</strong> <br>
+Use a max<em>heap to store the maximum height, we when meet the left wall, we insert and check if the max</em>height changed; for the right wall, we delete it and check if the max_height changed.<br><br>
+<strong>Corner Cases:</strong><br>
+The corner cases all about how to sort the points.</p>
+
+<ul>
+<li>For left wall with same x, we made higher y first;</li>
+<li>For right wall with same x, we made lower y first;</li>
+<li>For left and right walls with same x, we made left first.<br></li>
+</ul>
+
+<p><strong>Core Codes:</strong> </p>
+
+<div><pre class="line-numbers"><code class="language-cpp">for(p : buildings){
+    points.push_back(make_pair(p[0], -p[2])); 
+    //We made the left wall&#39;s height to be negative, thus we could solve the sorting problem mentioned above.
+    points.push_back(make_pair(p[1], p[2]));
+}
+sort(points.begin(), points.end());
+
+multiset&lt;int&gt; max_heap = {0};
+int top = 0;
+for(p : points){
+    if(p.second &lt; 0){
+        max_heap.insert(-p.second);
+    } else {
+        max_heap.erase(max_heap.find(p.second));
+    }
+    
+    if(*max_heap.rbegin() != top){
+        result.push_back(make_pair(p.first, top = *max_heap.rbegin()));
+    }
+}</code></pre></div>
+
+<p>219_ContainsDuplicateII 2Y<br><br>
+1 WA instead of s.erase(s.begin()) it&#39;s better to erase the exact number<br><br>
+Use a maximized size set</p>
+
+<h2 id="toc_143">2016.9.28</h2>
+
+<p>221_MaximalSquare 2Y<br><br>
+f[i][j] = min(f[i - 1][j], f[i][j - 1], f[i - 1][j - 1]) + 1;  </p>
+
+<p>225_ImplementStackUsingQueues 1Y<br>
+Using a queue will be dumb  </p>
+
+<p>226_InvertBinaryTree 1Y  </p>
+
+<p>405_ConvertANumberToHex 1Y  </p>
+
+<p>404_SumOfLeftLeaves 2Y<br><br>
+Recursively solve the problem, could use stack?  </p>
+
+<p>402_RemoveKDigits 1Y<br><br>
+Find the first one that is larger than the one after it.  </p>
+
+<p>401_BinaryWatch 2Y<br><br>
+Forgot to consider when hour or second overloaded.  </p>
+
+<p>401_BinaryWatch 2Y<br><br>
+Forgot to consider when hour or second overloaded.  </p>
+
+<p>401_BinaryWatch 2Y<br><br>
+Forgot to consider when hour or second overloaded.  </p>
+
+<p>401_BinaryWatch 2Y<br><br>
+Forgot to consider when hour or second overloaded.  </p>
+
+<p>400_NthDigit 2Y<br><br>
+When calculating the pow, it might overload  </p>
+
+<p>228_SummaryRanges 2Y<br><br>
+Pay attention to the final element of the array, it has several oprations to do.  </p>
+
+<p>230_KthSmallestElementInABST 2Y<br>
+It&#39;s worthwhile to write three traversals iteratively  </p>
+
+<p>231_PowerOfTwo 1Y<br><br>
+Using bit operation.  </p>
+
+<p>232_ImplementQueueUsingStacks 1Y<br><br>
+Used two stacks  </p>
+
+<p>234_PalindromeLinkedList 1Y<br><br>
+Used vector, took O(n) time and O(n) space.  </p>
+
+<p>235_LowestCommonAncestorOfABinarySearchTree 1Y</p>
+
+<p>236_LowestCommonAncestorOfABinarySearchTree 2Y<br><br>
+At first I used the same method as the previous problem that to find where the two nodes are. It&#39;s almost TLE. Then I just recursive used the function, to check the return value of left and right subtree.  </p>
+
+<p>237_DeleteNodeInALinkedList 2Y<br><br>
+You can not let the current node to be nullptr, instead, let the next pointed to a nulltpr  </p>
+
+<p>237_DeleteNodeInALinkedList 2Y<br><br>
+You can not let the current node to be nullptr, instead, let the next pointed to a nulltpr  </p>
+
+<p>238_ProductOfArrayExceptSelf  1Y<br><br>
+Pay attention to the number of zeros  </p>
+
+<p>239_SlidingWindowMaximum 3Y<br><br>
+I used map(set cannot hold same items), a better way is to use deque(Monotonic Queue)  </p>
+
+<p>241_DifferentWaysToAddParentheses 1Y *<br>
+DP  </p>
+
+<p>242_ValidAnagram 1Y<br><br>
+I used sort, but the fastest way is to count the frequencies of all letters, O(n).  </p>
+
+<p>257_BinaryTreePaths 1Y<br><br>
+Recursively find the paths.  </p>
+
+<p>258_AddDigits 2Y<br><br>
+Since f(n) % 9 = f(n - 1) % 9 + 1  </p>
+
+<p>260<em>SingleNumberIII<br><br>
+The most common way is to use unordered</em>set, but using bit operation costs only O(1) space.  </p>
+
+<p>263_UglyNumber 1Y  </p>
+
+<p>264_UglyNumberII 3Y<br><br>
+The ugly number was generated from 2,3,5, and for each number, the nth smallest is number * ugly[n - 1]; Then we can choose from the three candidates.  </p>
+
+<p>268_MissingNumber 2Y<br><br>
+Solved it with O(1) space.<br><br>
+A better way is to use bit operation  </p>
+
+<p>273_IntegerToEnglishWords 3Y<br><br>
+Pay attention to empty string, and spaces(we could remove them at the end).  </p>
+
+<p>274_HIndex 1Y</p>
+
+<p>275_HIndexII 2Y<br><br>
+Use binary search to reduce the time complexity.  </p>
+
+<p>278_FirstBadVersion 1Y<br><br>
+Binary search  </p>
+
+<p>279_PerfectSquare 1Y<br><br>
+DP  </p>
+
+<p>283_MoveZeroes 1Y  </p>
+
+<p>289_GameOfLife 2Y<br><br>
+Use one bit to store the new state.  </p>
+
+<p>290_WordPattern 2Y<br><br>
+Since it&#39;s bijection, check both side.  </p>
+
+<p>290_WordPattern 2Y<br><br>
+Since it&#39;s bijection, check both side.  </p>
+
+<p>290_WordPattern 2Y<br><br>
+Since it&#39;s bijection, check both side.  </p>
+
+<p>290_WordPattern 2Y<br><br>
+Since it&#39;s bijection, check both side.  </p>
+
+<p>290_WordPattern 2Y<br><br>
+Since it&#39;s bijection, check both side.  </p>
+
+<p>290_WordPattern 2Y<br><br>
+Since it&#39;s bijection, check both side.  </p>
+
+<p>290_WordPattern 2Y<br><br>
+Since it&#39;s bijection, check both side.  </p>
+
+<p>290_WordPattern 2Y<br><br>
+Since it&#39;s bijection, check both side.  </p>
+
+<p>290_WordPattern 2Y<br><br>
+Since it&#39;s bijection, check both side.  </p>
+
+<p>290_WordPattern 2Y<br><br>
+Since it&#39;s bijection, check both side.  </p>
+
+<p>290_WordPattern 2Y<br><br>
+Since it&#39;s bijection, check both side.  </p>
+
+<p>290_WordPattern 2Y<br><br>
+Since it&#39;s bijection, check both side.  </p>
+
+<p>290_WordPattern 2Y<br><br>
+Since it&#39;s bijection, check both side.  </p>
+
+<p>290_WordPattern 2Y<br><br>
+Since it&#39;s bijection, check both side.  </p>
+
+<p>290_WordPattern 2Y<br><br>
+Since it&#39;s bijection, check both side.  </p>
+
+<p>290_WordPattern 2Y<br><br>
+Since it&#39;s bijection, check both side.  </p>
+
+<p>290_WordPattern 2Y<br><br>
+Since it&#39;s bijection, check both side.  </p>
+
+<p>290_WordPattern 2Y<br><br>
+Since it&#39;s bijection, check both side.  </p>
+
+<p>290_WordPattern 2Y<br><br>
+Since it&#39;s bijection, check both side.  </p>
+
+<p>290_WordPattern 2Y<br><br>
+Since it&#39;s bijection, check both side.  </p>
+
+<p>290_WordPattern 2Y<br><br>
+Since it&#39;s bijection, check both side.  </p>
+
+<p>290_WordPattern 2Y<br><br>
+Since it&#39;s bijection, check both side.  </p>
+
+<p>290_WordPattern 2Y<br><br>
+Since it&#39;s bijection, check both side.  </p>
+
+<p>290_WordPattern 2Y<br><br>
+Since it&#39;s bijection, check both side.  </p>
+
+<p>290_WordPattern 2Y<br><br>
+Since it&#39;s bijection, check both side.  </p>
+
+<p>290_WordPattern 2Y<br><br>
+Since it&#39;s bijection, check both side.  </p>
+
+<p>290_WordPattern 2Y<br><br>
+Since it&#39;s bijection, check both side.  </p>
+
+<p>290_WordPattern 2Y<br><br>
+Since it&#39;s bijection, check both side.  </p>
+
+<p>290_WordPattern 2Y<br><br>
+Since it&#39;s bijection, check both side.  </p>
+
+<p>292_NimGame 2Y<br><br>
+At first I tried to use dp, but actually if you can let the other one face n4 everytime you can always win.<br><br>
+So if at first you are not n4, you will win.  </p>
+
+<p>295_FindMedianFromDataStream 1Y<br><br>
+Use multiset  </p>
+
+<p>299_BullsAndCows 1Y<br><br>
+Remember to remove the two element no matter it&#39;s bull or cow  </p>
+
+<p>300_LongestIncreasingSubsequence 1Y<br><br>
+Simple DP, There will be O(nlongn) solution.  </p>
+
+<p>303_RangeSumQuery-Immutable 1Y<br><br>
+Use an array to store the sum.  </p>
+
+<p>304_RangeSumQuery2D-Immutable 1Y<br><br>
+The same as the previous problem.  </p>
+
+<p>306_AdditiveNumber 3Y<br><br>
+Enum all possible num[0] and num[1], pay attention to overload and zero condition.  </p>
+
+<p>398_RandomPickIndex 2Y<br><br>
+1 MLE<br><br>
+2 Copied from the forum. O(n) pick time, but the same space as num.  </p>
+
+<p>397_IntegerReplacement 2Y<br><br>
+At first I tried to used DP, to reduce redundant computing, but a high cost of memory.<br><br>
+Then I changed it to recursive function, and mind the overload of n.  </p>
+
+<p>396_RotateFunction 2Y<br><br>
+1 TLE It&#39;s easy to think of a O(n^2) solution but will TLE.<br>
+2 Actually everytime when we shift the array, the sum can be calculated directly.  </p>
+
+<p>395_LongestSubstringWithAtLeastKRepeatingCharacter 3Y<br><br>
+Recursively solve this problem, use a count array to reduce count the times of a character every time.  </p>
+
+<p>394_DecodeString 1Y<br><br>
+Recursively solve it.  </p>
+
+<p>392_IsSubsequence 2Y<br><br>
+1 MLE and TLE DP<br>
+2 Search every char of s in t.  </p>
+
+<p>390_EliminationGame 2Y<br><br>
+Record the start, end, interval and direction, used recursive functions  </p>
+
+<p>389_FindTheDifference 1Y<br><br>
+Sort the two strings and then compare.  </p>
+
+<p>387_FirstUniqueCharacterInAString 1Y<br><br>
+For every string, find if exists after it, if found continue.  </p>
+
+<p>386_LexicographicalNumbers 3Y<br><br>
+Used dfs and bfs, then I realized only 10 new can be generated.  </p>
+
+<p>383_RansomNote 1Y<br>
+Count all numbers in note and magazines.  </p>
+
+<p>382_LinkedListRandomNode 1Y<br><br>
+Random number mod n  </p>
+
+<p>307_RangeSumQuery-Mutable 3Y<br><br>
+Used BIT  </p>
+
+<p>287_FindTheDuplicateNumber 3Y<br><br>
+If duplicates exist, there would be a circle.  </p>
+
+<p>377_CombinationSumIV 2Y<br><br>
+At first I used recursive function, then I change to dp  </p>
+
+<p>376_WiggleSubsequence 3Y<br><br>
+At first I used DP which past but with high time cost. Then I used greedy algorithm, that when incresing, we only consider the bigger, and it&#39;s the same in decresing conditions. We only need to know how many peak or valley it has.  </p>
+
+<p>374_GuessNumberHigherOrLower 1Y<br><br>
+Binary search.  </p>
+
+<p>220_ContainsDuplicateIII 3Y<br><br>
+Using multiset  </p>
+
+<p>380 &amp; 381 InsertDeleteGetRandomO(1)<br>
+Using set and multiset.  </p>
+
+<p>318_MaximumProductOfWordLengths 2Y<br><br>
+Use binary to encode.  </p>
+
+<p>319_BulbSwitcher 2Y<br><br>
+Two ways, find the pattern or prove that only with odd number of factors will be on finally.  </p>
+
+<p>322_CoinChange 1Y<br><br>
+BFS Slower<br><br>
+DP Faster  </p>
+
+<p>326_PowerOfThree 2Y<br><br>
+If n is power of three then log10(n) / log10(3) is an integer.  </p>
+
+<p>371_SumOfTwoIntegers 2Y<br><br>
+Using bit operation.  </p>
+
+<p>328_OddEvenLinkedList 2Y</p>
+
+<p>367_ValidPerfectSquare 2Y<br><br>
+Using binary search, mind overload.  </p>
+
+<p>313_SuperUglyNumber 2Y<br><br>
+For each prime, the ith smalllest it can generate is f[i - 1] * itself.  </p>
+
+<p>409_LongestPalindrome 2Y<br><br>
+The longest consisit of even * evenN + (odd - 1) * oddN + 1(middle)  </p>
+
+<p>373_FindKPairsWithSmallestSums 2Y<br><br>
+Similar to SuperUglyNumber  </p>
+
+<p>342_PowerOfFour 1Y<br><br>
+Continue using log10(num) / log10(a)  </p>
+
+<p>037_SudokuSolver 2Y<br><br>
+Fixed a bug, that I didn&#39;t set board[i][j] to be &#39;.&#39;  </p>
+
+<p>344_ReverseString 1Y  </p>
+
+<p>345_ReverseVowelsOfAString 1Y  </p>
+
+<p>349_IntersectionOfTwoArrays 1Y  </p>
+
+<p>350_IntersectionOfTwoArraysII 1Y  </p>
+
+<p>204_CountPrimes 2Y<br><br>
+Use small prime to delete non-prime, need high space  </p>
+
+<p>156_BinaryTreeUpsideDown 1Y<br><br>
+Return the root of the left subtree, and then find until right end and then insert root.  </p>
+
+<p>134_GasStation 2Y<br><br>
+Find the beginnings of non-negative serires, and check if it can cover the whole circle.  </p>
+
+<p>338<em>CountingBits 1Y<br><br>
+f[n] = f[n - lower</em>bound(2^n)] + 1  </p>
+
+<p>347<em>TopKFrequentElements 2Y<br><br>
+Used unordered</em>map to count and priority queue to store and ranking.  </p>
+
+<p>343_IntegerBreak 1Y<br><br>
+DP, f[n] = max(max(k, f[k]) * max(n - k, f[n - k]), f[n]) (for k = 1 to n - 1)  </p>
+
+<p>149_MaxPointsOnALine 3Y<br><br>
+My solution enumerates all pairs and check others which is a O(n^3). A better way is to enumerate all points and check all others with different slopes. Then add the same points as the original one.  </p>
+
+<p>150_EvaluateReversePolishNotation 1Y<br><br>
+Use a stack to store the number, when then token is a opt, implement the calculation.  </p>
+
+<p>157_ReadNCharactersGivenRead4 2Y   </p>
+
+<p>159_LongestSubstringWithAtMostTwoDistinctCharacters 2Y<br><br>
+Keep two pointers, when legal, tail++, otherwise head ++.  </p>
+
+<p>173_BinarySearchTreeIterator 2Y<br><br>
+When initializing, push all the left node into stack, before poping, push the right sun and all its left nodes.  </p>
+
+<p>161_OneEditDistance 2Y<br><br>
+If there is a difference in the string, and used four ways to change , still different, return false, if no difference in the string, the length has 1 difference, return true, else return false.  </p>
+
+<p>163_MissingRanges 3Y<br><br>
+Should consider empty condition and need to consider overload conditions.  </p>
+
+<p>170<em>TwoSumII-DataStructureDesign 2Y<br><br>
+Used an unordered</em>map to implement it  </p>
+
+<p>186_ReverseWordsInAStringII 1Y<br><br>
+An in place way is to reverse the whole string and then reverse individual words.  </p>
+
+<p>293_FlipGame 1Y  </p>
+
+<p>243_ShortestWordDistance 2Y<br><br>
+The fastest way is to record last pos of word1 and word2, when looping calculate the minDist.  </p>
+
+<p>243_ShortestWordDistance 2Y<br><br>
+The fastest way is to record last pos of word1 and word2, when looping calculate the minDist. O(n)  </p>
+
+<p>244_ShortestWordDistanceII 1Y<br><br>
+Used a map to store each indexes, an optimization is to use two pointers to find the min distance.  </p>
+
+<p>245_ShortestWordDistanceIII 2Y<br><br>
+Similart to 243  </p>
+
+<p>246_StrobogrammaticNumber 1Y  </p>
+
+<p>247_StrobogrammaticNumber 1Y<br><br>
+Take care that the first number could not be 0.  </p>
+
+<p>249_GroupShiftedStrings 2Y<br><br>
+Be more careful.  </p>
+
+<p>250_CountUnivalSubtrees 1Y<br><br>
+Return if it is a unival substree, and if the root is , total++  </p>
+
+<p>251_Flatten2DVector 1Y<br><br>
+Two pointers to record row and column, pay attention to empty rows.  </p>
+
+<p>252_MeetingRooms 1Y<br><br>
+Sort with start time, compare the neighbors whether there is any overlap.  </p>
+
+<p>253_MeetingRoomsII 1Y<br><br>
+The same as the previous one, sort with the start time, when multiple rooms available, choose the one with closest time.  </p>
+
+<p>254_FactorCombinations 1Y<br><br>
+In order to reduce duplicates, we add an arg to record the last nubmer we used and starts from it.  </p>
+
+<p>256_PaintHouse 1Y<br><br>
+Simple DP  </p>
+
+<p>265_PaintHouseII 1Y<br><br>
+DP, but only record the two minimun costs.  </p>
+
+<p>270_ClosestBinarySearchTreeValue 1Y<br><br>
+Return the value of left or right (decided by the root val), and compare with root;  </p>
+
+<p>266_PalindromePermutation 1Y<br><br>
+Permutation means a reorder of existing words.  </p>
+
+<p>271_EncodeAndDecodeStrings 2Y<br><br>
+I added &quot;sq39&quot; to separate the strings, payattention that there could be a empty string.  </p>
+
+<p>276_PaintFence 1Y<br><br>
+DP, f[0] = k, f[1] = k * k, f[n] = (k - 1) * (f[n - 1] + f[n - 2]);  </p>
+
+<p>277_FindTheCelebrity 2Y<br><br>
+Find the people who know nobody, and check if everyone else know him.  </p>
+
+<p>280_WiggleSort 1Y<br><br>
+Sort, then insert the end to the front.  </p>
+
+<p>285_InOrderSuccessorInBST 2Y<br><br>
+If the val is smaller than BST, and with no right nodes in left substree, the successor will be the root.  </p>
+
+<p>286_WallsAndGates 1Y<br><br>
+dfs, take care that control no loop  </p>
+
+<p>415_AddStrings 1Y<br><br>
+High accuracy add operation.  </p>
+
+<p>416<em>PartitionEqualSubsetSum 1Y<br><br>
+Calculate the sum first, and then used a unordered</em>set to record then possible sums of subsets.  </p>
+
+<p>288<em>UniqueWordAbbreviation 2Y<br><br>
+Use a unordered</em>set to store the words that has the same abbreviation. Unique means no existing abbr || only one has the abbr and it&#39;s the same as this word.  </p>
+
+<p>296_BestMeetingPoint 2Y<br><br>
+Naive search O(m * n) will TLE.<br><br>
+For Manhattan Distance, the row and column could be considered separately.  </p>
+
+<p>298_BinaryTreeLongestConsecutiveSequence 1Y<br><br>
+Design a new function return the consecutive length until this root, and refresh a global maxLength.  </p>
+
+<p>311_SparseMatrixMultiplication 2Y<br><br>
+Use map to store each row and each column that has non-zero element.  </p>
+
+<p>320_GeneralizedAbbreviation 1Y<br><br>
+Recursive function.  </p>
+
+<p>323_NumberOfConnectedComponentsInAnUndirectedGraph 2Y<br><br>
+Union find.  </p>
+
+<p>346_MovingAverageFromDataStream 1Y  </p>
+
+<p>348_DesignTic-Tac-Toe 1Y<br><br>
+Use map to store the count of row, col, diag.  </p>
+
+<p>408_ValidWordAbbreviation 2Y  </p>
+
+<p>325<em>MaximumSizeSubarraySumEqualsK 1Y<br><br>
+Use a unordered</em>map to store the earliest index that has the sum.  </p>
+
+<p>366_FindLeavesOfBinaryTree 1Y  </p>
+
+<p>369_PlusOneLinkedList 1Y  </p>
+
+<p>356_LineReflection 3Y<br><br>
+Remove duplicates first, sort by x, start from the median. Pay attention that the y could be different for the same x.  </p>
+
+<p>360_SortTransformedArray 2Y<br><br>
+Pay attention to a == 0, b == 0 conditions.  </p>
+
+<p>361_BombEnemy 3Y<br><br>
+Naive search O(mnmax(m, n)) would TLE, keep four arrays count the number of enemies that can be kill at that point, O(mn).  </p>
+
+<p>207_CourseSchedule 2Y<br><br>
+Toplogic sort, decide whether there is a loop or not by the final number of courses that was selected.  </p>
+
+<p>210_CourseScheduleII 1Y<br><br>
+Similar to the previous problem.  </p>
+
+<p>269_AlienDictionary 3Y Good one.<br><br>
+Top logic sort, but pay attention to duplicate orders. and pay attention to the final output.  </p>
+
+<p>208_ImplementTrie 2Y  </p>
+
+<p>211_AddAndSearchWord 1Y<br><br>
+Used trie tree.  </p>
+
+<p>339_NestedListWeightSum 1Y  </p>
+
+<p>360_NestedListWeightSumII 2Y<br><br>
+Use a pair th record depth and number, and then find the maximum depth to calculate the sum.  </p>
+
+<p>362_DesignHitCounter 2Y<br><br>
+Used a queue but pay attention to empty condition.  </p>
+
+<p>281_Zigzag Iterator 2Y<br><br>
+Used a queue, can handle multiple vectors.  </p>
+
+<p>359_LoggerRateLimiter 1Y<br><br>
+Since we have to check all the valid pre-logs, so we used a vector rather than queue.  </p>
+
+<p>233_RectangleArea 1Y<br><br>
+Mind the overload and overlap.  </p>
+
+<p>406_QueueReconstructionByHeight 1Y<br><br>
+I used toplogic sort, a better way is to sort by height first and sort by number of higher ones second. Insert them after the number of higher ones.  </p>
+
+<p>164_MaximumGap 3Y<br><br>
+Using bucket sort. PigeonHole Theory.  </p>
+
+<p>213_HouseRobberII 3Y<br><br>
+DP, same as HouseRobber, pay attention that (i - 1) % n could be negative.  </p>
+
+<p>399_EvaluateDivision 1Y<br><br>
+BFS to find all paths.  </p>
+
+<p>334_IncreasingTripletSubsequence 1Y<br><br>
+Use two interger to record the first two increasing, and substitute them if a new one is smalller than any of it.  </p>
+
+<p>417_PacificAtlanticWaterFlow 2Y<br><br>
+Floodfill, pay attention that if not using reference might MLE.  </p>
+
+<p>187<em>RepeaatedDNASequences 2Y<br><br>
+Using unordered</em>map to count the time.  </p>
+
+<p>337<em>HouseRobberIII 2Y<br><br>
+DP in tree, use unordered</em>set to record the result we have calculated.  </p>
+
+<p>297_SerializeAndDeserializeBinaryTree 3Y<br><br>
+Used pre-order traversal.  </p>
+
+<p>259_3SumSmaller 2Y<br><br>
+Use 3 pointers.  </p>
+
+<p>412_FizzBuzz 1Y  </p>
+
+<p>422_ValidWordSquare 2Y<br><br>
+Take care that if might not be symmetric.  </p>
+
+<p>135_Candy 3Y<br><br>
+At first I used toplogic sort buy actually it can be solved by simplely scan the array twice in two direction.<br>
+if(ratings[i] &gt; ratings[i-1])<br>
+    candy[i] = max(candy[i], candy[i - 1] + 1);<br>
+if(ratings[i] &gt; ratings[i + 1]) the same.  </p>
+
+<p>391_PerfectRectangle 3Y<br><br>
+The perfectRectangle Should obey two rules. 1. Area sum is equal to max rectangle. 2. except the four outer points. other points must appear twice.  </p>
+
+<p>310_MinimumHeightTrees 3Y<br><br>
+The problem could be solved in two ways. 1. find the longest path 2. delete all leaf nodes until there are only one or two.  </p>
+
+<p>365_WaterAndJugProblem 2Y<br><br>
+We could get 0 to x + y, gcd(x, y) to be the step.  </p>
+
+<p>370_RangeAddition 3Y<br><br>
+num[i[0]] += i[2]<br><br>
+num[i[1] + 1] -= i[2]  </p>
+
+<p>then num[i] += num[i - 1]  </p>
+
+<p>358_RearrangeStringKDistanceApart 1Y<br><br>
+Greedy, choose the char with most remaining.  </p>
+
+<p>291_WordPatternII 3Y<br><br>
+DFS, pruning by sum(count[char] * len of pattern char) &lt;= str.length()</p>
+
+<p>351_AndroidUnlockPatterns 3Y<br><br>
+DFS, since the keyboard is symetric, we only need 1,2,5 to be calculated.  </p>
+
+<p>419_BattleshipsInABoard 2Y<br><br>
+DFS, floodfill, check if it is legal at the end.  </p>
+
+<p>393_UTF8-Validation 2Y<br><br>
+Pay attention to the length of 1&#39;s in header is 1(Invalid).  </p>
+
+<p>403_FrogJump 3Y<br><br>
+DP, record all last steps that can reach stone[i].  </p>
+
+<p>227_BasicCalculatorII 2Y<br><br>
+Used istringstream and stack.  </p>
+
+<p>414<em>ThirdMaximumNumber 1Y<br><br>
+Used priority</em>queue to implement. It can also be solved by using a set.  </p>
+
+<p>368_LargestDivisibleSubset 3Y<br><br>
+DP, record the path.  </p>
+
+<p>384<em>ShuffleAnArray<br><br>
+Using Fisher</em>Yates shuffle.  </p>
+
+<p>439_TernaryExpressionParser  1Y  </p>
+
+<p>379_DesignPhoneDirectory 3Y<br><br>
+Used a int vector and a bool vector.<br>
+When releasing, numbers[--cur] = number;  </p>
+
+<p>438_FindAllAnagramsInAString  2Y<br><br>
+Use the most naive to compare would exceed the time. When changing the index, only 1 char would change.  </p>
+
+<p>388_LongestAbsoluteFilePath 2Y<br><br>
+Used the istringstream and getline function to split \n.  </p>
+
+<p>133_CloneGraph 3Y<br><br>
+Using a map to store those cloned nodes.  </p>
+
+<p>138_CopyListWithRandomPointer 1Y<br><br>
+Similar to clone graph.  </p>
+
+<p>421_MaximumXOROfTwoNumbersInAnArray 1Y<br><br>
+Using trie tree. Pay attention, (1 &lt;&lt; i) &amp; n &gt; 0 means get the ith binary number.</p>
+
+<p>308_RangeSumQuery2D-Mutable 2Y<br><br>
+2D Bit.  </p>
+
+<p>340_LongestSubstringWithAtMostKDistinctCharacters 1Y<br><br>
+Used two pointers.  </p>
+
+<p>353_DesignSnakeGame 2Y  </p>
+
+<p>331_VerifyPreorderSerializationOfABinaryTree 1Y  </p>
+
+<p>354<em>RussianDollEnvelopes 3Y<br><br>
+Similar to LIS. Using lower</em>bound(logN).  </p>
+
+<p>302_SmallestRectangleEnclosingBlackPixels 3Y<br><br>
+Using binary search.  </p>
+
+<p>423_ReconstructOriginalDigitsFromEnglish 2Y<br><br>
+I used dfs (with pruing), but the best way is to count some important letters.<br><br>
+class Solution {<br>
+    public:<br>
+    string originalDigits(string s) {<br>
+        vector<int> a(10, 0);<br>
+        vector<int> alpha(128, 0);<br>
+        for (char c : s)<br>
+            alpha[c]++;<br>
+        a[0] = alpha[&#39;z&#39;];<br>
+        a[2] = alpha[&#39;w&#39;];<br>
+        a[4] = alpha[&#39;u&#39;];<br>
+        a[6] = alpha[&#39;x&#39;];<br>
+        a[8] = alpha[&#39;g&#39;];<br>
+        a[3] = alpha[&#39;h&#39;] - a[8];<br>
+        a[5] = alpha[&#39;f&#39;] - a[4];<br>
+        a[7] = alpha[&#39;v&#39;] - a[5];<br>
+        a[1] = alpha[&#39;o&#39;] - a[0] - a[2] - a[4];<br>
+        a[9] = alpha[&#39;i&#39;] - a[5] - a[6] - a[8];</p>
+
+<div><pre class="line-numbers"><code class="language-none">    string ans;
+    for (int i = 0; i &lt; 10; i++) {
+        if (a[i] &gt; 0)
+            ans += string(a[i], &#39;0&#39; + i);
+    }
+    return ans;    
+}</code></pre></div>
+
+<p>};</p>
+
+<p>222_CountCompleteTreeNodes 1Y<br><br>
+By calculating the depth of right subtree and the whole tree, we could find if the left tree is complete.<br><br>
+Thus,<br>
+if(height(root-&gt;right) == h - 1)<br>
+    return (1 &lt;&lt; (h - 1)) + countNodes(root-&gt;right);<br>
+else<br>
+    return (1 &lt;&lt; (h - 2)) + countNodes(root-&gt;left);  </p>
+
+<p>330_PatchingArray 2Y<br><br>
+It&#39;s important to see that when [1, n] is can be got, if there is an i &lt;= n + 1, [1, n + i] is achievable.  </p>
+
+<p>440_KthSmallestInLexicographicalOrder 3Y<br><br>
+Good problem.  </p>
+
+<p>301<em>RemoveInvalidParentheses 1Y<br><br>
+BFS, use unordered</em>set to remove dup.  </p>
+
+<p>240_SearchA2DMatrixII 2Y<br><br>
+At first I used binary search. Another O(m + n) way is search the right-up most element, if smaller, target could not be at that col, if larger. target could not be at that row.</p>
+
+<p>435_Non-OverlappingIntervals 2Y<br><br>
+Sort the intervals with start first. When a new intervals have no overlap with the last one, add it . else, refresh the end point by comparing the current end with the new one.  </p>
+
+<p>317_ShortestDistanceFromAllBuildings 3Y<br><br>
+BFS from all buildings, find the place with minimum sum of distances.  </p>
+
+<p>044_WildcardMatching 2Y<br><br>
+DP with round array.  </p>
+
+<p>436_FindRightInterval 2Y<br><br>
+Using upper bound.  </p>
+
+<p>struct compare{<br>
+    int compValue(const Interval&amp; a){<br>
+        return a.start;<br>
+    }<br>
+    int compValue(const int a){<br>
+        return a;<br>
+    }</p>
+
+<div><pre class="line-numbers"><code class="language-none">template&lt;typename T1, typename T2&gt;
+bool operator()(T1 const t1, T2 const t2){
+    return compValue(t1) &lt;= compValue(t2);
+}</code></pre></div>
+
+<p>}comp;</p>
+
+<p>357_CountNumberWithUniqueDigits 2Y<br><br>
+Simply sum 9 * 9 * 8 * ... * (9 - i + 2) and add 1 for the zero.</p>
+
+<p>312_BurstBalloons 3Y<br><br>
+DP, find the maximum in the interval of [start, end], enum the last one to blow, f[start][end] = max(f[start][k - 1]+ f[k + 1][end] + nums[k] * nums[start - 1]*nums[end + 1]);  </p>
+
+<p>255_VerifyPreorderSequenceInBinarySearchTree 1Y<br><br>
+Using a stack to do the same operation as preorder traversal, the false condition happen when the right subtree has a number that is bigger than the root. So we have to record the root.  </p>
+
+<p>332_ReconstructItinerary 3Y<br><br>
+DFS. When using multiset, pay attention to erase() which erase all items with the key. And we need to record all cities out to do the for loop.  </p>
+
+<p>261_GraphValidTree 2Y<br><br>
+Actually is to find if there is a curcuit in the graph. Using Union-Find, BFS, DFS, which fasest to slowest.  </p>
+
+<p>352<em>DataStreamAsDisjointIntervals 2Y<br><br>
+Using lower</em>bound.  </p>
+
+<p>126_WordLadderII 3Y<br><br>
+BFS, delete the word after every layer.  </p>
+
+<p>127_WordLadder 1Y<br><br>
+Erase a word once we push it into the queue.  </p>
+
+<p>341_FlattenNestedListIterator 3Y<br><br>
+Using deque. Stack.(*)</p>
+
+<p>437_PathSumIII 1Y<br><br>
+DP on a tree. Record all possible sums with this root.  </p>
+
+<p>305_NumberOfIslandsII 2Y<br><br>
+Using union-find. But pay attention that find all differnt sets at first and then union them.  </p>
+
+<p>447_NumberOfBoomerangs 2Y<br><br>
+Search all possible head point, with different dists, for each dists, add dist * (dist - 1)  </p>
+
+<p>441_ArrangingCoins 1Y<br><br>
+Mathemetical problem. Solve a inequality.  </p>
+
+<h4 id="toc_144">314_BinaryTreeVerticalOrderTraversal 1Y</h4>
+
+<p><strong>Main Algo:</strong> BFS, the left and right&#39;s pos is only one distance with the root<br><br>
+<strong>Corner Case:</strong> root == nullptr<br><br>
+<strong>Core Code:</strong>  </p>
+
+<div><pre class="line-numbers"><code class="language-cpp">while(!q.empty()){  
+    TreeNode *curNode = q.front().first;  
+    int curPos = q.front().second;  
+    
+    q.pop();
+    vertical[curPos].push_back(curNode-&gt;val);
+    
+    if(curNode-&gt;left != nullptr)
+        q.push(make_pair(curNode-&gt;left, curPos - 1));
+    if(curNode-&gt;right != nullptr)
+        q.push(make_pair(curNode-&gt;right, curPos + 1));
+}</code></pre></div>
+
+
+
+<script type="text/javascript">
+var _self="undefined"!=typeof window?window:"undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?self:{},Prism=function(){var e=/\blang(?:uage)?-(\w+)\b/i,t=0,n=_self.Prism={util:{encode:function(e){return e instanceof a?new a(e.type,n.util.encode(e.content),e.alias):"Array"===n.util.type(e)?e.map(n.util.encode):e.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/\u00a0/g," ")},type:function(e){return Object.prototype.toString.call(e).match(/\[object (\w+)\]/)[1]},objId:function(e){return e.__id||Object.defineProperty(e,"__id",{value:++t}),e.__id},clone:function(e){var t=n.util.type(e);switch(t){case"Object":var a={};for(var r in e)e.hasOwnProperty(r)&&(a[r]=n.util.clone(e[r]));return a;case"Array":return e.map&&e.map(function(e){return n.util.clone(e)})}return e}},languages:{extend:function(e,t){var a=n.util.clone(n.languages[e]);for(var r in t)a[r]=t[r];return a},insertBefore:function(e,t,a,r){r=r||n.languages;var l=r[e];if(2==arguments.length){a=arguments[1];for(var i in a)a.hasOwnProperty(i)&&(l[i]=a[i]);return l}var o={};for(var s in l)if(l.hasOwnProperty(s)){if(s==t)for(var i in a)a.hasOwnProperty(i)&&(o[i]=a[i]);o[s]=l[s]}return n.languages.DFS(n.languages,function(t,n){n===r[e]&&t!=e&&(this[t]=o)}),r[e]=o},DFS:function(e,t,a,r){r=r||{};for(var l in e)e.hasOwnProperty(l)&&(t.call(e,l,e[l],a||l),"Object"!==n.util.type(e[l])||r[n.util.objId(e[l])]?"Array"!==n.util.type(e[l])||r[n.util.objId(e[l])]||(r[n.util.objId(e[l])]=!0,n.languages.DFS(e[l],t,l,r)):(r[n.util.objId(e[l])]=!0,n.languages.DFS(e[l],t,null,r)))}},plugins:{},highlightAll:function(e,t){var a={callback:t,selector:'code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code'};n.hooks.run("before-highlightall",a);for(var r,l=a.elements||document.querySelectorAll(a.selector),i=0;r=l[i++];)n.highlightElement(r,e===!0,a.callback)},highlightElement:function(t,a,r){for(var l,i,o=t;o&&!e.test(o.className);)o=o.parentNode;o&&(l=(o.className.match(e)||[,""])[1],i=n.languages[l]),t.className=t.className.replace(e,"").replace(/\s+/g," ")+" language-"+l,o=t.parentNode,/pre/i.test(o.nodeName)&&(o.className=o.className.replace(e,"").replace(/\s+/g," ")+" language-"+l);var s=t.textContent,u={element:t,language:l,grammar:i,code:s};if(!s||!i)return n.hooks.run("complete",u),void 0;if(n.hooks.run("before-highlight",u),a&&_self.Worker){var c=new Worker(n.filename);c.onmessage=function(e){u.highlightedCode=e.data,n.hooks.run("before-insert",u),u.element.innerHTML=u.highlightedCode,r&&r.call(u.element),n.hooks.run("after-highlight",u),n.hooks.run("complete",u)},c.postMessage(JSON.stringify({language:u.language,code:u.code,immediateClose:!0}))}else u.highlightedCode=n.highlight(u.code,u.grammar,u.language),n.hooks.run("before-insert",u),u.element.innerHTML=u.highlightedCode,r&&r.call(t),n.hooks.run("after-highlight",u),n.hooks.run("complete",u)},highlight:function(e,t,r){var l=n.tokenize(e,t);return a.stringify(n.util.encode(l),r)},tokenize:function(e,t){var a=n.Token,r=[e],l=t.rest;if(l){for(var i in l)t[i]=l[i];delete t.rest}e:for(var i in t)if(t.hasOwnProperty(i)&&t[i]){var o=t[i];o="Array"===n.util.type(o)?o:[o];for(var s=0;s<o.length;++s){var u=o[s],c=u.inside,g=!!u.lookbehind,h=!!u.greedy,f=0,d=u.alias;u=u.pattern||u;for(var p=0;p<r.length;p++){var m=r[p];if(r.length>e.length)break e;if(!(m instanceof a)){u.lastIndex=0;var y=u.exec(m),v=1;if(!y&&h&&p!=r.length-1){var b=r[p+1].matchedStr||r[p+1],k=m+b;if(p<r.length-2&&(k+=r[p+2].matchedStr||r[p+2]),u.lastIndex=0,y=u.exec(k),!y)continue;var w=y.index+(g?y[1].length:0);if(w>=m.length)continue;var _=y.index+y[0].length,P=m.length+b.length;if(v=3,P>=_){if(r[p+1].greedy)continue;v=2,k=k.slice(0,P)}m=k}if(y){g&&(f=y[1].length);var w=y.index+f,y=y[0].slice(f),_=w+y.length,S=m.slice(0,w),O=m.slice(_),j=[p,v];S&&j.push(S);var A=new a(i,c?n.tokenize(y,c):y,d,y,h);j.push(A),O&&j.push(O),Array.prototype.splice.apply(r,j)}}}}}return r},hooks:{all:{},add:function(e,t){var a=n.hooks.all;a[e]=a[e]||[],a[e].push(t)},run:function(e,t){var a=n.hooks.all[e];if(a&&a.length)for(var r,l=0;r=a[l++];)r(t)}}},a=n.Token=function(e,t,n,a,r){this.type=e,this.content=t,this.alias=n,this.matchedStr=a||null,this.greedy=!!r};if(a.stringify=function(e,t,r){if("string"==typeof e)return e;if("Array"===n.util.type(e))return e.map(function(n){return a.stringify(n,t,e)}).join("");var l={type:e.type,content:a.stringify(e.content,t,r),tag:"span",classes:["token",e.type],attributes:{},language:t,parent:r};if("comment"==l.type&&(l.attributes.spellcheck="true"),e.alias){var i="Array"===n.util.type(e.alias)?e.alias:[e.alias];Array.prototype.push.apply(l.classes,i)}n.hooks.run("wrap",l);var o="";for(var s in l.attributes)o+=(o?" ":"")+s+'="'+(l.attributes[s]||"")+'"';return"<"+l.tag+' class="'+l.classes.join(" ")+'" '+o+">"+l.content+"</"+l.tag+">"},!_self.document)return _self.addEventListener?(_self.addEventListener("message",function(e){var t=JSON.parse(e.data),a=t.language,r=t.code,l=t.immediateClose;_self.postMessage(n.highlight(r,n.languages[a],a)),l&&_self.close()},!1),_self.Prism):_self.Prism;var r=document.currentScript||[].slice.call(document.getElementsByTagName("script")).pop();return r&&(n.filename=r.src,document.addEventListener&&!r.hasAttribute("data-manual")&&document.addEventListener("DOMContentLoaded",n.highlightAll)),_self.Prism}();"undefined"!=typeof module&&module.exports&&(module.exports=Prism),"undefined"!=typeof global&&(global.Prism=Prism);
+</script>
+
+<script type="text/javascript">
+Prism.languages.clike={comment:[{pattern:/(^|[^\\])\/\*[\w\W]*?\*\//,lookbehind:!0},{pattern:/(^|[^\\:])\/\/.*/,lookbehind:!0}],string:{pattern:/(["'])(\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1/,greedy:!0},"class-name":{pattern:/((?:\b(?:class|interface|extends|implements|trait|instanceof|new)\s+)|(?:catch\s+\())[a-z0-9_\.\\]+/i,lookbehind:!0,inside:{punctuation:/(\.|\\)/}},keyword:/\b(if|else|while|do|for|return|in|instanceof|function|new|try|throw|catch|finally|null|break|continue)\b/,"boolean":/\b(true|false)\b/,"function":/[a-z0-9_]+(?=\()/i,number:/\b-?(?:0x[\da-f]+|\d*\.?\d+(?:e[+-]?\d+)?)\b/i,operator:/--?|\+\+?|!=?=?|<=?|>=?|==?=?|&&?|\|\|?|\?|\*|\/|~|\^|%/,punctuation:/[{}[\];(),.:]/};
+</script>
+
+<script type="text/javascript">
+Prism.languages.c=Prism.languages.extend("clike",{keyword:/\b(asm|typeof|inline|auto|break|case|char|const|continue|default|do|double|else|enum|extern|float|for|goto|if|int|long|register|return|short|signed|sizeof|static|struct|switch|typedef|union|unsigned|void|volatile|while)\b/,operator:/\-[>-]?|\+\+?|!=?|<<?=?|>>?=?|==?|&&?|\|?\||[~^%?*\/]/,number:/\b-?(?:0x[\da-f]+|\d*\.?\d+(?:e[+-]?\d+)?)[ful]*\b/i}),Prism.languages.insertBefore("c","string",{macro:{pattern:/(^\s*)#\s*[a-z]+([^\r\n\\]|\\.|\\(?:\r\n?|\n))*/im,lookbehind:!0,alias:"property",inside:{string:{pattern:/(#\s*include\s*)(<.+?>|("|')(\\?.)+?\3)/,lookbehind:!0},directive:{pattern:/(#\s*)\b(define|elif|else|endif|error|ifdef|ifndef|if|import|include|line|pragma|undef|using)\b/,lookbehind:!0,alias:"keyword"}}},constant:/\b(__FILE__|__LINE__|__DATE__|__TIME__|__TIMESTAMP__|__func__|EOF|NULL|stdin|stdout|stderr)\b/}),delete Prism.languages.c["class-name"],delete Prism.languages.c["boolean"];
+</script>
+
+<script type="text/javascript">
+Prism.languages.cpp=Prism.languages.extend("c",{keyword:/\b(alignas|alignof|asm|auto|bool|break|case|catch|char|char16_t|char32_t|class|compl|const|constexpr|const_cast|continue|decltype|default|delete|do|double|dynamic_cast|else|enum|explicit|export|extern|float|for|friend|goto|if|inline|int|long|mutable|namespace|new|noexcept|nullptr|operator|private|protected|public|register|reinterpret_cast|return|short|signed|sizeof|static|static_assert|static_cast|struct|switch|template|this|thread_local|throw|try|typedef|typeid|typename|union|unsigned|using|virtual|void|volatile|wchar_t|while)\b/,"boolean":/\b(true|false)\b/,operator:/[-+]{1,2}|!=?|<{1,2}=?|>{1,2}=?|\->|:{1,2}|={1,2}|\^|~|%|&{1,2}|\|?\||\?|\*|\/|\b(and|and_eq|bitand|bitor|not|not_eq|or|or_eq|xor|xor_eq)\b/}),Prism.languages.insertBefore("cpp","keyword",{"class-name":{pattern:/(class\s+)[a-z0-9_]+/i,lookbehind:!0}});
+</script>
+
+<script type="text/javascript">
+!function(){"undefined"!=typeof self&&self.Prism&&self.document&&Prism.hooks.add("complete",function(e){if(e.code){var t=e.element.parentNode,s=/\s*\bline-numbers\b\s*/;if(t&&/pre/i.test(t.nodeName)&&(s.test(t.className)||s.test(e.element.className))&&!e.element.querySelector(".line-numbers-rows")){s.test(e.element.className)&&(e.element.className=e.element.className.replace(s,"")),s.test(t.className)||(t.className+=" line-numbers");var n,a=e.code.match(/\n(?!$)/g),l=a?a.length+1:1,m=new Array(l+1);m=m.join("<span></span>"),n=document.createElement("span"),n.className="line-numbers-rows",n.innerHTML=m,t.hasAttribute("data-start")&&(t.style.counterReset="linenumber "+(parseInt(t.getAttribute("data-start"),10)-1)),e.element.appendChild(n)}}})}();
+</script>
+
+
+</body>
+
+</html>
